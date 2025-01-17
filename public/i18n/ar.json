@@ -38,5 +38,25 @@
     },
     "StartService": "بدء الخدمة",
     "ArrowAlt": "السهم إلى اليسار"
+  },
+  "LoginPage": {
+    "Steps": {
+      "ScheduleVisit": "تحديد زيارة",
+      "Login": "تسجيل الدخول",
+      "ServiceType": "نوع الخدمة",
+      "SelectAppointment": "اختيار الموعد"
+    },
+    "Welcome": {
+      "Title": "مرحبًا بك",
+      "Description": "تسجيل الدخول واستكمال طلبك لتقديم الزيارة"
+    },
+    "Form": {
+      "EmailOrUsernameLabel": "البريد الإلكتروني او اسم المستخدم",
+      "EmailOrUsernamePlaceholder": "أدخل البريد الإلكتروني او اسم المستخدم",
+      "PasswordLabel": "كلمة المرور",
+      "PasswordPlaceholder": "أدخل كلمة المرور",
+      "RememberMe": "تذكرني",
+      "SubmitButton": "تسجيل الدخول"
+    }
   }
 }

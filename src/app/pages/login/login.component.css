@@ -1,8 +1,134 @@
 .active {
   background-color: #e3ad56;
 }
+.form-container {
+  max-width: 124.8rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 9.6rem 2rem;
+  background: #ffffff;
+  box-shadow: 0px 0px 60px rgba(190, 180, 217, 0.5);
+  border-radius: 12px;
+  align-items: center;
 
-.login .section.steps-section {
-  background: linear-gradient(to bottom, #eef5f9 80%, #fff 20%);
-  padding-bottom: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6rem;
+}
+
+.form-text h2 {
+  font-size: 5rem;
+  color: #223042;
+  line-height: 72px;
+  font-weight: 700;
+}
+.form-text p {
+  font-size: 2rem;
+  color: #223042;
+  font-weight: 500;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  max-width: 48rem;
+  width: 100%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.input-group input {
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 1.4rem;
+  color: #223042;
+  font-weight: 700;
+}
+.form-group input {
+  border: 1px solid #9a9ea9;
+  border-radius: 8px;
+  padding: 12px 40px 12px 9px;
+  font-family: inherit;
+}
+
+.form-group img {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  color: red;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: white;
+}
+input[type="checkbox"]:checked {
+  background-color: #e3ad56;
+  border-color: #e3ad56;
+  background-image: url("/assets/check-icon.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 60%;
+}
+
+.form-group-checkbox {
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-weight: 500;
+  gap: 12px;
+}
+
+form button[type="submit"] {
+  background: #2e3d52;
+  border-radius: 50px;
+  padding: 1.2rem 4.8rem;
+  font-size: 1.6rem;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+@media screen and (max-width: 999px) {
+  .form-container {
+    padding: 4rem 2rem;
+  }
+
+  .form-text img {
+    max-width: 10rem;
+  }
+  .form-text h2 {
+    font-size: 4rem;
+  }
 }

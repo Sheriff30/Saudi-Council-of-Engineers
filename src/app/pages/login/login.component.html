@@ -4,7 +4,7 @@
       <div class="form-steps-container">
         <div class="scheduling-visit">
           <img src="/assets/tree-icon.svg" alt="" />
-          <p>تحديد زيارة</p>
+          <p>{{ "LoginPage.Steps.ScheduleVisit" | translate }}</p>
         </div>
 
         <div class="form-steps">
@@ -13,14 +13,18 @@
               <span> 1 </span>
             </div>
             <div class="line"></div>
-            <div class="form-step-number"><span> 2 </span></div>
+            <div class="form-step-number">
+              <span> 2 </span>
+            </div>
             <div class="line"></div>
-            <div class="form-step-number"><span> 3 </span></div>
+            <div class="form-step-number">
+              <span> 3 </span>
+            </div>
           </div>
           <div class="form-step-text">
-            <p>تسجيل الدخول</p>
-            <p>نوع الخدمة</p>
-            <p>اختيار الموعد</p>
+            <p>{{ "LoginPage.Steps.Login" | translate }}</p>
+            <p>{{ "LoginPage.Steps.ServiceType" | translate }}</p>
+            <p>{{ "LoginPage.Steps.SelectAppointment" | translate }}</p>
           </div>
         </div>
 
@@ -30,6 +34,64 @@
   </div>
 
   <div class="section">
-    <div class="container">hi</div>
+    <div class="form-container">
+      <div class="form-text">
+        <img src="/assets/form-logo.png" alt="" />
+        <h2>{{ "LoginPage.Welcome.Title" | translate }}</h2>
+        <p>{{ "LoginPage.Welcome.Description" | translate }}</p>
+      </div>
+
+      <form
+        (ngSubmit)="onSubmit($event, loginForm)"
+        class="form"
+        #loginForm="ngForm"
+      >
+        <div class="form-group">
+          <label for="mail">{{
+            "LoginPage.Form.EmailOrUsernameLabel" | translate
+          }}</label>
+          <div class="input-group">
+            <input
+              id="mail"
+              type="email"
+              name="mail"
+              ngModel
+              [placeholder]="
+                'LoginPage.Form.EmailOrUsernamePlaceholder' | translate
+              "
+              required
+            />
+            <img src="/assets/email-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">{{
+            "LoginPage.Form.PasswordLabel" | translate
+          }}</label>
+          <div class="input-group">
+            <input
+              id="password"
+              type="password"
+              name="password"
+              ngModel
+              [placeholder]="'LoginPage.Form.PasswordPlaceholder' | translate"
+              required
+            />
+            <img src="/assets/password-icon.svg" alt="" />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group-checkbox">
+            <input type="checkbox" id="remember" name="remember" ngModel />
+            <label for="remember">{{
+              "LoginPage.Form.RememberMe" | translate
+            }}</label>
+          </div>
+          <button type="submit" [disabled]="!loginForm.valid">
+            {{ "LoginPage.Form.SubmitButton" | translate }}
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

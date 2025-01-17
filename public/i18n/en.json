@@ -38,5 +38,25 @@
     },
     "StartService": "Start Service",
     "ArrowAlt": "Arrow Left"
+  },
+  "LoginPage": {
+    "Steps": {
+      "ScheduleVisit": "Schedule Visit",
+      "Login": "Login",
+      "ServiceType": "Service Type",
+      "SelectAppointment": "Select Appointment"
+    },
+    "Welcome": {
+      "Title": "Welcome",
+      "Description": "Log in and complete your request to submit the visit"
+    },
+    "Form": {
+      "EmailOrUsernameLabel": "Email or Username",
+      "EmailOrUsernamePlaceholder": "Enter your email or username",
+      "PasswordLabel": "Password",
+      "PasswordPlaceholder": "Enter your password",
+      "RememberMe": "Remember me",
+      "SubmitButton": "Login"
+    }
   }
 }

@@ -54,19 +54,33 @@ body {
   justify-content: space-between;
   width: 100%;
   text-align: center;
-  padding: 0 10px;
   align-items: center;
 }
 
 .form-step-text {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   justify-content: space-between;
-  text-align: center;
   font-weight: 700;
   color: #223042;
   font-size: 1.4rem;
+  line-height: 20px;
 }
-
+.form-step-text p:nth-child(1) {
+  text-align: left;
+}
+html[dir="rtl"] .form-step-text p:nth-child(1) {
+  text-align: right;
+}
+.form-step-text p:nth-child(2) {
+  text-align: center;
+}
+.form-step-text p:nth-child(3) {
+  text-align: right;
+}
+html[dir="rtl"] .form-step-text p:nth-child(3) {
+  text-align: left;
+}
 .line {
   width: 100%;
   height: 3px;
@@ -91,6 +105,27 @@ body {
   align-items: center;
   justify-content: center;
   color: #fff;
+}
+
+.section.steps-section {
+  background: linear-gradient(to bottom, #eef5f9 80%, #fff 20%);
+  padding-bottom: 0;
+}
+
+html[dir="ltr"] .form-group img {
+  left: 10px;
+  right: auto;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+html[dir="ltr"] .form-group input {
+  padding: 12px 9px 12px 40px !important;
+}
+
+html[dir="rtl"] .form-group img {
+  left: auto;
+  right: 10px;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 @media screen and (max-width: 1439px) {
