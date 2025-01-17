@@ -1,0 +1,28 @@
+<div class="virtual-visit">
+  <div class="section">
+    <div class="container">
+      <div class="virtual-visit--text">
+        <h1>{{ "virtualvisit.Title" | translate }}</h1>
+        <div>
+          <p>{{ "virtualvisit.Description.Line1" | translate }}</p>
+          <p>{{ "virtualvisit.Description.Line2" | translate }}</p>
+        </div>
+      </div>
+      <a
+        routerLink="/login"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+      >
+        {{ "virtualvisit.StartService" | translate }}
+        <img
+          [src]="
+            '/assets/arrow-' +
+            (currentLang === 'ar' ? 'left' : 'right') +
+            '.svg'
+          "
+          [alt]="'VirtualVisit.ArrowAlt' | translate"
+        />
+      </a>
+    </div>
+  </div>
+</div>

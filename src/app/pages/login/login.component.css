@@ -1,0 +1,8 @@
+.active {
+  background-color: #e3ad56;
+}
+
+.login .section.steps-section {
+  background: linear-gradient(to bottom, #eef5f9 80%, #fff 20%);
+  padding-bottom: 0;
+}

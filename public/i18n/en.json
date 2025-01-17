@@ -1,0 +1,42 @@
+{
+  "header": {
+    "help_and_support": "Help and Support"
+  },
+  "footer": {
+    "rights_reserved": "All rights reserved ©",
+    "saudi_engineers": "Saudi Council of Engineers 2025",
+    "working_hours": "Sunday - Thursday: 7:00 AM to 3:00 PM",
+    "weekend_off": "Friday - Saturday: Official holiday",
+    "sections": {
+      "memberships": "Memberships",
+      "types": "Membership Types",
+      "fees": "Membership Fees",
+      "benefits": "Membership Benefits",
+      "e_services": "E-Services",
+      "login": "Login",
+      "new_user": "Create New User",
+      "services_portal": "E-Services Portal",
+      "media_center": "Media Center",
+      "news": "Council News",
+      "events": "Council Events",
+      "annual_report": "Annual Report",
+      "support": "Help and Support",
+      "contact_us": "Contact Us",
+      "faq": "FAQ",
+      "request_info": "Request General Information",
+      "policies": "Policies",
+      "privacy_policy": "Privacy Policy",
+      "disclaimer": "Usage Policy and Disclaimer",
+      "info_access_policy": "Information Access Policy"
+    }
+  },
+  "virtualvisit": {
+    "Title": "Virtual Visit",
+    "Description": {
+      "Line1": "This service allows the possibility of conducting a virtual visit and communicating",
+      "Line2": "with the beneficiary management staff via video call easily and conveniently."
+    },
+    "StartService": "Start Service",
+    "ArrowAlt": "Arrow Left"
+  }
+}

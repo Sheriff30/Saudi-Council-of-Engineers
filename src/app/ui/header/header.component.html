@@ -1,0 +1,31 @@
+<header class="section">
+  <div class="container">
+    <img src="/assets/logo.png" alt="logo" />
+    <nav>
+      <div class="nav-pc">
+        <button class="toggleLanguage-btn" (click)="toggleLanguage()">
+          {{ currentLang === "ar" ? "English" : "العربية" }}
+        </button>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          >{{ "header.help_and_support" | translate }}</a
+        >
+      </div>
+      <div class="nav-mob" (click)="toggleMobileMenu()">
+        <img src="/assets/menu-outline.svg" alt="menu-outline" />
+      </div>
+      <img src="/assets/logo2.png" alt="logo" />
+    </nav>
+  </div>
+
+  <div class="mobile-list hidden">
+    <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page">{{
+      "header.help_and_support" | translate
+    }}</a>
+    <button class="toggleLanguage-btn" (click)="toggleLanguage()">
+      {{ currentLang === "ar" ? "English" : "العربية" }}
+    </button>
+  </div>
+</header>

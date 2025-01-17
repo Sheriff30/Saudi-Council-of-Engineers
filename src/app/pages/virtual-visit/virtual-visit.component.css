@@ -1,0 +1,59 @@
+.virtual-visit {
+  height: 100%;
+  min-height: 600px;
+  display: grid;
+  align-items: center;
+  background-color: #eef5f9;
+}
+
+.virtual-visit--text {
+  display: grid;
+  gap: 16px;
+}
+
+.virtual-visit .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3.2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #e3ad56;
+  font-size: 6.4rem;
+}
+
+p {
+  color: #223042;
+  font-size: 2.4rem;
+  line-height: 32px;
+}
+
+a {
+  background: linear-gradient(
+    90deg,
+    #222f42 -0.14%,
+    #31415c 33.86%,
+    #405372 66.86%,
+    #222f42 99.85%
+  );
+  border-radius: 50px;
+  align-self: end;
+  color: #fff;
+  font-size: 2rem;
+  padding: 0.5rem 8rem;
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+@media screen and (max-width: 999px) {
+  h1 {
+    font-size: 4rem;
+    line-height: auto;
+  }
+}

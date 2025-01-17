@@ -1,1 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: "Cairo", sans-serif;
+}
+
+.section {
+  padding: 4rem 8rem;
+}
+
+.container {
+  max-width: 124.8rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Form Steps */
+
+.form-steps-container {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 115rem;
+  margin: 0 auto;
+  padding: 6rem 2.4rem;
+  align-items: center;
+  box-shadow: 0px 4px 10px -3px rgba(0, 0, 0, 0.13);
+  border-radius: 16px;
+  background-color: #ffffff;
+}
+.scheduling-visit {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 2rem;
+  color: #223042;
+  font-weight: 500;
+}
+
+.form-step-numbers {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  text-align: center;
+  padding: 0 10px;
+  align-items: center;
+}
+
+.form-step-text {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-weight: 700;
+  color: #223042;
+  font-size: 1.4rem;
+}
+
+.line {
+  width: 100%;
+  height: 3px;
+  background-color: #e4e4e4;
+}
+
+.form-step-number {
+  flex-shrink: 0;
+  background: #2e3d52;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 10px solid #e4e4e4;
+}
+.form-step-number span {
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+@media screen and (max-width: 1439px) {
+  .section {
+    padding: 2rem 4rem;
+  }
+}
+@media screen and (max-width: 999px) {
+  .form-steps-container {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+  .scheduling-visit {
+    justify-content: center;
+  }
+  .form-steps-container img:last-child {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 599px) {
+  .section {
+    padding: 2rem;
+  }
+}
