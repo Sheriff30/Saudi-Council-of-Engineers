@@ -13,6 +13,7 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Cairo", sans-serif;
+  position: relative;
 }
 
 .section {
@@ -173,6 +174,47 @@ html[dir="ltr"] .head-style {
   margin: 0 auto;
 }
 
+.nav-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.nav-btns .next-link {
+  background: #2e3d52;
+  border-radius: 4px;
+  padding: 9px 19px;
+  display: flex;
+  color: #fff;
+  gap: 4px;
+
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  max-width: 18rem;
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+}
+.nav-btns .prev-link {
+  background: #fff;
+  border-radius: 4px;
+  padding: 9px 19px;
+  display: flex;
+  color: #2e3d52;
+  gap: 4px;
+  border: 1px solid #2e3d52;
+
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  max-width: 18rem;
+  width: 100%;
+}
+
 @media screen and (max-width: 1439px) {
   .section {
     padding: 2rem 4rem;
@@ -193,5 +235,8 @@ html[dir="ltr"] .head-style {
 @media screen and (max-width: 599px) {
   .section {
     padding: 2rem;
+  }
+  .nav-btns {
+    justify-content: center !important;
   }
 }

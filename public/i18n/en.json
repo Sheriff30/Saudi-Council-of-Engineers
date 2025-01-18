@@ -96,5 +96,22 @@
         }
       }
     }
-  }
+  },
+  "days": {
+    "sunday": "Sunday",
+    "monday": "Monday",
+    "tuesday": "Tuesday",
+    "wednesday": "Wednesday",
+    "thursday": "Thursday"
+  },
+  "submit_msg": {
+    "success": "The appointment has been successfully booked (Booking 10)",
+    "follow_up": "We are happy to serve you. You can now track your booking details through your personal account.",
+    "contact": "For any inquiries, do not hesitate to contact us via 920020820.",
+    "link_text": "Go to your appointments page"
+  },
+
+  "step_three": "Step 3: Choose the appropriate appointment",
+  "not_available": "Not available",
+  "available": "Available"
 }

@@ -1,1 +1,133 @@
-<p>choose-an-appointment works!</p>
+<div class="service-type">
+  <div class="section steps-section">
+    <div class="container">
+      <div class="form-steps-container">
+        <div class="scheduling-visit">
+          <img src="/assets/tree-icon.svg" alt="" />
+          <p>{{ "LoginPage.Steps.ScheduleVisit" | translate }}</p>
+        </div>
+
+        <div class="form-steps">
+          <div class="form-step-numbers">
+            <div class="form-step-number">
+              <span> <img src="/assets/step-icon.svg" alt="step-icon" /> </span>
+            </div>
+            <div class="line active-step"></div>
+            <div class="form-step-number">
+              <span> <img src="/assets/step-icon.svg" alt="step-icon" /> </span>
+            </div>
+            <div class="line active-step"></div>
+
+            <div class="form-step-number step-3">
+              <span> 3 </span>
+            </div>
+          </div>
+          <div class="form-step-text">
+            <p>{{ "LoginPage.Steps.Login" | translate }}</p>
+            <p>{{ "LoginPage.Steps.ServiceType" | translate }}</p>
+            <p>{{ "LoginPage.Steps.SelectAppointment" | translate }}</p>
+          </div>
+        </div>
+
+        <img src="/assets/logo-footer.png" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="card-container">
+      <div class="card-head">
+        <div class="head-style"></div>
+        <img src="/assets/tree-icon.svg" alt="tree-icon" />
+        <p>{{ "step_three" | translate }}</p>
+      </div>
+      <form class="card-content" (ngSubmit)="onSubmit($event)" novalidate>
+        <div class="appointments-tabs">
+          <div
+            *ngFor="let day of translatedDays; let i = index"
+            [class.tab-active]="activeButton === i"
+            (click)="setActiveButton(i)"
+          >
+            {{ day }}
+          </div>
+        </div>
+
+        <div class="appointments-cards">
+          <div *ngFor="let appointment of currentData" class="appointment-card">
+            <p class="appointment-time">{{ appointment.time }}</p>
+            <p *ngIf="appointment.availability === false" class="not-avail">
+              {{ "not_available" | translate }}
+            </p>
+            <div *ngIf="appointment.availability === true" class="select-form">
+              <input type="checkbox" name="available" />
+              <label for="time" id="available">{{
+                "available" | translate
+              }}</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-btns">
+          <a
+            routerLink="/login"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="prev-link"
+          >
+            <img
+              [src]="
+                '/assets/arrowb-' +
+                (currentLang === 'ar' ? 'right' : 'left') +
+                '.svg'
+              "
+              [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+            />
+            <span>{{ "card.content.navigation.prev.text" | translate }}</span>
+          </a>
+          <button class="next-link" type="submit">
+            <span>{{ "card.content.navigation.next.text" | translate }}</span>
+            <img
+              [src]="
+                '/assets/arrow-' +
+                (currentLang === 'ar' ? 'left' : 'right') +
+                '.svg'
+              "
+              [alt]="'card.content.navigation.next.arrowAlt' | translate"
+            />
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="submit-msg-container">
+  <div class="submit-msg">
+    <img src="/assets/check-circle.png" alt="" />
+    <div>
+      <p>
+        {{ "submit_msg.success" | translate }}
+      </p>
+      <p>
+        {{ "submit_msg.follow_up" | translate }}
+      </p>
+      <p>
+        {{ "submit_msg.contact" | translate }}
+      </p>
+    </div>
+    <a
+      routerLink="/login"
+      routerLinkActive="active"
+      ariaCurrentWhenActive="page"
+      class="submit-msg-link"
+    >
+      <span>{{ "submit_msg.link_text" | translate }}</span>
+      <img
+        [src]="
+          '/assets/arrow-' + (currentLang === 'ar' ? 'left' : 'right') + '.svg'
+        "
+        [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+      />
+    </a>
+  </div>
+</div>

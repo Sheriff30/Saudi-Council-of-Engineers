@@ -46,48 +46,6 @@
   border: 2px #ff9d00 solid !important;
 }
 
-.nav-btns {
-  display: flex;
-  justify-content: space-between;
-  gap: 3rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.nav-btns a.next-link {
-  background: #2e3d52;
-  border-radius: 4px;
-  padding: 9px 19px;
-  display: flex;
-  color: #fff;
-  gap: 4px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 18px;
-  max-width: 18rem;
-  width: 100%;
-}
-.nav-btns a.prev-link {
-  background: #fff;
-  border-radius: 4px;
-  padding: 9px 19px;
-  display: flex;
-  color: #2e3d52;
-  gap: 4px;
-  border: 1px solid #2e3d52;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 18px;
-  max-width: 18rem;
-  width: 100%;
-}
-
 @media screen and (max-width: 999px) {
   .card-a {
     grid-template-columns: 1fr;
@@ -105,9 +63,5 @@
 
   .card-q {
     font-size: 2rem;
-  }
-
-  .nav-btns {
-    justify-content: center !important;
   }
 }

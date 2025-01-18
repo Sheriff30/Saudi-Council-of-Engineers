@@ -1,0 +1,186 @@
+{
+  "en": {
+    "sunday": [
+      {
+        "availability": true,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": true,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": false,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": true,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": false,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": true,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": false,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": true,
+        "time": "2:00 PM"
+      },
+      {
+        "availability": true,
+        "time": "2:00 PM"
+      }
+    ],
+    "monday": [
+      {
+        "availability": false,
+        "time": "11:00 AM"
+      },
+      {
+        "availability": true,
+        "time": "6:00 PM"
+      }
+    ],
+    "tuesday": [
+      {
+        "availability": true,
+        "time": "9:00 AM"
+      },
+      {
+        "availability": true,
+        "time": "3:00 PM"
+      }
+    ],
+    "wednesday": [
+      {
+        "availability": true,
+        "time": "1:00 PM"
+      },
+      {
+        "availability": true,
+        "time": "5:00 PM"
+      }
+    ],
+    "thursday": [
+      {
+        "availability": true,
+        "time": "10:00 AM"
+      },
+      {
+        "availability": true,
+        "time": "7:00 PM"
+      }
+    ]
+  },
+  "ar": {
+    "الاحد": [
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": false,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": false,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": false,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": false,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "2:00 ص"
+      }
+    ],
+    "الاثنين": [
+      {
+        "availability": false,
+        "time": "11:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "6:00 ص"
+      }
+    ],
+    "الثلاثاء": [
+      {
+        "availability": true,
+        "time": "9:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "3:00 ص"
+      }
+    ],
+    "الاربعاء": [
+      {
+        "availability": true,
+        "time": "1:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "5:00 ص"
+      }
+    ],
+    "الخميس": [
+      {
+        "availability": true,
+        "time": "10:00 ص"
+      },
+      {
+        "availability": true,
+        "time": "7:00 ص"
+      }
+    ]
+  }
+}

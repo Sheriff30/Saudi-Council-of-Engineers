@@ -1,0 +1,148 @@
+.card-content {
+  padding-top: 4rem;
+}
+
+.appointments-tabs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.appointments-tabs div {
+  font-size: 2.4rem;
+  width: 100%;
+  font-family: inherit;
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  border-bottom: 2px solid #e4e4e4;
+  padding-bottom: 1.2rem;
+  text-align: center;
+}
+
+.tab-active {
+  border-color: #e3ad56 !important;
+  color: #e3ad56 !important;
+}
+
+.appointments-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(18rem, 1fr));
+  gap: 3.2rem;
+  padding: 2.4rem 0;
+}
+.appointment-card {
+  border: 2px solid #e4e4e4;
+  border-radius: 16px;
+  height: 18rem;
+  padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.appointment-time {
+  color: #223042;
+}
+
+.not-avail {
+  color: #adabab;
+  font-weight: 700;
+}
+
+.select-form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #e3ad56;
+}
+.select-form input[type="checkbox"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+  background-color: white;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.select-form input[type="checkbox"]:checked {
+  background-color: #e3ad56;
+  border-color: #e3ad56;
+}
+
+.submit-msg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(34, 48, 66, 0.3);
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  z-index: 1111111111;
+}
+
+.submit-msg-container.active-msg {
+  display: flex;
+}
+
+.submit-msg {
+  background-color: #ffffff;
+  padding: 2.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  flex-direction: column;
+  box-shadow: 0px 4px 64px -20px rgba(2, 12, 60, 0.07);
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.4rem;
+  color: rgb(34, 48, 66, 0.7);
+}
+
+.submit-msg div p:first-child {
+  font-size: 2.4rem;
+  font-weight: bold;
+  color: #223042;
+}
+
+.submit-msg div p:first-child span,
+.submit-msg div p:nth-child(3) span {
+  color: #e3ad56;
+}
+
+.submit-msg-link {
+  display: flex;
+  background: #2e3d52;
+  border-radius: 50px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+  gap: 4px;
+}
+
+@media screen and (max-width: 599px) {
+  .appointments-tabs div {
+    font-size: 1.4rem;
+  }
+
+  .submit-msg div p:first-child,
+  .submit-msg-link {
+    font-size: 1.8rem !important;
+  }
+}
