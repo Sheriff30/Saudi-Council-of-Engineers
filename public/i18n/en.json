@@ -113,5 +113,6 @@
 
   "step_three": "Step 3: Choose the appropriate appointment",
   "not_available": "Not available",
-  "available": "Available"
+  "available": "Available",
+  "submit_request": "Submit Request"
 }

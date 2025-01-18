@@ -85,7 +85,7 @@
             <span>{{ "card.content.navigation.prev.text" | translate }}</span>
           </a>
           <button class="next-link" type="submit">
-            <span>{{ "card.content.navigation.next.text" | translate }}</span>
+            <span>{{ "submit_request" | translate }}</span>
             <img
               [src]="
                 '/assets/arrow-' +
@@ -116,10 +116,10 @@
       </p>
     </div>
     <a
-      routerLink="/login"
+      routerLink="/appointment-list"
       routerLinkActive="active"
       ariaCurrentWhenActive="page"
-      class="submit-msg-link"
+      class="page-link"
     >
       <span>{{ "submit_msg.link_text" | translate }}</span>
       <img

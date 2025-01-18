@@ -122,27 +122,12 @@
   color: #e3ad56;
 }
 
-.submit-msg-link {
-  display: flex;
-  background: #2e3d52;
-  border-radius: 50px;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 8px;
-  font-size: 2rem;
-  color: #fff;
-  text-decoration: none;
-  gap: 4px;
-}
-
 @media screen and (max-width: 599px) {
   .appointments-tabs div {
     font-size: 1.4rem;
   }
 
-  .submit-msg div p:first-child,
-  .submit-msg-link {
+  .submit-msg div p:first-child {
     font-size: 1.8rem !important;
   }
 }

@@ -3,10 +3,12 @@ import { VirtualVisitComponent } from './pages/virtual-visit/virtual-visit.compo
 import { LoginComponent } from './pages/login/login.component';
 import { ServiceTypeComponent } from './pages/service-type/service-type.component';
 import { ChooseAnAppointmentComponent } from './pages/choose-an-appointment/choose-an-appointment.component';
+import { AppointmentListComponent } from './pages/appointment-list/appointment-list.component';
 
 export const routes: Routes = [
   { path: '', component: VirtualVisitComponent },
   { path: 'login', component: LoginComponent },
   { path: 'service-type', component: ServiceTypeComponent },
   { path: 'appointment', component: ChooseAnAppointmentComponent },
+  { path: 'appointment-list', component: AppointmentListComponent },
 ];

@@ -193,7 +193,7 @@ html[dir="ltr"] .head-style {
   justify-content: center;
   text-decoration: none;
   font-size: 18px;
-  max-width: 18rem;
+  max-width: 20rem;
   width: 100%;
   cursor: pointer;
   border: none;
@@ -211,8 +211,99 @@ html[dir="ltr"] .head-style {
   justify-content: center;
   text-decoration: none;
   font-size: 18px;
-  max-width: 18rem;
+  max-width: 20rem;
   width: 100%;
+}
+
+.appointment-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 124.8rem;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 0px 8px 2px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 1.4rem;
+  gap: 3.4rem;
+}
+
+.appointment-head {
+  background-color: #eef5f9;
+  padding: 6.4rem 3.2rem;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.appointment-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+.appointment-head div:first-child {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.appointment-head div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.appointment-head div p {
+  background: linear-gradient(
+    90deg,
+    #222f42 -0.14%,
+    #31415c 33.86%,
+    #405372 66.86%,
+    #222f42 99.85%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+  font-size: 5rem;
+  font-weight: 700;
+}
+
+.appointment-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+  padding: 6px;
+  background: linear-gradient(
+    90deg,
+    #222f42 -0.14%,
+    #31415c 33.86%,
+    #405372 66.86%,
+    #222f42 99.85%
+  );
+  border-radius: 50px;
+  width: 21.6rem;
+  color: #fff;
+}
+
+.page-link {
+  display: flex;
+  background: #2e3d52;
+  border-radius: 50px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  font-size: 2rem;
+  color: #fff;
+  text-decoration: none;
+  gap: 4px;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1439px) {
@@ -220,6 +311,7 @@ html[dir="ltr"] .head-style {
     padding: 2rem 4rem;
   }
 }
+
 @media screen and (max-width: 999px) {
   .form-steps-container {
     grid-template-columns: 1fr;
@@ -231,6 +323,13 @@ html[dir="ltr"] .head-style {
   .form-steps-container img:last-child {
     margin: 0 auto;
   }
+
+  .appointment-head div:nth-child(2) {
+    justify-content: space-between;
+  }
+  .appointment-head div p {
+    font-size: 2.4rem;
+  }
 }
 @media screen and (max-width: 599px) {
   .section {
@@ -238,5 +337,15 @@ html[dir="ltr"] .head-style {
   }
   .nav-btns {
     justify-content: center !important;
+  }
+  .appointment-head div:nth-child(2) {
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+  .appointment-head {
+    justify-content: center;
+  }
+  .page-link {
+    font-size: 1.8rem !important;
   }
 }

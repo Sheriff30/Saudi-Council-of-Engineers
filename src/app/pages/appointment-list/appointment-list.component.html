@@ -1,0 +1,79 @@
+<div class="section">
+  <div class="appointment-container">
+    <!--  -->
+    <div class="appointment-head">
+      <div>
+        <img src="/assets/appointment-logo.png" alt="appointment-logo" />
+        <p>قائمة مواعيدي</p>
+      </div>
+
+      <div>
+        <a
+          routerLink="/appointment"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="appointment-link"
+        >
+          <span>حجز زيارة جديدة</span>
+          <img
+            [src]="
+              '/assets/arrow-' +
+              (currentLang === 'ar' ? 'left' : 'right') +
+              '.svg'
+            "
+            [alt]="'card.content.navigation.next.arrowAlt' | translate"
+          />
+        </a>
+        <img src="/assets/logo-footer.png" alt="appointment-logo" />
+      </div>
+    </div>
+    <!--  -->
+    <div class="appointment-link-card">
+      <div class="appointment-link-card-head">
+        <img src="/assets/time.png" alt="time icon" />
+        <p>مواعيدي السابقة</p>
+      </div>
+      <p>يمكنك من هنا الاطلاع على جميع مواعيد زيارتك السابقة معانا</p>
+      <a
+        routerLink="/appointment-list"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="page-link"
+      >
+        <span>الذهاب الى مواعيد السابق</span>
+        <img
+          [src]="
+            '/assets/arrow-' +
+            (currentLang === 'ar' ? 'left' : 'right') +
+            '.svg'
+          "
+          [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+        />
+      </a>
+    </div>
+    <!--  -->
+    <div class="appointment-link-card">
+      <div class="appointment-link-card-head">
+        <img src="/assets/time.png" alt="time icon" />
+        <p>مواعيدي القادمة</p>
+      </div>
+      <p>يمكنك من هنا الاطلاع على جميع مواعيد زيارتك السابقة معانا</p>
+      <a
+        routerLink="/appointment-list"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="page-link"
+      >
+        <span>الذهاب الى مواعيد القادمة</span>
+        <img
+          [src]="
+            '/assets/arrow-' +
+            (currentLang === 'ar' ? 'left' : 'right') +
+            '.svg'
+          "
+          [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+        />
+      </a>
+    </div>
+  </div>
+</div>
