@@ -43,6 +43,7 @@ nav {
   font-size: 1.4rem;
   border: none;
   cursor: pointer;
+  font-family: inherit;
 }
 
 nav a,

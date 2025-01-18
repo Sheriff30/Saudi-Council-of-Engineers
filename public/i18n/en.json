@@ -111,6 +111,24 @@
     "link_text": "Go to your appointments page"
   },
 
+  "appointment": {
+    "previous": "My Previous Appointments",
+    "newVisit": "Book a New Visit",
+    "arrowAlt": "Next Navigation Arrow",
+    "visitNumber": "Visit Number",
+    "serviceName": "Service Name",
+    "employeeName": "Employee Name",
+    "serviceRating": "Service Rating Level:",
+    "employeeRating": "Employee Service Rating Level:",
+    "myAppointmentsList": "My Appointments List",
+    "previousAppointments": "My Previous Appointments",
+    "previousAppointmentsDescription": "Here, you can view all your previous visit appointments with us.",
+    "goToPreviousAppointments": "Go to Previous Appointments",
+    "upcomingAppointments": "My Upcoming Appointments",
+    "upcomingAppointmentsDescription": "Here, you can view all your upcoming visit appointments with us.",
+    "goToUpcomingAppointments": "Go to Upcoming Appointments"
+  },
+
   "step_three": "Step 3: Choose the appropriate appointment",
   "not_available": "Not available",
   "available": "Available",

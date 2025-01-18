@@ -1,0 +1,165 @@
+<div class="section">
+  <div class="appointment-container">
+    <!--  -->
+    <div class="appointment-head">
+      <div>
+        <img src="/assets/appointment-logo.png" alt="appointment-logo" />
+        <p>{{ "appointment.previous" | translate }}</p>
+      </div>
+
+      <div>
+        <a
+          routerLink="/appointment"
+          routerLinkActive="active"
+          ariaCurrentWhenActive="page"
+          class="appointment-link"
+        >
+          <span>{{ "appointment.newVisit" | translate }}</span>
+          <img
+            [src]="
+              '/assets/arrow-' +
+              (currentLang === 'ar' ? 'left' : 'right') +
+              '.svg'
+            "
+            [alt]="'appointment.arrowAlt' | translate"
+          />
+        </a>
+        <img src="/assets/logo-footer.png" alt="appointment-logo" />
+      </div>
+    </div>
+
+    <!--  -->
+    <div class="appointment-content">
+      <!--  -->
+      <a
+        routerLink="/upcoming-appointments"
+        routerLinkActive="active"
+        ariaCurrentWhenActive="page"
+        class="page-link appointment-page-link"
+      >
+        <span>{{ "appointment.goToPreviousAppointments" | translate }}</span>
+        <img
+          [src]="
+            '/assets/arrow-' +
+            (currentLang === 'ar' ? 'left' : 'right') +
+            '.svg'
+          "
+          [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+        />
+      </a>
+      <!-- Displaying Paginated Cards -->
+      <div class="prev-appointment-cards">
+        <div
+          *ngFor="let appointment of getPaginatedAppointments()"
+          class="prev-appointment-card"
+        >
+          <div class="card-row-1">
+            <div class="card-visit">
+              <img src="/assets/visit-icon.png" alt="" />
+              <p>
+                <span>{{ "appointment.visitNumber" | translate }} </span>
+                <span>({{ appointment.visitnumber }})</span>
+              </p>
+            </div>
+
+            <div>
+              <div class="card-date">
+                <img src="/assets/date-icon.png" alt="" />
+                <p>{{ appointment.date }}</p>
+              </div>
+              <div class="card-time">
+                <img src="/assets/time-icon.png" alt="" />
+                <p>{{ appointment.time }}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-row-2">
+            <div>
+              <span>{{ "appointment.serviceName" | translate }}: </span>
+              <span>{{ appointment.servicename }}</span>
+            </div>
+            <div>
+              <span>{{ "appointment.employeeName" | translate }}: </span>
+              <span>{{ appointment.employeename }}</span>
+            </div>
+          </div>
+
+          <div class="card-row-3">
+            <div class="servicerating-card">
+              <div>
+                <p>{{ "appointment.serviceRating" | translate }}</p>
+                <div>
+                  <img
+                    *ngFor="let star of [].constructor(5); let i = index"
+                    [src]="
+                      i < appointment.servicerating
+                        ? 'assets/star-icon1.png'
+                        : 'assets/star-icon2.png'
+                    "
+                    [alt]="
+                      i < appointment.servicerating
+                        ? 'Filled star'
+                        : 'Empty star'
+                    "
+                    class="star"
+                  />
+                </div>
+              </div>
+              <div>{{ appointment.servicedescription }}</div>
+            </div>
+            <div class="card-line"></div>
+            <div class="servicerating-card">
+              <div>
+                <p>{{ "appointment.employeeRating" | translate }}</p>
+                <div>
+                  <img
+                    *ngFor="let star of [].constructor(5); let i = index"
+                    [src]="
+                      i < appointment.employeerating
+                        ? 'assets/star-icon1.png'
+                        : 'assets/star-icon2.png'
+                    "
+                    [alt]="
+                      i < appointment.employeerating
+                        ? 'Filled star'
+                        : 'Empty star'
+                    "
+                    class="star"
+                  />
+                </div>
+              </div>
+              <div>{{ appointment.employeedescription }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination Controls -->
+      <div class="pagination">
+        <div
+          class="pagination-arrow-prev"
+          (click)="paginate(currentPage - 1)"
+          [class.disabled]="currentPage === 1"
+        >
+          <img src="/assets/pagination-prev.svg" alt="" />
+        </div>
+        <div
+          class="pagination-number"
+          *ngFor="let page of getPaginationRange()"
+          (click)="paginate(page)"
+          [class.active]="currentPage === page"
+        >
+          {{ page }}
+        </div>
+        <div
+          class="pagination-arrow-next"
+          (click)="paginate(currentPage + 1)"
+          [class.disabled]="currentPage === totalPages"
+        >
+          <img src="/assets/pagination-next.svg" alt="" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,7 @@
     <div class="appointment-head">
       <div>
         <img src="/assets/appointment-logo.png" alt="appointment-logo" />
-        <p>قائمة مواعيدي</p>
+        <p>{{ "appointment.myAppointmentsList" | translate }}</p>
       </div>
 
       <div>
@@ -14,14 +14,14 @@
           ariaCurrentWhenActive="page"
           class="appointment-link"
         >
-          <span>حجز زيارة جديدة</span>
+          <span>{{ "appointment.newVisit" | translate }}</span>
           <img
             [src]="
               '/assets/arrow-' +
               (currentLang === 'ar' ? 'left' : 'right') +
               '.svg'
             "
-            [alt]="'card.content.navigation.next.arrowAlt' | translate"
+            [alt]="'appointment.arrowAlt' | translate"
           />
         </a>
         <img src="/assets/logo-footer.png" alt="appointment-logo" />
@@ -31,16 +31,16 @@
     <div class="appointment-link-card">
       <div class="appointment-link-card-head">
         <img src="/assets/time.png" alt="time icon" />
-        <p>مواعيدي السابقة</p>
+        <p>{{ "appointment.previousAppointments" | translate }}</p>
       </div>
-      <p>يمكنك من هنا الاطلاع على جميع مواعيد زيارتك السابقة معانا</p>
+      <p>{{ "appointment.previousAppointmentsDescription" | translate }}</p>
       <a
-        routerLink="/appointment-list"
+        routerLink="/previous-appointments"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         class="page-link"
       >
-        <span>الذهاب الى مواعيد السابق</span>
+        <span>{{ "appointment.goToPreviousAppointments" | translate }}</span>
         <img
           [src]="
             '/assets/arrow-' +
@@ -55,16 +55,16 @@
     <div class="appointment-link-card">
       <div class="appointment-link-card-head">
         <img src="/assets/time.png" alt="time icon" />
-        <p>مواعيدي القادمة</p>
+        <p>{{ "appointment.upcomingAppointments" | translate }}</p>
       </div>
-      <p>يمكنك من هنا الاطلاع على جميع مواعيد زيارتك السابقة معانا</p>
+      <p>{{ "appointment.upcomingAppointmentsDescription" | translate }}</p>
       <a
-        routerLink="/appointment-list"
+        routerLink="/upcoming-appointments"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         class="page-link"
       >
-        <span>الذهاب الى مواعيد القادمة</span>
+        <span>{{ "appointment.goToUpcomingAppointments" | translate }}</span>
         <img
           [src]="
             '/assets/arrow-' +

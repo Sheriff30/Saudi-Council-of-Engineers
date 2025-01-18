@@ -126,7 +126,10 @@ html[dir="ltr"] .form-group img {
 html[dir="ltr"] .form-group input {
   padding: 12px 9px 12px 40px !important;
 }
-
+html[dir="ltr"] .pagination-arrow-next,
+html[dir="ltr"] .pagination-arrow-prev {
+  transform: rotate(180deg);
+}
 html[dir="rtl"] .form-group img {
   left: auto;
   right: 10px;
@@ -304,6 +307,13 @@ html[dir="ltr"] .head-style {
   text-decoration: none;
   gap: 4px;
   cursor: pointer;
+}
+
+.appointment-page-link {
+  max-width: 32rem;
+  margin-right: auto;
+  font-size: 2rem !important;
+  background-color: #e3ad56 !important;
 }
 
 @media screen and (max-width: 1439px) {
