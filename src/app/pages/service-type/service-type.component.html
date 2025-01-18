@@ -1,1 +1,109 @@
-<p>service-type works!</p>
+<div class="service-type">
+  <div class="section steps-section">
+    <div class="container">
+      <div class="form-steps-container">
+        <div class="scheduling-visit">
+          <img src="/assets/tree-icon.svg" alt="" />
+          <p>{{ "LoginPage.Steps.ScheduleVisit" | translate }}</p>
+        </div>
+
+        <div class="form-steps">
+          <div class="form-step-numbers">
+            <div class="form-step-number">
+              <span> <img src="/assets/step-icon.svg" alt="step-icon" /> </span>
+            </div>
+            <div class="line active-step"></div>
+            <div class="form-step-number">
+              <span> 2 </span>
+            </div>
+            <div class="line"></div>
+            <div class="form-step-number">
+              <span> 3 </span>
+            </div>
+          </div>
+          <div class="form-step-text">
+            <p>{{ "LoginPage.Steps.Login" | translate }}</p>
+            <p>{{ "LoginPage.Steps.ServiceType" | translate }}</p>
+            <p>{{ "LoginPage.Steps.SelectAppointment" | translate }}</p>
+          </div>
+        </div>
+
+        <img src="/assets/logo-footer.png" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="card-container">
+      <div class="card-head">
+        <div class="head-style"></div>
+        <img src="/assets/tree-icon.svg" alt="tree-icon" />
+        <p>{{ "card.head.step" | translate }}</p>
+      </div>
+      <div class="card-content">
+        <div class="card-q">
+          <p>{{ "card.content.question.text" | translate }}</p>
+          <span class="card-q-line1"></span>
+          <span class="card-q-line2"></span>
+        </div>
+        <div class="card-a">
+          <button
+            [ngClass]="{ 'btn-active': activeButton === 0 }"
+            (click)="setActiveButton(0)"
+          >
+            <img src="/assets/answer-icon.svg" alt="answer-icon" />
+            {{ "card.content.answers.0.text" | translate }}
+          </button>
+          <button
+            [ngClass]="{ 'btn-active': activeButton === 1 }"
+            (click)="setActiveButton(1)"
+          >
+            <img src="/assets/answer-icon.svg" alt="answer-icon" />
+            {{ "card.content.answers.1.text" | translate }}
+          </button>
+          <button
+            [ngClass]="{ 'btn-active': activeButton === 2 }"
+            (click)="setActiveButton(2)"
+          >
+            <img src="/assets/answer-icon.svg" alt="answer-icon" />
+            {{ "card.content.answers.2.text" | translate }}
+          </button>
+        </div>
+        <div class="nav-btns">
+          <a
+            routerLink="/login"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="prev-link"
+          >
+            <img
+              [src]="
+                '/assets/arrowb-' +
+                (currentLang === 'ar' ? 'right' : 'left') +
+                '.svg'
+              "
+              [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+            />
+            <span>{{ "card.content.navigation.prev.text" | translate }}</span>
+          </a>
+          <a
+            routerLink="/appointment"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="next-link"
+          >
+            <span>{{ "card.content.navigation.next.text" | translate }}</span>
+            <img
+              [src]="
+                '/assets/arrow-' +
+                (currentLang === 'ar' ? 'left' : 'right') +
+                '.svg'
+              "
+              [alt]="'card.content.navigation.next.arrowAlt' | translate"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

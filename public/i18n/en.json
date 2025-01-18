@@ -58,5 +58,43 @@
       "RememberMe": "Remember me",
       "SubmitButton": "Login"
     }
+  },
+
+  "card": {
+    "head": {
+      "step": "Step Two: Select Service Type",
+      "iconAlt": "tree-icon"
+    },
+    "content": {
+      "question": {
+        "text": "Select the service type that suits you?",
+        "line1Alt": "Line 1",
+        "line2Alt": "Line 2"
+      },
+      "answers": [
+        {
+          "text": "Professional accreditation for engineers.",
+          "iconAlt": "answer-icon"
+        },
+        {
+          "text": "Engineering offices and companies.",
+          "iconAlt": "answer-icon"
+        },
+        {
+          "text": "General inquiries.",
+          "iconAlt": "answer-icon"
+        }
+      ],
+      "navigation": {
+        "prev": {
+          "text": "Previous Step",
+          "arrowAlt": "Arrow pointing left"
+        },
+        "next": {
+          "text": "Next Step",
+          "arrowAlt": "Arrow pointing right"
+        }
+      }
+    }
   }
 }

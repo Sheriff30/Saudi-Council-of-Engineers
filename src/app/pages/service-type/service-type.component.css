@@ -1,0 +1,113 @@
+.card-q {
+  font-size: 3.6rem;
+  margin-bottom: 4.3rem;
+}
+
+.card-q-line1 {
+  display: block;
+  width: 50px;
+  height: 2px;
+  background-color: #e3ad56;
+  margin-bottom: 3px;
+}
+.card-q-line2 {
+  display: block;
+  width: 30px;
+  height: 1px;
+  background-color: #e3ad56;
+}
+
+.card-a {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin-bottom: 2.4rem;
+}
+
+.card-a button {
+  width: 100%;
+  background-color: #1051a536;
+  border: 0;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 2.4rem;
+  font-family: inherit;
+  border-radius: 8px;
+  border: 2px transparent solid;
+  cursor: pointer;
+}
+.btn-active {
+  background-color: #ffe4b9 !important;
+  border: 2px #ff9d00 solid !important;
+}
+
+.nav-btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 3rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.nav-btns a.next-link {
+  background: #2e3d52;
+  border-radius: 4px;
+  padding: 9px 19px;
+  display: flex;
+  color: #fff;
+  gap: 4px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  max-width: 18rem;
+  width: 100%;
+}
+.nav-btns a.prev-link {
+  background: #fff;
+  border-radius: 4px;
+  padding: 9px 19px;
+  display: flex;
+  color: #2e3d52;
+  gap: 4px;
+  border: 1px solid #2e3d52;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 18px;
+  max-width: 18rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 999px) {
+  .card-a {
+    grid-template-columns: 1fr;
+  }
+
+  .card-q {
+    font-size: 2.6rem;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .section {
+    padding: 2rem;
+  }
+
+  .card-q {
+    font-size: 2rem;
+  }
+
+  .nav-btns {
+    justify-content: center !important;
+  }
+}
