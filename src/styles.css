@@ -252,6 +252,7 @@ html[dir="ltr"] .head-style {
   gap: 8px;
   flex-wrap: wrap;
   justify-content: center;
+  text-align: center;
 }
 .appointment-head div:nth-child(2) {
   display: flex;
