@@ -291,6 +291,7 @@ html[dir="ltr"] .head-style {
   );
   border-radius: 50px;
   width: 21.6rem;
+  text-decoration: none;
   color: #fff;
 }
 

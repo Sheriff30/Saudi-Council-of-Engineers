@@ -1,17 +1,17 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http'; // Import HttpClient
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-previous-appointments',
+  selector: 'app-upcoming-appointments',
   standalone: true,
   imports: [TranslateModule, CommonModule, RouterLink],
-  templateUrl: './previous-appointments.component.html',
-  styleUrls: ['./previous-appointments.component.css'],
+  templateUrl: './upcoming-appointments.component.html',
+  styleUrl: './upcoming-appointments.component.css',
 })
-export class PreviousAppointmentsComponent {
+export class UpcomingAppointmentsComponent {
   currentLang: string = 'ar';
   appointments: any[] = [];
   currentPage: number = 1;
@@ -34,13 +34,15 @@ export class PreviousAppointmentsComponent {
   }
 
   loadData(): void {
-    this.http.get('/data/prev-appointments.json').subscribe((response: any) => {
-      this.appointments = response[this.currentLang];
-      this.totalPages = Math.ceil(
-        this.appointments.length / this.appointmentsPerPage,
-      );
-      this.updateData();
-    });
+    this.http
+      .get('/data/upcoming-appointments.json')
+      .subscribe((response: any) => {
+        this.appointments = response[this.currentLang];
+        this.totalPages = Math.ceil(
+          this.appointments.length / this.appointmentsPerPage,
+        );
+        this.updateData();
+      });
   }
 
   updateData(): void {

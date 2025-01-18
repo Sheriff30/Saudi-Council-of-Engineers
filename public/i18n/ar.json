@@ -123,10 +123,11 @@
     "myAppointmentsList": "قائمة مواعيدي",
     "previousAppointments": "مواعيدي السابقة",
     "previousAppointmentsDescription": "يمكنك من هنا الاطلاع على جميع مواعيد زيارتك السابقة معانا",
-    "goToPreviousAppointments": "الذهاب الى مواعيد السابق",
+    "goToPreviousAppointments": "الذهاب الى مواعيد السابقة",
     "upcomingAppointments": "مواعيدي القادمة",
     "upcomingAppointmentsDescription": "يمكنك من هنا الاطلاع على جميع مواعيد زيارتك القادمة معانا",
-    "goToUpcomingAppointments": "الذهاب الى مواعيد القادمة"
+    "goToUpcomingAppointments": "الذهاب الى مواعيد القادمة",
+    "goToSession": "الذهاب الى الجلسة"
   },
   "step_three": "الخطوة الثالثة: قم باختيار الموعد المناسب ؟",
   "not_available": "غير متاح",

@@ -126,7 +126,8 @@
     "goToPreviousAppointments": "Go to Previous Appointments",
     "upcomingAppointments": "My Upcoming Appointments",
     "upcomingAppointmentsDescription": "Here, you can view all your upcoming visit appointments with us.",
-    "goToUpcomingAppointments": "Go to Upcoming Appointments"
+    "goToUpcomingAppointments": "Go to Upcoming Appointments",
+    "goToSession": "Go to the Session"
   },
 
   "step_three": "Step 3: Choose the appropriate appointment",

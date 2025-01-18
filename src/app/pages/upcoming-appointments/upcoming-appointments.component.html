@@ -4,7 +4,7 @@
     <div class="appointment-head">
       <div>
         <img src="/assets/appointment-logo.png" alt="appointment-logo" />
-        <p>{{ "appointment.previous" | translate }}</p>
+        <p>{{ "appointment.upcomingAppointments" | translate }}</p>
       </div>
 
       <div>
@@ -32,12 +32,12 @@
     <div class="appointment-content">
       <!--  -->
       <a
-        routerLink="/upcoming-appointments"
+        routerLink="/previous-appointments"
         routerLinkActive="active"
         ariaCurrentWhenActive="page"
         class="page-link appointment-page-link"
       >
-        <p>{{ "appointment.upcomingAppointments" | translate }}</p>
+        <span>{{ "appointment.goToPreviousAppointments" | translate }}</span>
 
         <img
           [src]="
@@ -86,53 +86,22 @@
             </div>
           </div>
 
-          <div class="card-row-3">
-            <div class="servicerating-card">
-              <div>
-                <p>{{ "appointment.serviceRating" | translate }}</p>
-                <div>
-                  <img
-                    *ngFor="let star of [].constructor(5); let i = index"
-                    [src]="
-                      i < appointment.servicerating
-                        ? 'assets/star-icon1.png'
-                        : 'assets/star-icon2.png'
-                    "
-                    [alt]="
-                      i < appointment.servicerating
-                        ? 'Filled star'
-                        : 'Empty star'
-                    "
-                    class="star"
-                  />
-                </div>
-              </div>
-              <div>{{ appointment.servicedescription }}</div>
-            </div>
-            <div class="card-line"></div>
-            <div class="servicerating-card">
-              <div>
-                <p>{{ "appointment.employeeRating" | translate }}</p>
-                <div>
-                  <img
-                    *ngFor="let star of [].constructor(5); let i = index"
-                    [src]="
-                      i < appointment.employeerating
-                        ? 'assets/star-icon1.png'
-                        : 'assets/star-icon2.png'
-                    "
-                    [alt]="
-                      i < appointment.employeerating
-                        ? 'Filled star'
-                        : 'Empty star'
-                    "
-                    class="star"
-                  />
-                </div>
-              </div>
-              <div>{{ appointment.employeedescription }}</div>
-            </div>
-          </div>
+          <a
+            routerLink="/upcoming-appointments"
+            routerLinkActive="active"
+            ariaCurrentWhenActive="page"
+            class="page-link"
+          >
+            <span>{{ "appointment.goToSession" | translate }}</span>
+            <img
+              [src]="
+                '/assets/arrow-' +
+                (currentLang === 'ar' ? 'left' : 'right') +
+                '.svg'
+              "
+              [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+            />
+          </a>
         </div>
       </div>
 
