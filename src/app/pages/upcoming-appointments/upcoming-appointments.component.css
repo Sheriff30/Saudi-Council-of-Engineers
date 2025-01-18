@@ -84,6 +84,7 @@
   display: flex;
   gap: 1rem;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .servicerating-card div:first-child p:first-child {
