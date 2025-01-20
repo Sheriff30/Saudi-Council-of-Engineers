@@ -139,7 +139,7 @@
   },
 
   "step_three": "Step 3: Choose the appropriate appointment",
-  "not_available": "Not available",
-  "available": "Available",
+  "not_available": "Not Not reserved",
+  "available": "Reserved",
   "submit_request": "Submit Request"
 }
