@@ -6,13 +6,31 @@ import { ChooseAnAppointmentComponent } from './pages/choose-an-appointment/choo
 import { AppointmentListComponent } from './pages/appointment-list/appointment-list.component';
 import { PreviousAppointmentsComponent } from './pages/previous-appointments/previous-appointments.component';
 import { UpcomingAppointmentsComponent } from './pages/upcoming-appointments/upcoming-appointments.component';
+import { AppComponent } from './app.component';
+import { MainLayoutComponent } from './ui/main-layout/main-layout.component';
+import { DashboardLayoutComponent } from './ui/dashboard-layout/dashboard-layout.component';
 
 export const routes: Routes = [
-  { path: '', component: VirtualVisitComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'service-type', component: ServiceTypeComponent },
-  { path: 'appointment', component: ChooseAnAppointmentComponent },
-  { path: 'appointment-list', component: AppointmentListComponent },
-  { path: 'previous-appointments', component: PreviousAppointmentsComponent },
-  { path: 'upcoming-appointments', component: UpcomingAppointmentsComponent },
+  {
+    path: '',
+    component: MainLayoutComponent,
+    children: [
+      { path: '', component: VirtualVisitComponent },
+      { path: 'appointment', component: ChooseAnAppointmentComponent },
+      { path: 'appointment-list', component: AppointmentListComponent },
+      {
+        path: 'previous-appointments',
+        component: PreviousAppointmentsComponent,
+      },
+      {
+        path: 'upcoming-appointments',
+        component: UpcomingAppointmentsComponent,
+      },
+    ],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardLayoutComponent,
+    children: [],
+  },
 ];
