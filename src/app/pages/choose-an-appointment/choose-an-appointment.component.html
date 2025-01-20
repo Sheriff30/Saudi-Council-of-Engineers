@@ -56,12 +56,12 @@
           <div *ngFor="let appointment of currentData" class="appointment-card">
             <p class="appointment-time">{{ appointment.time }}</p>
             <p *ngIf="appointment.availability === false" class="not-avail">
-              {{ "not_available" | translate }}
+              {{ "available" | translate }}
             </p>
             <div *ngIf="appointment.availability === true" class="select-form">
               <input type="checkbox" name="available" />
               <label for="time" id="available">{{
-                "available" | translate
+                "not_available" | translate
               }}</label>
             </div>
           </div>
