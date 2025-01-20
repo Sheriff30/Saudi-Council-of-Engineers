@@ -87,7 +87,7 @@
           </div>
 
           <div *ngIf="appointment?.rating === false">
-            <button class="page-link">
+            <button class="page-link" (click)="displayRatingContainer()">
               <span> تقييم الجلسة </span>
               <img
                 [src]="
@@ -180,15 +180,64 @@
 </div>
 
 <div class="rating-container">
-  <div class="rating-form">
-    <div>
+  <form class="rating-form" (ngSubmit)="onSubmitRatingForm()">
+    <div class="service-rate">
       <div>
         <label for=""> مستوى تقيم خدمة الهيئة: </label>
-        <p-rating [(ngModel)]="ratingValue" />
+        <p-rating [(ngModel)]="ratingValue" name="rating1"></p-rating>
       </div>
       <div>
-        <textarea name="" id="">5454545</textarea>
+        <p class="text-counter">200/{{ text.length }}</p>
+        <img
+          src="/assets/rate-formIcon.svg"
+          alt="rate-formIcon"
+          class="rate-formIcon"
+        />
+        <textarea
+          [(ngModel)]="text"
+          name="comment1"
+          rows="5"
+          cols="30"
+          pTextarea
+          [autoResize]="true"
+          maxlength="200"
+          placeholder="التعليق"
+        ></textarea>
       </div>
     </div>
-  </div>
+    <div class="rating-form-line"></div>
+    <div class="service-rate">
+      <div>
+        <label for=""> مستوى تقيم خدمة الهيئة: </label>
+        <p-rating [(ngModel)]="ratingValue" name="rating2"></p-rating>
+      </div>
+      <div>
+        <p class="text-counter">200/{{ text.length }}</p>
+        <img
+          src="/assets/rate-formIcon.svg"
+          alt="rate-formIcon"
+          class="rate-formIcon"
+        />
+        <textarea
+          [(ngModel)]="text"
+          name="comment2"
+          rows="5"
+          cols="30"
+          pTextarea
+          [autoResize]="true"
+          maxlength="200"
+          placeholder="التعليق"
+        ></textarea>
+      </div>
+    </div>
+    <button class="page-link" type="submit">
+      <span> أضافة تقييم </span>
+      <img
+        [src]="
+          '/assets/arrow-' + (currentLang === 'ar' ? 'left' : 'right') + '.svg'
+        "
+        [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+      />
+    </button>
+  </form>
 </div>

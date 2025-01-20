@@ -322,6 +322,16 @@ html[dir="ltr"] .head-style {
   background-color: #e3ad56 !important;
 }
 
+.p-rating-icon {
+  width: 29px !important;
+  height: 29px !important;
+  color: #b2aca4 !important;
+}
+
+.p-rating-icon-active {
+  color: #f8b100 !important;
+}
+
 @media screen and (max-width: 1439px) {
   .section {
     padding: 2rem 4rem;

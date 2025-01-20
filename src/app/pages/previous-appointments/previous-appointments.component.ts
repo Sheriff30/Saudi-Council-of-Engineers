@@ -4,17 +4,21 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { RatingModule } from 'primeng/rating';
+import { TextareaModule } from 'primeng/textarea';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-previous-appointments',
   standalone: true,
+
   imports: [
     TranslateModule,
     CommonModule,
     RouterLink,
     RatingModule,
     FormsModule,
+    TextareaModule,
   ],
   templateUrl: './previous-appointments.component.html',
   styleUrls: ['./previous-appointments.component.css'],
@@ -26,6 +30,7 @@ export class PreviousAppointmentsComponent {
   appointmentsPerPage: number = 4;
   totalPages: number = 0;
   ratingValue: number = 0;
+  text: string = '';
 
   constructor(
     private translateService: TranslateService,
@@ -76,5 +81,23 @@ export class PreviousAppointmentsComponent {
       range.push(i);
     }
     return range;
+  }
+
+  onSubmitRatingForm() {
+    const ratingContainer = document.querySelector(
+      '.rating-container',
+    ) as HTMLElement;
+    if (ratingContainer) {
+      ratingContainer.style.display = 'none';
+    }
+  }
+
+  displayRatingContainer() {
+    const ratingContainer = document.querySelector(
+      '.rating-container',
+    ) as HTMLElement;
+    if (ratingContainer) {
+      ratingContainer.style.display = 'flex';
+    }
   }
 }
