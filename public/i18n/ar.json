@@ -127,7 +127,15 @@
     "upcomingAppointments": "مواعيدي القادمة",
     "upcomingAppointmentsDescription": "يمكنك من هنا الاطلاع على جميع مواعيد زيارتك القادمة معانا",
     "goToUpcomingAppointments": "الذهاب الى مواعيد القادمة",
-    "goToSession": "الذهاب الى الجلسة"
+    "goToSession": "الذهاب الى الجلسة",
+    "sessionrating": "تقييم الجلسة"
+  },
+  "rating": {
+    "service_rating": "مستوى تقيم خدمة الهيئة",
+    "comment_placeholder": "التعليق",
+    "add_rating": "أضافة تقييم",
+    "arrow_left": "السابق",
+    "arrow_right": "التالي"
   },
   "step_three": "الخطوة الثالثة: قم باختيار الموعد المناسب ؟",
   "not_available": "غير متاح",

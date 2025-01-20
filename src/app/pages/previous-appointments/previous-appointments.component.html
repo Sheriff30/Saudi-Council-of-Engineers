@@ -88,7 +88,7 @@
 
           <div *ngIf="appointment?.rating === false">
             <button class="page-link" (click)="displayRatingContainer()">
-              <span> تقييم الجلسة </span>
+              <span> {{ "appointment.sessionrating" | translate }}</span>
               <img
                 [src]="
                   '/assets/arrow-' +
@@ -183,60 +183,63 @@
   <form class="rating-form" (ngSubmit)="onSubmitRatingForm()">
     <div class="service-rate">
       <div>
-        <label for=""> مستوى تقيم خدمة الهيئة: </label>
-        <p-rating [(ngModel)]="ratingValue" name="rating1"></p-rating>
+        <label for="">{{ "rating.service_rating" | translate }}</label>
+        <p-rating [(ngModel)]="ratingValue1" name="rating1"></p-rating>
       </div>
       <div>
-        <p class="text-counter">200/{{ text.length }}</p>
+        <p class="text-counter">200/{{ textarea1.length }}</p>
         <img
           src="/assets/rate-formIcon.svg"
           alt="rate-formIcon"
           class="rate-formIcon"
         />
         <textarea
-          [(ngModel)]="text"
+          [(ngModel)]="textarea1"
           name="comment1"
           rows="5"
           cols="30"
           pTextarea
           [autoResize]="true"
           maxlength="200"
-          placeholder="التعليق"
+          placeholder="{{ 'rating.comment_placeholder' | translate }}"
         ></textarea>
       </div>
     </div>
     <div class="rating-form-line"></div>
     <div class="service-rate">
       <div>
-        <label for=""> مستوى تقيم خدمة الهيئة: </label>
-        <p-rating [(ngModel)]="ratingValue" name="rating2"></p-rating>
+        <label for="">{{ "rating.employee_service_rating" | translate }}</label>
+        <p-rating [(ngModel)]="ratingValue2" name="rating2"></p-rating>
       </div>
       <div>
-        <p class="text-counter">200/{{ text.length }}</p>
+        <p class="text-counter">200/{{ textarea2.length }}</p>
         <img
           src="/assets/rate-formIcon.svg"
           alt="rate-formIcon"
           class="rate-formIcon"
         />
         <textarea
-          [(ngModel)]="text"
+          [(ngModel)]="textarea2"
           name="comment2"
           rows="5"
           cols="30"
           pTextarea
           [autoResize]="true"
           maxlength="200"
-          placeholder="التعليق"
+          placeholder="{{ 'rating.comment_placeholder' | translate }}"
         ></textarea>
       </div>
     </div>
     <button class="page-link" type="submit">
-      <span> أضافة تقييم </span>
+      <span>{{ "rating.add_rating" | translate }}</span>
       <img
         [src]="
           '/assets/arrow-' + (currentLang === 'ar' ? 'left' : 'right') + '.svg'
         "
-        [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+        [alt]="
+          'rating.arrow_' + (currentLang === 'ar' ? 'left' : 'right')
+            | translate
+        "
       />
     </button>
   </form>

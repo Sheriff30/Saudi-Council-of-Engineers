@@ -127,7 +127,15 @@
     "upcomingAppointments": "My Upcoming Appointments",
     "upcomingAppointmentsDescription": "Here, you can view all your upcoming visit appointments with us.",
     "goToUpcomingAppointments": "Go to Upcoming Appointments",
-    "goToSession": "Go to the Session"
+    "goToSession": "Go to the Session",
+    "sessionrating": "Session Rating"
+  },
+
+  "rating": {
+    "service_rating": "Service Rating Level",
+    "comment_placeholder": "Comment",
+    "add_rating": "Add Rating",
+    "employee_service_rating": "Employee Service Rating Level"
   },
 
   "step_three": "Step 3: Choose the appropriate appointment",

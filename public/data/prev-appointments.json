@@ -6,26 +6,20 @@
       "time": "10:30 AM",
       "servicename": "Professional Accreditation for Engineers",
       "employeename": "Khaled Abdullah Al-Masabi",
-      "servicerating": 5,
-      "servicedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
-      "employeerating": 4,
-      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
-      "rating": true
+      "rating": false
     },
-
     {
       "visitnumber": 10,
       "date": "10/1/2025",
       "time": "10:30 AM",
       "servicename": "Professional Accreditation for Engineers",
       "employeename": "Khaled Abdullah Al-Masabi",
-      "servicerating": 3,
-      "servicedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
-      "employeerating": 2,
-      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
+      "servicerating": 4,
+      "servicedescription": "This text is an example of text that can be replaced in the same space",
+      "employeerating": 3,
+      "employeedescription": "This text is an example of text that can be replaced in the same space",
       "rating": true
     },
-
     {
       "visitnumber": 10,
       "date": "10/1/2025",
@@ -33,9 +27,33 @@
       "servicename": "Professional Accreditation for Engineers",
       "employeename": "Khaled Abdullah Al-Masabi",
       "servicerating": 5,
-      "servicedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
+      "servicedescription": "This text is an example of text that can be replaced in the same space",
       "employeerating": 4,
-      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
+      "employeedescription": "This text is an example of text that can be replaced in the same space",
+      "rating": true
+    },
+    {
+      "visitnumber": 10,
+      "date": "10/1/2025",
+      "time": "10:30 AM",
+      "servicename": "Professional Accreditation for Engineers",
+      "employeename": "Khaled Abdullah Al-Masabi",
+      "servicerating": 5,
+      "servicedescription": "This text is an example of text that can be replaced in the same space",
+      "employeerating": 4,
+      "employeedescription": "This text is an example of text that can be replaced in the same space",
+      "rating": true
+    },
+    {
+      "visitnumber": 10,
+      "date": "10/1/2025",
+      "time": "10:30 AM",
+      "servicename": "Professional Accreditation for Engineers",
+      "employeename": "Khaled Abdullah Al-Masabi",
+      "servicerating": 5,
+      "servicedescription": "This text is an example of text that can be replaced in the same space",
+      "employeerating": 4,
+      "employeedescription": "This text is an example of text that can be replaced in the same space",
       "rating": true
     }
   ],

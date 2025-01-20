@@ -29,8 +29,10 @@ export class PreviousAppointmentsComponent {
   currentPage: number = 1;
   appointmentsPerPage: number = 4;
   totalPages: number = 0;
-  ratingValue: number = 0;
-  text: string = '';
+  ratingValue1: number = 0;
+  ratingValue2: number = 0;
+  textarea1: string = '';
+  textarea2: string = '';
 
   constructor(
     private translateService: TranslateService,

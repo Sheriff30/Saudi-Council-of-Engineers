@@ -332,6 +332,21 @@ html[dir="ltr"] .head-style {
   color: #f8b100 !important;
 }
 
+html[dir="ltr"] .text-counter {
+  right: 16px !important;
+  left: auto;
+}
+
+html[dir="ltr"] .rate-formIcon {
+  position: absolute;
+  right: auto;
+  left: 16px;
+}
+
+html[dir="ltr"] .service-rate div:nth-child(2) .p-textarea {
+  padding: 9px 16px 12px 40px !important;
+}
+
 @media screen and (max-width: 1439px) {
   .section {
     padding: 2rem 4rem;
