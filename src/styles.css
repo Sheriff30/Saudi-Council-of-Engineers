@@ -310,6 +310,9 @@ html[dir="ltr"] .head-style {
   text-decoration: none;
   gap: 4px;
   cursor: pointer;
+  border: none;
+  outline: none;
+  font-family: inherit;
 }
 
 .appointment-page-link {

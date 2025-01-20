@@ -86,7 +86,21 @@
             </div>
           </div>
 
-          <div class="card-row-3">
+          <div *ngIf="appointment?.rating === false">
+            <button class="page-link">
+              <span> تقييم الجلسة </span>
+              <img
+                [src]="
+                  '/assets/arrow-' +
+                  (currentLang === 'ar' ? 'left' : 'right') +
+                  '.svg'
+                "
+                [alt]="'card.content.navigation.prev.arrowAlt' | translate"
+              />
+            </button>
+          </div>
+
+          <div *ngIf="appointment?.rating === true" class="card-row-3">
             <div class="servicerating-card">
               <div>
                 <p>{{ "appointment.serviceRating" | translate }}</p>
@@ -160,6 +174,20 @@
         >
           <img src="/assets/pagination-next.svg" alt="" />
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="rating-container">
+  <div class="rating-form">
+    <div>
+      <div>
+        <label for=""> مستوى تقيم خدمة الهيئة: </label>
+        <p-rating [(ngModel)]="ratingValue" />
+      </div>
+      <div>
+        <textarea name="" id="">5454545</textarea>
       </div>
     </div>
   </div>

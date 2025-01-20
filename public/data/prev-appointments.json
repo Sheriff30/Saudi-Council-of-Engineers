@@ -9,8 +9,10 @@
       "servicerating": 5,
       "servicedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
       "employeerating": 4,
-      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space."
+      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
+      "rating": true
     },
+
     {
       "visitnumber": 10,
       "date": "10/1/2025",
@@ -20,8 +22,10 @@
       "servicerating": 3,
       "servicedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
       "employeerating": 2,
-      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space."
+      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
+      "rating": true
     },
+
     {
       "visitnumber": 10,
       "date": "10/1/2025",
@@ -31,7 +35,8 @@
       "servicerating": 5,
       "servicedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
       "employeerating": 4,
-      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space."
+      "employeedescription": "This text is a placeholder example that can be replaced with actual content in the same space.",
+      "rating": true
     }
   ],
   "ar": [
@@ -41,10 +46,7 @@
       "time": "10:30 صباحا",
       "servicename": "الاعتماد المهني للمهندسين",
       "employeename": "ا خالد عبدالله المصعبي",
-      "servicerating": 2,
-      "servicedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
-      "employeerating": 5,
-      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
+      "rating": false
     },
     {
       "visitnumber": 10,
@@ -55,7 +57,8 @@
       "servicerating": 4,
       "servicedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
       "employeerating": 3,
-      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
+      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
+      "rating": true
     },
     {
       "visitnumber": 10,
@@ -66,8 +69,10 @@
       "servicerating": 5,
       "servicedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
       "employeerating": 4,
-      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
+      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
+      "rating": true
     },
+
     {
       "visitnumber": 10,
       "date": " 10/1/2025",
@@ -77,8 +82,10 @@
       "servicerating": 5,
       "servicedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
       "employeerating": 4,
-      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
+      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
+      "rating": true
     },
+
     {
       "visitnumber": 10,
       "date": " 10/1/2025",
@@ -88,7 +95,8 @@
       "servicerating": 5,
       "servicedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
       "employeerating": 4,
-      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة"
+      "employeedescription": "هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة",
+      "rating": true
     }
   ]
 }

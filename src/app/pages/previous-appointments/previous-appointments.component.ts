@@ -3,11 +3,19 @@ import { HttpClient } from '@angular/common/http'; // Import HttpClient
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RatingModule } from 'primeng/rating';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-previous-appointments',
   standalone: true,
-  imports: [TranslateModule, CommonModule, RouterLink],
+  imports: [
+    TranslateModule,
+    CommonModule,
+    RouterLink,
+    RatingModule,
+    FormsModule,
+  ],
   templateUrl: './previous-appointments.component.html',
   styleUrls: ['./previous-appointments.component.css'],
 })
@@ -17,6 +25,7 @@ export class PreviousAppointmentsComponent {
   currentPage: number = 1;
   appointmentsPerPage: number = 4;
   totalPages: number = 0;
+  ratingValue: number = 0;
 
   constructor(
     private translateService: TranslateService,
