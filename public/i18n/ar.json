@@ -134,8 +134,7 @@
     "service_rating": "مستوى تقيم خدمة الهيئة",
     "comment_placeholder": "التعليق",
     "add_rating": "أضافة تقييم",
-    "arrow_left": "السابق",
-    "arrow_right": "التالي"
+    "employee_service_rating": "مستوى تقيم خدمة الموظف"
   },
   "step_three": "الخطوة الثالثة: قم باختيار الموعد المناسب ؟",
   "not_available": "غير محجوز",
