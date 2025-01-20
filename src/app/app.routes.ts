@@ -16,6 +16,8 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children: [
       { path: '', component: VirtualVisitComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'service-type', component: ServiceTypeComponent },
       { path: 'appointment', component: ChooseAnAppointmentComponent },
       { path: 'appointment-list', component: AppointmentListComponent },
       {
