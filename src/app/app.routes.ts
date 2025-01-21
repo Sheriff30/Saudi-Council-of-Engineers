@@ -9,6 +9,7 @@ import { UpcomingAppointmentsComponent } from './pages/upcoming-appointments/upc
 import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './ui/main-layout/main-layout.component';
 import { DashboardLayoutComponent } from './ui/dashboard-layout/dashboard-layout.component';
+import { DashboardHomeComponent } from './pages/dashboard-home/dashboard-home.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,6 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardLayoutComponent,
-    children: [],
+    children: [{ path: '', component: DashboardHomeComponent }],
   },
 ];
