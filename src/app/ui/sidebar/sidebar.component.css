@@ -57,7 +57,7 @@
   margin-right: auto;
 }
 
-#sidebar a:hover,
+#sidebar li:not(:first-child) a:hover,
 #sidebar .dropdown-btn:hover {
   background-color: #223042;
   color: #fff;
