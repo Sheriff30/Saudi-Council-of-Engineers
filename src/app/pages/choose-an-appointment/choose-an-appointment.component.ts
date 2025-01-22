@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-choose-an-appointment',
   standalone: true,
+
   imports: [
     TranslateModule,
     RouterLinkActive,

@@ -5,9 +5,10 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-virtual-visit',
-  standalone: true,
   imports: [CommonModule, RouterLink, RouterLinkActive, TranslateModule],
   templateUrl: './virtual-visit.component.html',
+  standalone: true,
+
   styleUrl: './virtual-visit.component.css',
 })
 export class VirtualVisitComponent {

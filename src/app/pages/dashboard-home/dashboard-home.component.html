@@ -1,13 +1,683 @@
-<div class="home-header">
+<div class="section1">
   <p>لوحة التحكم - الرئيسية</p>
-  <form class="card flex flex-wrap justify-center gap-4">
-    <p-iconfield>
-      <p-inputicon styleClass="pi pi-search" />
-      <input type="text" pInputText placeholder="Search" />
-    </p-iconfield>
-    <p-iconfield>
-      <input type="text" pInputText />
-      <p-inputicon styleClass="pi pi-spinner pi-spin" />
-    </p-iconfield>
-  </form>
+  <p-iconfield>
+    <input type="text" pInputText placeholder="البحث" />
+    <img src="/assets/search-icon.svg" alt="" />
+  </p-iconfield>
+</div>
+
+<div class="section2">
+  <p-tabs value="0">
+    <div class="section2-content1">
+      <div>
+        <p>احصائيات عدد المواعيد</p>
+        <span class="vertical-line"></span>
+        <p-tablist>
+          <p-tab value="0">اليوم</p-tab>
+          <p-tab value="1">الاسبوع</p-tab>
+          <p-tab value="2">السنة</p-tab>
+        </p-tablist>
+      </div>
+      <div>
+        <p-select
+          [options]="branches"
+          [(ngModel)]="selectedbranch"
+          optionLabel="name"
+          placeholder="تحدد الفرع"
+          class="w-full md:w-56"
+        />
+
+        <app-date-picker></app-date-picker>
+      </div>
+    </div>
+    <div class="line-horizontal"></div>
+    <div class="section2-content2">
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <div class="card-numbers">
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number red">
+              <div>
+                <img src="/assets/card-number-icon4.png" alt="card-icon" />
+                <p>المواعيد الملغاة :</p>
+              </div>
+              <div>
+                <p>10 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <div class="card-numbers">
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number red">
+              <div>
+                <img src="/assets/card-number-icon4.png" alt="card-icon" />
+                <p>المواعيد الملغاة :</p>
+              </div>
+              <div>
+                <p>10 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+          <div class="card-numbers">
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number red">
+              <div>
+                <img src="/assets/card-number-icon4.png" alt="card-icon" />
+                <p>المواعيد الملغاة :</p>
+              </div>
+              <div>
+                <p>10 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </div>
+  </p-tabs>
+</div>
+
+<div class="section3">
+  <div class="chart">
+    <div class="chart-head">
+      <p>الأفرع والخدمات</p>
+      <div>
+        <p-select
+          [options]="branches2"
+          [(ngModel)]="selectedbranch2"
+          optionLabel="name"
+          placeholder="تحدد الفرع"
+          class="w-full md:w-56"
+        />
+        <p-select
+          [options]="services"
+          [(ngModel)]="selectedservice"
+          optionLabel="name"
+          placeholder="تحدد الخدمة"
+          class="w-full md:w-56"
+        />
+        <app-date-picker></app-date-picker>
+      </div>
+    </div>
+    <p-chart
+      type="bar"
+      [data]="basicData"
+      [options]="basicOptions"
+      width="677px"
+    />
+  </div>
+
+  <div class="section3-tabs">
+    <p-tabs value="0">
+      <p-tablist>
+        <p-tab value="0">
+          <img src="/assets/arrow-right-tabs.svg" alt="arrow icon" />
+        </p-tab>
+        <div class="tabs">
+          <p-tab value="0">مشرفين</p-tab>
+          <p-tab value="1">موظفين</p-tab>
+        </div>
+        <p-tab value="1">
+          <img src="/assets/arrow-left-tabs.svg" alt="arrow icon" />
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <div class="table">
+            <div class="table-row table-head">
+              <p>الاسم</p>
+              <p>انجاز الافرع</p>
+              <p>مشاكل محلولة</p>
+              <p>التقيم العام</p>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <div class="table">
+            <div class="table-row table-head">
+              <p>الاسم</p>
+              <p>موعد مكتمل</p>
+              <p>معدل الانجاز</p>
+              <p>التقيم العام</p>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+            <div class="table-row">
+              <p>صالح الزويد</p>
+              <p>23%</p>
+              <p>01/04</p>
+              <div class="table-stars">
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon1.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+                <img src="/assets/star-icon2.png" alt="" />
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>
+
+<div class="section4">
+  <p-tabs value="0">
+    <div class="section2-content1">
+      <div>
+        <p>الحجوزات</p>
+        <span class="vertical-line"></span>
+        <p-tablist>
+          <p-tab value="0">الاعتماد المهني</p-tab>
+          <p-tab value="1">
+            المكاتب والشركات الهندسية
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 17 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.5 8.5H1.5M1.5 8.5L8.5 15.5M1.5 8.5L8.5 1.5"
+                stroke="#223042"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </p-tab>
+          <p-tab value="2">
+            الخبرة الفنية
+
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 17 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.5 8.5H1.5M1.5 8.5L8.5 15.5M1.5 8.5L8.5 1.5"
+                stroke="#223042"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </p-tab>
+          <p-tab value="3"
+            >الشعب واللجان الهندسية
+
+            <svg
+              width="17"
+              height="17"
+              viewBox="0 0 17 17"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.5 8.5H1.5M1.5 8.5L8.5 15.5M1.5 8.5L8.5 1.5"
+                stroke="#223042"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </p-tab>
+        </p-tablist>
+      </div>
+      <div>
+        <app-date-picker></app-date-picker>
+      </div>
+    </div>
+    <div class="line-horizontal"></div>
+    <div class="section2-content2">
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <div class="card-numbers">
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon5.svg" alt="card-icon" />
+                <p>الحجوزات الإجمالية:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>الحجوزات المكتملة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>الحجوزات المعلقة:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <div class="card-numbers">
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+          <div class="card-numbers">
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="3">
+          <div class="card-numbers">
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </div>
+  </p-tabs>
 </div>

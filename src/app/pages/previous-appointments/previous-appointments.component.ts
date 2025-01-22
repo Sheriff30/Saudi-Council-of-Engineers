@@ -11,7 +11,6 @@ import { FormsModule } from '@angular/forms';
 @Component({
   selector: 'app-previous-appointments',
   standalone: true,
-
   imports: [
     TranslateModule,
     CommonModule,

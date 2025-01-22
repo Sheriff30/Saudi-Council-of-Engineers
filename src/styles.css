@@ -347,6 +347,181 @@ html[dir="ltr"] .service-rate div:nth-child(2) .p-textarea {
   padding: 9px 16px 12px 40px !important;
 }
 
+/* Dashboard Styles */
+
+p-iconfield {
+  position: relative;
+  input {
+    padding: 12px 16px !important;
+    border: 1px solid #e3ad56;
+    border-radius: 4px;
+    font-family: inherit;
+    width: 250px;
+  }
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+  }
+}
+
+.p-tablist-tab-list {
+  border: none !important;
+
+  p-tab {
+    border: none !important;
+  }
+}
+
+.p-tablist-tab-list {
+  display: flex;
+  gap: 24px;
+}
+
+p-select,
+input[type="date"] {
+  border: 1px solid #2230424d !important;
+  border-radius: 8px !important;
+  height: 5rem;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  color: rgba(0, 0, 0, 0);
+  opacity: 1;
+  display: block;
+  background: url("/assets/date-picker.svg") no-repeat;
+  width: 20px;
+  height: 20px;
+  border-width: thin;
+}
+
+.date-picker {
+  position: relative;
+
+  p {
+    position: absolute;
+    left: 12px;
+    background-color: #fff;
+    font-weight: 500 !important;
+    color: #223042;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.card-number {
+  border-radius: 8px;
+  padding: 16px;
+  display: grid;
+  gap: 1.6rem;
+
+  div:first-child {
+    display: flex;
+    gap: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    align-items: center;
+  }
+  div:nth-child(2) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    p {
+      font-size: 20px;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      font-size: 10px;
+      gap: 2.5px;
+      border: 0.6px solid;
+      border-radius: 2px;
+      padding: 2px;
+
+      img {
+        width: 8px;
+        height: 8px;
+      }
+    }
+  }
+}
+
+.card-number.blue {
+  background: #eef7ff;
+
+  div:first-child p {
+    color: #1b71f5;
+  }
+  div:nth-child(2) p {
+    color: #19418f;
+    font-weight: 800;
+  }
+}
+.card-number.yellow {
+  background-color: #fff8dd;
+  div:first-child p {
+    color: #e29a00;
+  }
+  div:nth-child(2) p {
+    color: #7c450b;
+    font-weight: 800;
+  }
+}
+.card-number.green {
+  background-color: #d4f7df;
+  div:first-child p {
+    color: #0f8c4f;
+  }
+  div:nth-child(2) p {
+    color: #0b492e;
+    font-weight: 800;
+  }
+}
+.card-number.red {
+  background-color: #ffe4e8;
+  div:first-child p {
+    color: #de2058;
+  }
+  div:nth-child(2) p {
+    color: #861540;
+    font-weight: 800;
+  }
+}
+
+.label.red {
+  border-color: #fd314d !important;
+  color: #fd314d !important;
+  background-color: #ffe9ebcc !important;
+}
+.label.green {
+  border-color: #00ba38 !important;
+  color: #00ba38 !important;
+  background-color: #ffffff !important;
+}
+
+.p-select-list {
+  padding: 10px !important;
+  background: #fff;
+  gap: 10px !important;
+}
+
+.section3-tabs .p-tablist-tab-list {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e4e4e4 !important;
+  padding-bottom: 10px;
+}
+
+.section4 .p-tablist-tab-list {
+  gap: 5px !important;
+}
+
 @media screen and (max-width: 1439px) {
   .section {
     padding: 2rem 4rem;

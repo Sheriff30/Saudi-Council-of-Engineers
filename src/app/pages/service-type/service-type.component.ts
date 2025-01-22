@@ -6,6 +6,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-service-type',
   standalone: true,
+
   imports: [TranslateModule, RouterLinkActive, CommonModule, RouterLink],
   templateUrl: './service-type.component.html',
   styleUrl: './service-type.component.css',

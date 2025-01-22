@@ -7,6 +7,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-upcoming-appointments',
   standalone: true,
+
   imports: [TranslateModule, CommonModule, RouterLink],
   templateUrl: './upcoming-appointments.component.html',
   styleUrl: './upcoming-appointments.component.css',

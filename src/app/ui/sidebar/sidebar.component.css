@@ -23,14 +23,13 @@
 #sidebar > ul > li:first-child {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 16px;
 }
 
 #sidebar a,
 #sidebar .dropdown-btn,
 #sidebar .logo {
   border-radius: 0.5em;
-  padding: 0.85em;
+  padding: 10px;
   text-decoration: none;
   color: #223042;
   display: flex;
@@ -112,7 +111,6 @@ nav ul {
 
 .user {
   margin-top: auto;
-  margin-bottom: 8rem;
 }
 
 .user a div {
