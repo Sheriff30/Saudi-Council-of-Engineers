@@ -1,0 +1,11 @@
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+input {
+  border: 1px solid #e4e4e4;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: inherit;
+}

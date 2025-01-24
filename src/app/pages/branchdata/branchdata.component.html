@@ -1,0 +1,283 @@
+<div class="section1">
+  <p>
+    <span>لوحة التحكم </span>
+    <span>- </span>
+    <span>بينات الأفرع</span>
+  </p>
+</div>
+
+<div class="section2">
+  <div class="table">
+    <!-- Table inputs -->
+    <div class="table-inputs">
+      <div class="search-group">
+        <p>اجمالي عدد الافرع (5)</p>
+        <p-iconfield>
+          <input type="text" pInputText placeholder="البحث" />
+          <img src="/assets/search-icon.svg" alt="" />
+        </p-iconfield>
+      </div>
+      <div class="table-group">
+        <div class="selectors">
+          <app-selector
+            [options]="options"
+            [placeholder]="'الحالة'"
+            name="selectOption"
+          >
+          </app-selector>
+          <app-selector
+            [options]="options"
+            [placeholder]="'الاداء'"
+            name="selectOption"
+          >
+          </app-selector>
+        </div>
+        <div class="page-link" (click)="openForm()">إضافة جديد</div>
+      </div>
+    </div>
+    <!-- Table Head-->
+    <div class="table-head">
+      <p>الرقم</p>
+      <p>اسم الفرع</p>
+      <p>عدد الخدمات</p>
+      <p>عدد الموظفين</p>
+      <p>اداء الفروع</p>
+      <p>الحالة</p>
+      <p>الأجراءات</p>
+    </div>
+
+    <!-- Table Rows -->
+    <div class="table-rows">
+      <div class="table-row" *ngFor="let row of paginatedData">
+        <div>{{ row.id > 9 ? row.id : "0" + row.id }}</div>
+        <div>{{ row.name }}</div>
+        <div>{{ row.servicesnumber }} خدمة</div>
+        <div>{{ row.employeesnumber }} موظف</div>
+
+        <div>
+          <div *ngIf="row.performance === 'good'" class="good-status">جيد</div>
+          <div *ngIf="row.performance === 'bad'" class="bad-status">سئ</div>
+          <div *ngIf="row.performance === 'mid'" class="mid-status">متوسط</div>
+        </div>
+        <div>
+          <div *ngIf="row.status" class="active-status">نشط</div>
+          <div *ngIf="!row.status" class="inactive-status">غير نشط</div>
+        </div>
+        <div class="action-btns">
+          <div>
+            <img src="/assets/eye-icon.svg" alt="icon" />
+          </div>
+          <div>
+            <img src="/assets/delete-icon.svg" alt="icon" />
+          </div>
+          <div>
+            <img src="/assets/edit-icon.svg" alt="icon" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="paginator-container">
+  <p class="paginator-page-number">عدد الصفوف في الصفحة:</p>
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[10, 20, 30]"
+  />
+</div>
+
+<!-- Create New Account -->
+<div action="" class="new-account-container" #formContainer>
+  <div class="new-account-form">
+    <p-tabs value="0">
+      <p-tablist class="new-account-form-tabs">
+        <p-tab value="0">مشرف</p-tab>
+        <p-tab value="1">موظف</p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <form (ngSubmit)="onSubmitForm()">
+            <div class="new-account-form-row">
+              <p>إنشاء إعدادات حساب مشرف جديد</p>
+              <div class="form-state-switch">
+                <p>{{ switchState ? "نشط" : "غير نشط" }}</p>
+                <app-switch-input
+                  [isChecked]="switchState"
+                  (toggleChange)="handleSwitchChange($event)"
+                ></app-switch-input>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-input
+                  label="الاسم"
+                  inputId="name"
+                  placeholder="ادخل الاسم ثلاثي"
+                ></app-input>
+              </div>
+              <div>
+                <app-input
+                  inputId="id"
+                  label="رقم الهوية"
+                  placeholder="ادخل رقم الهوية"
+                ></app-input>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-input
+                  label="البريد الإلكتروني"
+                  inputId="email"
+                  placeholder="@exampel.com"
+                  type="email"
+                ></app-input>
+              </div>
+              <div>
+                <app-input
+                  label="رقم الجوال"
+                  inputId="phonenumber"
+                  placeholder="+996"
+                ></app-input>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-passwordinput inputId="password"> </app-passwordinput>
+              </div>
+              <div>
+                <app-passwordinput
+                  label="تأكيد الرقم السري"
+                  placeholder="تأكيد الرقم السري"
+                  inputId="passowrd-confirm"
+                >
+                </app-passwordinput>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-selector
+                  [options]="options"
+                  [placeholder]="'حدد الفرع'"
+                  label="الأفرع"
+                  name="selectOption"
+                >
+                </app-selector>
+              </div>
+              <div>
+                <app-selector
+                  [options]="options"
+                  [placeholder]="'حدد الخدمة'"
+                  name="selectOption"
+                  label="الخدمات"
+                >
+                </app-selector>
+              </div>
+            </div>
+            <div class="new-account-form-row-btns">
+              <div class="form-btn form-exit" (click)="onExitForm()">
+                <span>الغاء</span>
+                <img src="/assets/form-exit.svg" alt="" />
+              </div>
+              <button type="submit" class="form-btn form-submit-btn">
+                <span>حفظ</span> <img src="/assets/form-submit.svg" alt="" />
+              </button>
+            </div>
+          </form>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <form (ngSubmit)="onSubmitForm()">
+            <div class="new-account-form-row">
+              <p>إنشاء إعدادات حساب موظف جديد</p>
+              <div class="form-state-switch">
+                <p>{{ switchState ? "نشط" : "غير نشط" }}</p>
+                <app-switch-input
+                  [isChecked]="switchState"
+                  (toggleChange)="handleSwitchChange($event)"
+                ></app-switch-input>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-input
+                  label="الاسم"
+                  inputId="name"
+                  placeholder="ادخل الاسم ثلاثي"
+                ></app-input>
+              </div>
+              <div>
+                <app-input
+                  inputId="id"
+                  label="رقم الهوية"
+                  placeholder="ادخل رقم الهوية"
+                ></app-input>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-input
+                  label="البريد الإلكتروني"
+                  inputId="email"
+                  placeholder="@exampel.com"
+                  type="email"
+                ></app-input>
+              </div>
+              <div>
+                <app-input
+                  label="رقم الجوال"
+                  inputId="phonenumber"
+                  placeholder="+996"
+                ></app-input>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-passwordinput inputId="password"> </app-passwordinput>
+              </div>
+              <div>
+                <app-passwordinput
+                  label="تأكيد الرقم السري"
+                  placeholder="تأكيد الرقم السري"
+                  inputId="passowrd-confirm"
+                >
+                </app-passwordinput>
+              </div>
+            </div>
+            <div class="new-account-form-row">
+              <div>
+                <app-selector
+                  [options]="options"
+                  [placeholder]="'حدد الفرع'"
+                  label="الأفرع"
+                  name="selectOption"
+                >
+                </app-selector>
+              </div>
+              <div>
+                <app-selector
+                  [options]="options"
+                  [placeholder]="'حدد الخدمة'"
+                  name="selectOption"
+                  label="الخدمات"
+                >
+                </app-selector>
+              </div>
+            </div>
+            <div class="new-account-form-row-btns">
+              <div class="form-btn form-exit" (click)="onExitForm()">
+                <span>الغاء</span>
+                <img src="/assets/form-exit.svg" alt="" />
+              </div>
+              <button type="submit" class="form-btn form-submit-btn">
+                <span>حفظ</span> <img src="/assets/form-submit.svg" alt="" />
+              </button>
+            </div>
+          </form>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>

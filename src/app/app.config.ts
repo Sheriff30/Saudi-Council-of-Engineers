@@ -43,6 +43,12 @@ export const appConfig: ApplicationConfig = {
         preset: '',
       },
     }),
-    provideAnimations(), provideAnimationsAsync(),
+    provideAnimations(),
+    provideAnimationsAsync(),
+    providePrimeNG({
+      theme: {
+        preset: '',
+      },
+    }),
   ],
 };

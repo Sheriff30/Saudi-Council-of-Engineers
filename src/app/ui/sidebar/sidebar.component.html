@@ -9,17 +9,46 @@
       </button>
     </li>
     <li>
-      <a href="index.html">
+      <a routerLink="/dashboard" routerLinkActive="active">
         <img src="/assets/sidebarnav-1.svg" alt="sidebar nav icon" />
         <span>الرئيسية</span>
       </a>
     </li>
     <li>
-      <a href="dashboard.html">
+      <button (click)="toggleSubMenu($event)" class="dropdown-btn">
         <img src="/assets/sidebarnav-2.svg" alt="sidebar nav icon" />
-
         <span>المشرفين والموظفين</span>
-      </a>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 -960 960 960"
+          width="24px"
+          fill="#e8eaed"
+        >
+          <path
+            d="M480-361q-8 0-15-2.5t-13-8.5L268-556q-11-11-11-28t11-28q11-11 28-11t28 11l156 156 156-156q11-11 28-11t28 11q11 11 11 28t-11 28L508-372q-6 6-13 8.5t-15 2.5Z"
+          />
+        </svg>
+      </button>
+      <ul class="sub-menu">
+        <div>
+          <a
+            routerLink="/dashboard/supervisorsandemployees"
+            routerLinkActive="active"
+          >
+            <span>المشرفين والموظفين</span>
+          </a>
+          <a
+            routerLink="/dashboard/administratordata"
+            routerLinkActive="active"
+          >
+            <span>بينات المشرف</span>
+          </a>
+          <a routerLink="/dashboard/employeedata" routerLinkActive="active">
+            <span>بينات الموظف</span>
+          </a>
+        </div>
+      </ul>
     </li>
     <li>
       <button (click)="toggleSubMenu($event)" class="dropdown-btn">
@@ -39,9 +68,12 @@
       </button>
       <ul class="sub-menu">
         <div>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
-          <li><a href="#">Link</a></li>
+          <li>
+            <a routerLink="/dashboard/branchdata" routerLinkActive="active"
+              >بينات الأفرع</a
+            >
+          </li>
+          <li><a href="#">اضافة فرع جديد</a></li>
         </div>
       </ul>
     </li>

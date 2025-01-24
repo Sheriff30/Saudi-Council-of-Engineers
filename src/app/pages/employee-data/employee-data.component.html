@@ -1,0 +1,129 @@
+<div class="section1">
+  <p>
+    <span>لوحة التحكم - المشرفين والموظفين - </span>
+    <span>بينات المشرف</span>
+  </p>
+</div>
+
+<form class="section2" (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="section-2-head">
+    <div>موظف</div>
+
+    <div class="role">
+      <p>الصلاحيات</p>
+
+      <app-selector
+        [options]="options"
+        [placeholder]="'موظف'"
+        [(ngModel)]="formData.role"
+        name="selectOption"
+      >
+      </app-selector>
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="new-account-form-row">
+      <div></div>
+      <div class="form-state-switch">
+        <p>{{ switchState ? "نشط" : "غير نشط" }}</p>
+        <app-switch-input
+          [isChecked]="switchState"
+          (toggleChange)="handleSwitchChange($event)"
+        ></app-switch-input>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-input
+          label="الاسم"
+          inputId="name"
+          placeholder="ادخل الاسم ثلاثي"
+          [(ngModel)]="formData.name"
+          name="name"
+        ></app-input>
+      </div>
+      <div>
+        <app-input
+          inputId="id"
+          label="رقم الهوية"
+          placeholder="ادخل رقم الهوية"
+          [(ngModel)]="formData.id"
+          name="id"
+        ></app-input>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-input
+          label="البريد الإلكتروني"
+          inputId="email"
+          placeholder="@exampel.com"
+          type="email"
+          [(ngModel)]="formData.email"
+          name="email"
+        ></app-input>
+      </div>
+      <div>
+        <app-input
+          label="رقم الجوال"
+          inputId="phonenumber"
+          placeholder="+996"
+          [(ngModel)]="formData.phoneNumber"
+          name="phoneNumber"
+        ></app-input>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-passwordinput
+          inputId="password"
+          [(ngModel)]="formData.password"
+          name="password"
+        >
+        </app-passwordinput>
+      </div>
+      <div>
+        <app-passwordinput
+          label="تأكيد الرقم السري"
+          placeholder="تأكيد الرقم السري"
+          inputId="password-confirm"
+          [(ngModel)]="formData.passwordConfirm"
+          name="passwordConfirm"
+        >
+        </app-passwordinput>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-selector
+          [options]="options"
+          [placeholder]="'جدة'"
+          [(ngModel)]="formData.branch"
+          name="selectOption"
+          label="الأفرع"
+        >
+        </app-selector>
+      </div>
+      <div>
+        <app-selector
+          [options]="options"
+          [placeholder]="'الكل'"
+          [(ngModel)]="formData.service"
+          name="selectOption"
+          label="الخدمات"
+        >
+        </app-selector>
+      </div>
+    </div>
+  </div>
+
+  <div class="new-account-form-row-btns">
+    <div class="form-btn form-exit">
+      <span>الغاء</span>
+      <img src="/assets/form-exit.svg" alt="" />
+    </div>
+    <button class="form-btn form-submit-btn" type="button" (click)="onSubmit()">
+      <span>حفظ</span> <img src="/assets/form-submit.svg" alt="" />
+    </button>
+  </div>
+</form>

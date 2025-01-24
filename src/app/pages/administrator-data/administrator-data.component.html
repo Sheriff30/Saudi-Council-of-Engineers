@@ -1,0 +1,319 @@
+<div class="section1">
+  <p>
+    <span>لوحة التحكم - المشرفين والموظفين - </span>
+    <span>بينات المشرف</span>
+  </p>
+</div>
+
+<form class="section2" (ngSubmit)="onSubmit()" #form="ngForm">
+  <div class="section-2-head">
+    <div>مشرف</div>
+
+    <div class="role">
+      <p>الصلاحيات</p>
+
+      <app-selector
+        [options]="options"
+        [placeholder]="'موظف'"
+        [(ngModel)]="formData.role"
+        name="selectOption"
+      >
+      </app-selector>
+    </div>
+  </div>
+  <div class="form-container">
+    <div class="new-account-form-row">
+      <div></div>
+      <div class="form-state-switch">
+        <p>{{ switchState ? "نشط" : "غير نشط" }}</p>
+        <app-switch-input
+          [isChecked]="switchState"
+          (toggleChange)="handleSwitchChange($event)"
+        ></app-switch-input>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-input
+          label="الاسم"
+          inputId="name"
+          placeholder="ادخل الاسم ثلاثي"
+          [(ngModel)]="formData.name"
+          name="name"
+        ></app-input>
+      </div>
+      <div>
+        <app-input
+          inputId="id"
+          label="رقم الهوية"
+          placeholder="ادخل رقم الهوية"
+          [(ngModel)]="formData.id"
+          name="id"
+        ></app-input>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-input
+          label="البريد الإلكتروني"
+          inputId="email"
+          placeholder="@exampel.com"
+          type="email"
+          [(ngModel)]="formData.email"
+          name="email"
+        ></app-input>
+      </div>
+      <div>
+        <app-input
+          label="رقم الجوال"
+          inputId="phonenumber"
+          placeholder="+996"
+          [(ngModel)]="formData.phoneNumber"
+          name="phoneNumber"
+        ></app-input>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-passwordinput
+          inputId="password"
+          [(ngModel)]="formData.password"
+          name="password"
+        >
+        </app-passwordinput>
+      </div>
+      <div>
+        <app-passwordinput
+          label="تأكيد الرقم السري"
+          placeholder="تأكيد الرقم السري"
+          inputId="password-confirm"
+          [(ngModel)]="formData.passwordConfirm"
+          name="passwordConfirm"
+        >
+        </app-passwordinput>
+      </div>
+    </div>
+    <div class="new-account-form-row">
+      <div>
+        <app-selector
+          [options]="options"
+          [placeholder]="'جدة'"
+          [(ngModel)]="formData.branch"
+          name="selectOption"
+          label="الأفرع"
+        >
+        </app-selector>
+      </div>
+      <div>
+        <app-selector
+          [options]="options"
+          [placeholder]="'الكل'"
+          [(ngModel)]="formData.service"
+          name="selectOption"
+          label="الخدمات"
+        >
+        </app-selector>
+      </div>
+    </div>
+  </div>
+
+  <p-tabs value="0">
+    <div class="section2-content1">
+      <div>
+        <p>احصائيات عدد المواعيد</p>
+        <span class="vertical-line"></span>
+        <p-tablist>
+          <p-tab value="0">اليوم</p-tab>
+          <p-tab value="1">الاسبوع</p-tab>
+          <p-tab value="2">السنة</p-tab>
+        </p-tablist>
+      </div>
+      <div>
+        <app-date-picker></app-date-picker>
+      </div>
+    </div>
+    <div class="line-horizontal"></div>
+    <div class="section2-content2">
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <div class="card-numbers">
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number red">
+              <div>
+                <img src="/assets/card-number-icon4.png" alt="card-icon" />
+                <p>المواعيد الملغاة :</p>
+              </div>
+              <div>
+                <p>10 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <div class="card-numbers">
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number red">
+              <div>
+                <img src="/assets/card-number-icon4.png" alt="card-icon" />
+                <p>المواعيد الملغاة :</p>
+              </div>
+              <div>
+                <p>10 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+          <div class="card-numbers">
+            <div class="card-number green">
+              <div>
+                <img src="/assets/card-number-icon3.png" alt="card-icon" />
+                <p>عدد المواعيد المنتهية:</p>
+              </div>
+              <div>
+                <p>16 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number red">
+              <div>
+                <img src="/assets/card-number-icon4.png" alt="card-icon" />
+                <p>المواعيد الملغاة :</p>
+              </div>
+              <div>
+                <p>10 موعد</p>
+                <div class="label red">
+                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
+                  <span> 28.4% </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number blue">
+              <div>
+                <img src="/assets/card-number-icon.png" alt="card-icon" />
+                <p>عدد المواعيد القادمة:</p>
+              </div>
+              <div>
+                <p>30 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+            <div class="card-number yellow">
+              <div>
+                <img src="/assets/card-number-icon2.png" alt="card-icon" />
+                <p>عدد المواعيد المجدولة:</p>
+              </div>
+              <div>
+                <p>50 موعد</p>
+                <div class="label green">
+                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
+                  <span> Default </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </div>
+  </p-tabs>
+
+  <div class="new-account-form-row-btns">
+    <div class="form-btn form-exit">
+      <span>الغاء</span>
+      <img src="/assets/form-exit.svg" alt="" />
+    </div>
+    <button class="form-btn form-submit-btn" type="button" (click)="onSubmit()">
+      <span>حفظ</span> <img src="/assets/form-submit.svg" alt="" />
+    </button>
+  </div>
+</form>

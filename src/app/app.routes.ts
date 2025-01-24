@@ -10,6 +10,10 @@ import { AppComponent } from './app.component';
 import { MainLayoutComponent } from './ui/main-layout/main-layout.component';
 import { DashboardLayoutComponent } from './ui/dashboard-layout/dashboard-layout.component';
 import { DashboardHomeComponent } from './pages/dashboard-home/dashboard-home.component';
+import { SupervisorsandemployeesComponent } from './pages/supervisorsandemployees/supervisorsandemployees.component';
+import { AdministratorDataComponent } from './pages/administrator-data/administrator-data.component';
+import { EmployeeDataComponent } from './pages/employee-data/employee-data.component';
+import { BranchdataComponent } from './pages/branchdata/branchdata.component';
 
 export const routes: Routes = [
   {
@@ -34,6 +38,24 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardLayoutComponent,
-    children: [{ path: '', component: DashboardHomeComponent }],
+    children: [
+      { path: '', component: DashboardHomeComponent },
+      {
+        path: 'supervisorsandemployees',
+        component: SupervisorsandemployeesComponent,
+      },
+      {
+        path: 'administratordata',
+        component: AdministratorDataComponent,
+      },
+      {
+        path: 'employeedata',
+        component: EmployeeDataComponent,
+      },
+      {
+        path: 'branchdata',
+        component: BranchdataComponent,
+      },
+    ],
   },
 ];

@@ -351,6 +351,7 @@ html[dir="ltr"] .service-rate div:nth-child(2) .p-textarea {
 
 p-iconfield {
   position: relative;
+  width: 250px;
   input {
     padding: 12px 16px !important;
     border: 1px solid #e3ad56;
@@ -520,6 +521,118 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .section4 .p-tablist-tab-list {
   gap: 5px !important;
+}
+
+.paginator-container {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0;
+
+  .paginator-page-number {
+    color: #223042;
+    font-size: 16px;
+  }
+  .p-paginator-last,
+  .p-paginator-first {
+    display: none !important;
+  }
+
+  .p-paginator p-select {
+    margin-left: auto;
+    gap: 10px;
+    background-color: #223042;
+    border-radius: 4px;
+
+    .p-select-label {
+      order: 2;
+      color: #ffffff;
+    }
+
+    .p-select-dropdown {
+      order: 1;
+      color: #ffffff;
+    }
+  }
+
+  .p-paginator-next {
+    order: 4;
+    margin-right: 5px;
+  }
+  .p-paginator-prev {
+    order: 2;
+    margin-left: 5px;
+  }
+
+  .p-paginator-pages {
+    order: 3;
+    display: flex;
+    gap: 5px;
+  }
+  .p-paginator-page {
+    width: 30px;
+    height: 30px;
+    background-color: #eef5f9;
+    color: #e3ad56;
+    border-radius: 6px;
+  }
+
+  .p-paginator-page-selected {
+    color: #eef5f9 !important;
+    background-color: #e3ad56 !important;
+  }
+}
+
+.new-account-container {
+  .p-tablist-tab-list {
+    font-size: 18px;
+    font-weight: 700;
+    color: #223042;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 !important;
+  }
+
+  p-tab {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 3px solid #e4e4e4 !important;
+  }
+  .p-tab-active {
+    border-bottom: 3px solid #2e3d52 !important;
+    color: #e3ad56 !important;
+  }
+}
+
+.form-btn {
+  padding: 8px 22.5px;
+  width: fit-content;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.form-exit {
+  border: 1px solid #2e3d52;
+  border-radius: 4px;
+  color: #2e3d52;
+}
+.form-submit-btn {
+  border: 1px solid #2e3d52;
+  border-radius: 4px;
+  background-color: #2e3d52;
+
+  color: #fff;
 }
 
 @media screen and (max-width: 1439px) {
