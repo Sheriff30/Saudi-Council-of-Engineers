@@ -1,0 +1,151 @@
+.section1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  min-width: 1100px;
+
+  p {
+    font-size: 16px;
+    color: #223042;
+    font-weight: 700;
+  }
+
+  p span:first-child {
+    color: #e29a00;
+  }
+}
+
+.form-section {
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+  min-width: 1100px;
+
+  .addnewbranch-form1 {
+    display: grid;
+    gap: 24px;
+    font-weight: bold;
+
+    div:first-child {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    div:not(:first-child) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  }
+
+  .addnewbranch-form2 {
+    display: grid;
+    gap: 24px;
+    font-weight: bold;
+
+    .addnewbranch-form2--head {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      background-color: #eef5f9;
+      border-radius: 11px;
+      padding: 10px;
+
+      p:first-child {
+        font-size: 2.4rem;
+        color: #223042;
+      }
+
+      div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+    }
+
+    .addnewbranch-form2--row2 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .addnewbranch-form2--row3 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+  }
+
+  .addnewbranch-form3 {
+    display: grid;
+    gap: 24px;
+    font-weight: bold;
+    .addnewbranch-form3--head {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      background-color: #eef5f9;
+      border-radius: 11px;
+      padding: 10px;
+      font-size: 2.4rem;
+      color: #223042;
+      font-weight: 700;
+    }
+
+    .addnewbranch-form3--row2 {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr 0.5fr 1fr;
+      align-items: end;
+      gap: 16px;
+      div {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        justify-content: flex-end;
+        padding-bottom: 1rem;
+      }
+    }
+
+    .addnewbranch-form3--row3 {
+      display: grid;
+      grid-template-columns: 1fr 0.5fr 0.5fr 0.5fr 0.5fr;
+      align-items: end;
+      gap: 16px;
+
+      .switch-container {
+        display: flex;
+        gap: 10px;
+        justify-content: flex-end;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.addnewbranch-form--timeinput {
+  display: grid;
+  gap: 10px;
+
+  div:first-child {
+    display: flex;
+    gap: 10px;
+  }
+
+  div:nth-child(2) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+.form-btns {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: flex-end;
+}

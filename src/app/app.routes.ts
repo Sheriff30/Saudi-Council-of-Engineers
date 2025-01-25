@@ -14,6 +14,7 @@ import { SupervisorsandemployeesComponent } from './pages/supervisorsandemployee
 import { AdministratorDataComponent } from './pages/administrator-data/administrator-data.component';
 import { EmployeeDataComponent } from './pages/employee-data/employee-data.component';
 import { BranchdataComponent } from './pages/branchdata/branchdata.component';
+import { AddnewbranchComponent } from './pages/addnewbranch/addnewbranch.component';
 
 export const routes: Routes = [
   {
@@ -55,6 +56,10 @@ export const routes: Routes = [
       {
         path: 'branchdata',
         component: BranchdataComponent,
+      },
+      {
+        path: 'addnewbranch',
+        component: AddnewbranchComponent,
       },
     ],
   },

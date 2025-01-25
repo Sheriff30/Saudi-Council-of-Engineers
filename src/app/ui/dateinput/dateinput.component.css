@@ -1,0 +1,23 @@
+div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  input {
+    width: 100%;
+    text-align: right;
+    font-family: inherit;
+  }
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  position: absolute;
+  left: 16px;
+  top: 15px;
+}
+
+.disabled-icon {
+  position: absolute;
+  opacity: 50%;
+  top: 15px;
+  left: 16px;
+}

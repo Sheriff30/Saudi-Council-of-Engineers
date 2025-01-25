@@ -1,0 +1,14 @@
+<div class="date-input-container">
+  <label *ngIf="label !== '' && label !== null && label !== undefined" for="">{{
+    label
+  }}</label>
+  <div>
+    <input type="date" [disabled]="isDisabled" class="date-input" />
+    <img
+      *ngIf="isDisabled"
+      src="/assets/date-picker.svg"
+      class="disabled-icon"
+      alt="Date picker disabled"
+    />
+  </div>
+</div>

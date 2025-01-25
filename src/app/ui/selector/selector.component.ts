@@ -31,7 +31,6 @@ export class SelectorComponent implements ControlValueAccessor {
   private onTouched: () => void = () => {};
 
   ngOnInit() {
-    // Ensure placeholder is displayed initially
     this.writeValue(null);
   }
 
@@ -49,7 +48,7 @@ export class SelectorComponent implements ControlValueAccessor {
 
   onSelectionChange(event: Event): void {
     const value = (event.target as HTMLSelectElement).value;
-    this.value = value === '' ? null : value; // Treat empty value as null
+    this.value = value === '' ? null : value;
     this.onChange(this.value);
     this.onTouched();
   }

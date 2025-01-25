@@ -21,6 +21,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         [value]="value"
         [placeholder]="placeholder"
         [class]="inputClass"
+        [disabled]="isDisabled"
         [name]="name"
         (input)="onInputChange($event)"
       />
@@ -36,6 +37,8 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ],
 })
 export class InputComponent implements ControlValueAccessor {
+  @Input() isDisabled: boolean = false;
+
   @Input() label: string | undefined;
   @Input() type: string = 'text';
   @Input() name: string = 'text';

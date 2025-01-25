@@ -1,0 +1,10 @@
+<div>
+  <input type="time" value="13:30" [disabled]="isDisabled" />
+  <img
+    *ngIf="isDisabled"
+    src="/assets/time-icon.svg"
+    class="disabled-icon"
+    style="opacity: 50%"
+    alt="Date picker disabled"
+  />
+</div>
