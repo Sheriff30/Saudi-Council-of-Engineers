@@ -1,0 +1,161 @@
+<div class="section1">
+  <p>
+    <span>وحة التحكم - الافرع </span>
+    <span>- </span>
+    <span>اضافة فرع جديد</span>
+  </p>
+</div>
+
+<form class="form-section">
+  <!-- Form1 -->
+  <div class="addnewbranch-form2">
+    <!-- Row 1 -->
+    <div class="addnewbranch-form2--head">
+      <p>مواعيد العمل</p>
+      <div>
+        <span>
+          {{
+            switchState["switch2"]
+              ? "تكرار الأحد علي باقي المواعيد"
+              : "تكرار الأحد علي باقي المواعيد"
+          }}
+        </span>
+        <app-switch-input
+          [isChecked]="switchState['switch2']"
+          (toggleChange)="handleSwitchChange('switch2', $event)"
+        ></app-switch-input>
+      </div>
+    </div>
+    <!-- Row 2 -->
+    <div class="addnewbranch-form2--row2">
+      <div class="addnewbranch-form--timeinput">
+        <div>
+          <p>الاحد</p>
+          <app-switch-input
+            [isChecked]="switchState['sun']"
+            (toggleChange)="handleSwitchChange('sun', $event)"
+          ></app-switch-input>
+        </div>
+        <div>
+          <app-timeinput [isDisabled]="!switchState['sun']"></app-timeinput>
+          <app-timeinput [isDisabled]="!switchState['sun']"> </app-timeinput>
+        </div>
+      </div>
+      <div class="addnewbranch-form--timeinput">
+        <div>
+          <p>الأثنين</p>
+          <app-switch-input
+            [isChecked]="switchState['mon']"
+            (toggleChange)="handleSwitchChange('mon', $event)"
+          ></app-switch-input>
+        </div>
+        <div>
+          <app-timeinput [isDisabled]="!switchState['mon']"></app-timeinput>
+          <app-timeinput [isDisabled]="!switchState['mon']"> </app-timeinput>
+        </div>
+      </div>
+      <div class="addnewbranch-form--timeinput">
+        <div>
+          <p>الثلاثاء</p>
+          <app-switch-input
+            [isChecked]="switchState['tues']"
+            (toggleChange)="handleSwitchChange('tues', $event)"
+          ></app-switch-input>
+        </div>
+        <div>
+          <app-timeinput [isDisabled]="!switchState['tues']"></app-timeinput>
+          <app-timeinput [isDisabled]="!switchState['tues']"> </app-timeinput>
+        </div>
+      </div>
+    </div>
+    <!-- Row 3 -->
+    <div class="addnewbranch-form2--row3">
+      <div class="addnewbranch-form--timeinput">
+        <div>
+          <p>الاربعاء</p>
+          <app-switch-input
+            [isChecked]="switchState['wed']"
+            (toggleChange)="handleSwitchChange('wed', $event)"
+          ></app-switch-input>
+        </div>
+        <div>
+          <app-timeinput [isDisabled]="!switchState['wed']"></app-timeinput>
+          <app-timeinput [isDisabled]="!switchState['wed']"> </app-timeinput>
+        </div>
+      </div>
+      <div class="addnewbranch-form--timeinput">
+        <div>
+          <p>الخميس</p>
+          <app-switch-input
+            [isChecked]="switchState['thur']"
+            (toggleChange)="handleSwitchChange('thur', $event)"
+          ></app-switch-input>
+        </div>
+        <div>
+          <app-timeinput [isDisabled]="!switchState['thur']"></app-timeinput>
+          <app-timeinput [isDisabled]="!switchState['thur']"> </app-timeinput>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Form2 -->
+  <div class="addnewbranch-form3">
+    <!-- Row1 -->
+    <div class="addnewbranch-form3--head">الأجازات</div>
+    <!-- Row2 -->
+    <div class="addnewbranch-form3--row2">
+      <app-input
+        label="اسم الاجازة"
+        [isDisabled]="!switchState['holiday1']"
+        placeholder="ادخل اسم الاجازة"
+      ></app-input>
+      <app-dateinput
+        [isDisabled]="!switchState['holiday1']"
+        label="من"
+      ></app-dateinput>
+      <app-dateinput
+        [isDisabled]="!switchState['holiday1']"
+        label="الي"
+      ></app-dateinput>
+      <div>
+        <p>تكرار سنوي</p>
+        <app-switch-input
+          [isChecked]="switchState['holiday1']"
+          (toggleChange)="handleSwitchChange('holiday1', $event)"
+        ></app-switch-input>
+      </div>
+    </div>
+    <!-- Row3 -->
+    <div class="addnewbranch-form3--row3">
+      <app-input
+        label="اسم الاجازة"
+        [isDisabled]="!switchState['holiday2']"
+        placeholder="ادخل اسم الاجازة"
+      ></app-input>
+      <app-dateinput
+        label="من"
+        [isDisabled]="!switchState['holiday2']"
+      ></app-dateinput>
+      <app-dateinput
+        label="الي"
+        [isDisabled]="!switchState['holiday2']"
+      ></app-dateinput>
+      <div class="switch-container">
+        <p>تكرار سنوي</p>
+        <app-switch-input
+          [isChecked]="switchState['holiday2']"
+          (toggleChange)="handleSwitchChange('holiday2', $event)"
+        ></app-switch-input>
+      </div>
+      <app-inputfileupload></app-inputfileupload>
+    </div>
+    <!-- Form BTNS -->
+    <div class="form-btns">
+      <button type="submit" class="form-btn form-submit-btn">
+        <span>حفظ</span>
+        <img src="/assets/form-submit.svg" alt="" />
+      </button>
+    </div>
+  </div>
+</form>

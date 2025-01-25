@@ -1,0 +1,95 @@
+<div class="section1">
+  <p>
+    <span>لوحة التحكم - الافرع </span>
+    <span>- </span>
+    <span>الخدمات</span>
+  </p>
+</div>
+
+<div class="section2">
+  <div class="table-inputs">
+    <div class="search-group">
+      <p>اجمالي عدد الافرع (5)</p>
+      <p-iconfield>
+        <input type="text" pInputText placeholder="البحث" />
+        <img src="/assets/search-icon.svg" alt="" />
+      </p-iconfield>
+    </div>
+    <div class="table-group">
+      <div class="selectors">
+        <app-selector
+          [options]="options"
+          [placeholder]="'الحالة'"
+          name="selectOption"
+        >
+        </app-selector>
+      </div>
+      <div class="page-link" (click)="openForm()">إضافة جديد</div>
+    </div>
+  </div>
+
+  <div class="service-cards">
+    <div class="service-card" *ngFor="let card of serviceCards; let i = index">
+      <div class="service-card--head">
+        <img src="/assets/service-card.svg" alt="" />
+        <p>{{ card.title }}</p>
+      </div>
+      <div class="service-card--setting">
+        <div class="service-availability">
+          <p>{{ card.switchState ? "مفعلة" : "غير مفعلة" }}</p>
+          <app-switch-input
+            [isChecked]="card.switchState"
+            (toggleChange)="handleSwitchChange(i, $event)"
+          ></app-switch-input>
+        </div>
+        <div class="service-btns">
+          <div class="edit-btn">
+            <span>تعديل</span>
+            <img src="/assets/edit-icon.svg" alt="" />
+          </div>
+          <div class="del-btn">
+            <span>حذف</span>
+            <img src="/assets/delete-icon.svg" alt="" />
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="branch-heading">الفروع المرتبطة:</div>
+        <div class="service-card-branches">
+          <div class="branch" *ngFor="let branch of card.branches">
+            {{ branch }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="add-new-service" #formContainer>
+  <form #serviceForm="ngForm" (ngSubmit)="onSubmitForm()">
+    <div class="form-head">اضافة خدمة جديدة</div>
+    <div class="form-row">
+      <app-input
+        label="اسم الخدمة"
+        placeholder="ادخل اسم الخدمة"
+        name="serviceName"
+        ngModel
+      ></app-input>
+      <app-selector
+        label="الحالة"
+        placeholder="اختر (مفعلة/ معطلة)"
+        name="serviceStatus"
+        ngModel
+      ></app-selector>
+    </div>
+    <div class="add-new-service-btns">
+      <div class="form-btn form-exit" (click)="onExitForm()">
+        <span>الغاء</span>
+        <img src="/assets/form-exit.svg" alt="" />
+      </div>
+      <button type="submit" class="form-btn form-submit-btn">
+        <span>حفظ</span> <img src="/assets/form-submit.svg" alt="" />
+      </button>
+    </div>
+  </form>
+</div>

@@ -82,9 +82,9 @@
       </ul>
     </li>
     <li>
-      <a href="index.html">
+      <a routerLink="/dashboard/services" routerLinkActive="active">
         <img src="/assets/sidebarnav-4.svg" alt="sidebar nav icon" />
-        <span>الخدمات</span>
+        الخدمات
       </a>
     </li>
     <li>
@@ -107,9 +107,18 @@
       <ul class="sub-menu">
         <div>
           <div>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
+            <a
+              routerLink="/dashboard/managingworkschedules"
+              routerLinkActive="active"
+            >
+              ادارة مواعيد العمل
+            </a>
+            <a routerLink="/dashboard/services" routerLinkActive="active">
+              ادارة مواعيد الحجوزات
+            </a>
+            <a routerLink="/dashboard/services" routerLinkActive="active">
+              ادارة مواعيد الموظفين
+            </a>
           </div>
         </div>
       </ul>
