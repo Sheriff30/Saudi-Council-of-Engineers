@@ -8,7 +8,7 @@
       (ngModelChange)="onSelectionChange($event)"
       [ngModelOptions]="{ standalone: true }"
     >
-      <option [value]="null" disabled selected>
+      <option [value]="null" [disabled]="true" [selected]="value === null">
         {{ placeholder }}
       </option>
       <option *ngFor="let option of options" [value]="option.value">

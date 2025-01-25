@@ -66,7 +66,7 @@
 </div>
 
 <div class="add-new-service" #formContainer>
-  <form #serviceForm="ngForm" (ngSubmit)="onSubmitForm()">
+  <form (ngSubmit)="onSubmitForm()">
     <div class="form-head">اضافة خدمة جديدة</div>
     <div class="form-row">
       <app-input
@@ -79,7 +79,6 @@
         label="الحالة"
         placeholder="اختر (مفعلة/ معطلة)"
         name="serviceStatus"
-        ngModel
       ></app-selector>
     </div>
     <div class="add-new-service-btns">

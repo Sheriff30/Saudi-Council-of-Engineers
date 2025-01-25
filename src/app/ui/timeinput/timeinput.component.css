@@ -1,5 +1,9 @@
-div {
-  position: relative;
+.time-input {
+  display: grid;
+  gap: 8px;
+  div {
+    position: relative;
+  }
 
   input {
     width: 100%;

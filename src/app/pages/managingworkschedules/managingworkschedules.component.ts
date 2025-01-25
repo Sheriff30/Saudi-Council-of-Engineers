@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { SwitchInputComponent } from '../../ui/switch-input/switch-input.component';
 import { InputComponent } from '../../ui/input/input.component';
-import { SelectorComponent } from '../../ui/selector/selector.component';
 import { TimeinputComponent } from '../../ui/timeinput/timeinput.component';
 import { DateinputComponent } from '../../ui/dateinput/dateinput.component';
 import { InputfileuploadComponent } from '../../ui/inputfileupload/inputfileupload.component';
@@ -11,7 +10,6 @@ import { InputfileuploadComponent } from '../../ui/inputfileupload/inputfileuplo
   imports: [
     SwitchInputComponent,
     InputComponent,
-    SelectorComponent,
     TimeinputComponent,
     DateinputComponent,
     InputfileuploadComponent,

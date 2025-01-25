@@ -1,0 +1,279 @@
+<div class="section1">
+  <p>
+    <span>لوحة التحكم </span>
+    <span>- </span>
+    <span>بينات الأفرع</span>
+  </p>
+</div>
+
+<div class="section2">
+  <div class="table-inputs">
+    <div class="search-group">
+      <p>اجمالي عدد المواعيد (5 معاد)</p>
+      <p-iconfield>
+        <input type="text" pInputText placeholder="البحث" />
+        <img src="/assets/search-icon.svg" alt="" />
+      </p-iconfield>
+    </div>
+    <div class="table-group">
+      <div class="selectors">
+        <app-selector
+          [placeholder]="'الحد اليومي 40 معاد'"
+          name="selectOption"
+        ></app-selector>
+        <app-selector [placeholder]="'الحالة'" name="selectOption">
+        </app-selector>
+      </div>
+      <div class="page-link" (click)="openForm()">إضافة جديد</div>
+    </div>
+  </div>
+
+  <div class="section2-tabs booking-tabs">
+    <p-tabs value="0">
+      <p-tablist>
+        <p-tab value="0"
+          >الأحد <img src="/assets/off-switch.svg" alt="off-switch"
+        /></p-tab>
+        <p-tab value="1"
+          >الاثنين <img src="/assets/off-switch.svg" alt="off-switch"
+        /></p-tab>
+        <p-tab value="2"
+          >الثلاثاء <img src="/assets/off-switch.svg" alt="off-switch"
+        /></p-tab>
+        <p-tab value="3"
+          >الأربعاء <img src="/assets/off-switch.svg" alt="off-switch"
+        /></p-tab>
+        <p-tab value="4"
+          >الخميس <img src="/assets/off-switch.svg" alt="off-switch"
+        /></p-tab>
+      </p-tablist>
+      <p-tabpanels>
+        <p-tabpanel value="0">
+          <div class="booking-cards">
+            <div
+              class="booking-card"
+              *ngFor="let booking of bookingsByDay.sunday"
+            >
+              <p class="booking-date">{{ booking.date }}</p>
+              <p class="booking-time">{{ booking.time }}</p>
+              <div class="booking-status">
+                <img
+                  *ngIf="booking.status"
+                  src="/assets/on-switch.svg"
+                  alt="on-switch"
+                />
+                <img
+                  *ngIf="!booking.status"
+                  src="/assets/off-switch.svg"
+                  alt="off-switch"
+                />
+                <p *ngIf="booking.status" class="not-available">محجوز</p>
+                <p *ngIf="!booking.status" class="available">غير محجوز</p>
+              </div>
+              <div class="booking-btns">
+                <div>
+                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                </div>
+                <div>
+                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                </div>
+                <div>
+                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="1">
+          <div class="booking-cards">
+            <div
+              class="booking-card"
+              *ngFor="let booking of bookingsByDay.monday"
+            >
+              <p class="booking-date">{{ booking.date }}</p>
+              <p class="booking-time">{{ booking.time }}</p>
+              <div class="booking-status">
+                <img
+                  *ngIf="booking.status"
+                  src="/assets/on-switch.svg"
+                  alt="on-switch"
+                />
+                <img
+                  *ngIf="!booking.status"
+                  src="/assets/off-switch.svg"
+                  alt="off-switch"
+                />
+                <p *ngIf="booking.status" class="not-available">محجوز</p>
+                <p *ngIf="!booking.status" class="available">غير محجوز</p>
+              </div>
+              <div class="booking-btns">
+                <div>
+                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                </div>
+                <div>
+                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                </div>
+                <div>
+                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="2">
+          <div class="booking-cards">
+            <div
+              class="booking-card"
+              *ngFor="let booking of bookingsByDay.tuesday"
+            >
+              <p class="booking-date">{{ booking.date }}</p>
+              <p class="booking-time">{{ booking.time }}</p>
+              <div class="booking-status">
+                <img
+                  *ngIf="booking.status"
+                  src="/assets/on-switch.svg"
+                  alt="on-switch"
+                />
+                <img
+                  *ngIf="!booking.status"
+                  src="/assets/off-switch.svg"
+                  alt="off-switch"
+                />
+                <p *ngIf="booking.status" class="not-available">محجوز</p>
+                <p *ngIf="!booking.status" class="available">غير محجوز</p>
+              </div>
+              <div class="booking-btns">
+                <div>
+                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                </div>
+                <div>
+                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                </div>
+                <div>
+                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="3">
+          <div class="booking-cards">
+            <div
+              class="booking-card"
+              *ngFor="let booking of bookingsByDay.wednesday"
+            >
+              <p class="booking-date">{{ booking.date }}</p>
+              <p class="booking-time">{{ booking.time }}</p>
+              <div class="booking-status">
+                <img
+                  *ngIf="booking.status"
+                  src="/assets/on-switch.svg"
+                  alt="on-switch"
+                />
+                <img
+                  *ngIf="!booking.status"
+                  src="/assets/off-switch.svg"
+                  alt="off-switch"
+                />
+                <p *ngIf="booking.status" class="not-available">محجوز</p>
+                <p *ngIf="!booking.status" class="available">غير محجوز</p>
+              </div>
+              <div class="booking-btns">
+                <div>
+                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                </div>
+                <div>
+                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                </div>
+                <div>
+                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+        <p-tabpanel value="4">
+          <div class="booking-cards">
+            <div
+              class="booking-card"
+              *ngFor="let booking of bookingsByDay.thursday"
+            >
+              <p class="booking-date">{{ booking.date }}</p>
+              <p class="booking-time">{{ booking.time }}</p>
+              <div class="booking-status">
+                <img
+                  *ngIf="booking.status"
+                  src="/assets/on-switch.svg"
+                  alt="on-switch"
+                />
+                <img
+                  *ngIf="!booking.status"
+                  src="/assets/off-switch.svg"
+                  alt="off-switch"
+                />
+                <p *ngIf="booking.status" class="not-available">محجوز</p>
+                <p *ngIf="!booking.status" class="available">غير محجوز</p>
+              </div>
+              <div class="booking-btns">
+                <div>
+                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                </div>
+                <div>
+                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                </div>
+                <div>
+                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </div>
+</div>
+
+<div class="add-new-booking" #formContainer>
+  <form (ngSubmit)="onSubmitForm()">
+    <!-- Row 1 -->
+    <div class="form-head">اضافة معاد جديدة</div>
+    <app-dateinput label="التاريخ"></app-dateinput>
+    <!-- Row 2 -->
+    <div class="form-time">
+      <app-timeinput label="الوقت علي مدار اليوم"></app-timeinput>
+      <app-timeinput></app-timeinput>
+      <app-minutesinput label="مده المعاد"></app-minutesinput>
+    </div>
+    <!-- Row 3 -->
+    <div class="form-row">
+      <app-selector
+        label="الخدمة"
+        placeholder="حدد الخدمة"
+        name="serviceStatus"
+      ></app-selector>
+      <app-selector
+        label="الفرع"
+        placeholder="حدد الفرع"
+        name="serviceStatus"
+      ></app-selector>
+    </div>
+    <!-- Row 4 -->
+    <div>
+      <app-selector
+        label="الحالة"
+        placeholder="اختر (مفعلة/ معطلة)"
+        name="serviceStatus"
+      ></app-selector>
+    </div>
+    <!-- Row 5 -->
+    <div class="add-new-booking-btns">
+      <div class="form-btn form-exit" (click)="onExitForm()">
+        <span>الغاء</span>
+        <img src="/assets/form-exit.svg" alt="" />
+      </div>
+      <button type="submit" class="form-btn form-submit-btn">
+        <span>حفظ</span> <img src="/assets/form-submit.svg" alt="" />
+      </button>
+    </div>
+  </form>
+</div>

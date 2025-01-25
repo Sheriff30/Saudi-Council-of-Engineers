@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-timeinput',
+  selector: 'app-minutesinput',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './timeinput.component.html',
-  styleUrl: './timeinput.component.css',
+  templateUrl: './minutesinput.component.html',
+  styleUrl: './minutesinput.component.css',
 })
-export class TimeinputComponent {
+export class MinutesinputComponent {
   @Input() isDisabled: boolean = false;
   @Input() label: string | undefined;
   @Input() inputId: string = '';

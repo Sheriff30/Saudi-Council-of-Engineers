@@ -1,0 +1,169 @@
+.section1 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2.4rem;
+  min-width: 1100px;
+
+  p {
+    font-size: 16px;
+    color: #223042;
+    font-weight: 700;
+  }
+
+  p span:first-child {
+    color: #e29a00;
+  }
+}
+
+.section2 {
+  background: #ffffff;
+  border: 1px solid #e4e4e4;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.03);
+  border-radius: 16px;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+  min-width: 1100px;
+
+  .selectors {
+    display: grid;
+    grid-template-columns: 210px 104px;
+    gap: 10px;
+  }
+
+  .table-inputs {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+  }
+
+  .table-group {
+    display: flex;
+    gap: 20px;
+  }
+
+  .search-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .page-link {
+    padding-inline: 20px;
+  }
+
+  p-tablist .p-tablist-tab-list {
+    display: grid !important;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .booking-cards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    padding: 16px 0;
+  }
+
+  .booking-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    gap: 10px;
+    border: 2px solid #e4e4e4;
+    border-radius: 16px;
+
+    .booking-date {
+      color: #223042;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    .booking-time {
+      color: #223042;
+      font-size: 24px;
+      text-align: center;
+    }
+
+    .booking-status {
+      display: flex;
+      gap: 5px;
+      align-items: center;
+      font-size: 24px;
+      font-weight: 700;
+      justify-content: center;
+      white-space: nowrap;
+
+      .not-available {
+        color: #e3ad56;
+      }
+      .available {
+        color: #e4e4e4;
+      }
+    }
+
+    .booking-btns {
+      display: flex;
+      gap: 10px;
+      cursor: pointer;
+    }
+  }
+}
+
+.add-new-booking {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: rgb(34, 48, 66, 30%);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 11;
+
+  form {
+    background: #ffffff;
+    border: 1px solid #e4e4e4;
+    padding: 24px;
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.03);
+    max-width: 862px;
+    width: 100%;
+    border-radius: 12px;
+    font-size: 16px;
+    color: #223042;
+    font-weight: 700;
+    display: grid;
+    gap: 24px;
+  }
+
+  .add-new-booking-btns {
+    display: flex;
+    justify-content: end;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 24px;
+  }
+
+  .form-head {
+    border-bottom: 3px solid #e4e4e4;
+    padding-bottom: 10px;
+  }
+
+  .form-time {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: end;
+    justify-content: end;
+    gap: 16px;
+  }
+}

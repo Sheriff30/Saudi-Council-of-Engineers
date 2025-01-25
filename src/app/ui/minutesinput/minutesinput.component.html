@@ -1,13 +1,11 @@
 <div class="time-input">
   <label *ngIf="label" [for]="inputId">{{ label }}</label>
   <div>
-    <input type="time" value="13:30" [disabled]="isDisabled" />
+    <input type="number" [disabled]="isDisabled" placeholder="دقائق" />
     <img
-      *ngIf="isDisabled"
       src="/assets/time-icon.svg"
       class="disabled-icon"
-      style="opacity: 50%"
-      alt="Date picker disabled"
+      alt="time picker icon"
     />
   </div>
 </div>

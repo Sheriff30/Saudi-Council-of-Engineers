@@ -17,6 +17,7 @@ import { BranchdataComponent } from './pages/branchdata/branchdata.component';
 import { AddnewbranchComponent } from './pages/addnewbranch/addnewbranch.component';
 import { ServicesComponent } from './pages/services/services.component';
 import { ManagingworkschedulesComponent } from './pages/managingworkschedules/managingworkschedules.component';
+import { BookingappointmentmanagementComponent } from './pages/bookingappointmentmanagement/bookingappointmentmanagement.component';
 
 export const routes: Routes = [
   {
@@ -70,6 +71,10 @@ export const routes: Routes = [
       {
         path: 'managingworkschedules',
         component: ManagingworkschedulesComponent,
+      },
+      {
+        path: 'bookingappointmentmanagement',
+        component: BookingappointmentmanagementComponent,
       },
     ],
   },
