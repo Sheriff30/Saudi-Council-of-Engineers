@@ -15,7 +15,7 @@
 
 #sidebar.close {
   padding: 5px;
-  width: 60px;
+  width: 55px;
 }
 #sidebar ul {
   list-style: none;
@@ -139,4 +139,12 @@ nav ul {
 .user-img {
   width: 40px;
   height: 40px;
+}
+
+a.active {
+  background-color: #223042;
+  color: #fff !important;
+}
+a.active svg {
+  fill: #fff !important;
 }

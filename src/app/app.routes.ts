@@ -46,7 +46,7 @@ export const routes: Routes = [
     path: 'dashboard',
     component: DashboardLayoutComponent,
     children: [
-      { path: '', component: DashboardHomeComponent },
+      { path: 'home', component: DashboardHomeComponent },
       {
         path: 'supervisorsandemployees',
         component: SupervisorsandemployeesComponent,
