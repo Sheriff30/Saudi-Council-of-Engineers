@@ -18,6 +18,7 @@ import { AddnewbranchComponent } from './pages/addnewbranch/addnewbranch.compone
 import { ServicesComponent } from './pages/services/services.component';
 import { ManagingworkschedulesComponent } from './pages/managingworkschedules/managingworkschedules.component';
 import { BookingappointmentmanagementComponent } from './pages/bookingappointmentmanagement/bookingappointmentmanagement.component';
+import { EmployeeappointmentmanagementComponent } from './pages/employeeappointmentmanagement/employeeappointmentmanagement.component';
 
 export const routes: Routes = [
   {
@@ -75,6 +76,10 @@ export const routes: Routes = [
       {
         path: 'bookingappointmentmanagement',
         component: BookingappointmentmanagementComponent,
+      },
+      {
+        path: 'employeeappointmentmanagement',
+        component: EmployeeappointmentmanagementComponent,
       },
     ],
   },

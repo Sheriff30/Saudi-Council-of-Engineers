@@ -1,0 +1,126 @@
+<div class="section1">
+  <p>
+    <span>لوحة التحكم </span>
+    <span>- </span>
+    <span>المشرفين والموظفين</span>
+  </p>
+</div>
+
+<div class="section2">
+  <div class="table">
+    <!-- Table inputs -->
+    <div class="table-inputs">
+      <div class="search-group">
+        <p>اجمالي عدد الافرع (5)</p>
+        <p-iconfield>
+          <input type="text" pInputText placeholder="البحث" />
+          <img src="/assets/search-icon.svg" alt="" />
+        </p-iconfield>
+      </div>
+      <div class="table-group">
+        <div class="selectors">
+          <app-selector
+            [options]="options"
+            [placeholder]="'الحالة'"
+            name="selectOption"
+          >
+          </app-selector>
+        </div>
+        <div class="page-link" (click)="openForm()">إضافة جديد</div>
+      </div>
+    </div>
+    <!-- Table Head-->
+    <div class="table-head">
+      <p>رقم الزيارة</p>
+      <p>اسم العميل</p>
+      <p>اسم الموظف</p>
+      <p>نوع الخدمة</p>
+      <p>اسم الفرع</p>
+      <p>تاريخ الحجز</p>
+      <p>وقت الحجز</p>
+      <p>الحالة</p>
+      <p>اجراءات</p>
+    </div>
+
+    <!-- Table Rows -->
+    <div class="table-rows">
+      <div class="table-row" *ngFor="let row of paginatedData">
+        <div>{{ row.id > 9 ? row.id : "0" + row.id }}</div>
+        <div>{{ row.name }}</div>
+
+        <p>{{ row.employeename || "-------------" }}</p>
+        <div>{{ row.servicetype }}</div>
+        <div>{{ row.branch }}</div>
+        <div>{{ row.date }}</div>
+        <div>
+          {{ row.time }}
+        </div>
+        <div>
+          <div *ngIf="row.status" class="active-status">مسند</div>
+          <div *ngIf="!row.status" class="inactive-status">غير مسند</div>
+        </div>
+        <div class="row-btn">اسناد يدوي</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="paginator-container">
+  <p class="paginator-page-number">عدد الصفوف في الصفحة:</p>
+  <p-paginator
+    (onPageChange)="onPageChange($event)"
+    [first]="first"
+    [rows]="rows"
+    [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[10, 20, 30]"
+  />
+</div>
+
+<!-- Create New Account -->
+<div class="new-account-container" #formContainer>
+  <div class="new-account-form">
+    <div class="new-account-form--head">
+      <div class="form-close">
+        <img
+          src="/assets/close-form.svg"
+          alt="close form icon"
+          (click)="onExitForm()"
+        />
+        <p>نافذة اختيار الموظف</p>
+      </div>
+      <div class="form-search">
+        <div class="selectors">
+          <app-selector
+            [options]="options"
+            [placeholder]="'الحالة'"
+            name="selectOption"
+          >
+          </app-selector>
+        </div>
+        <p-iconfield>
+          <input type="text" pInputText placeholder="البحث" />
+          <img src="/assets/search-icon.svg" alt="" />
+        </p-iconfield>
+      </div>
+    </div>
+    <div class="table-head">
+      <p>اسم الموظف</p>
+      <p>عدد الحجوزات</p>
+      <p>الحالة</p>
+      <p>اجراءات</p>
+    </div>
+    <div class="table-rows">
+      <div class="table-row" *ngFor="let row of paginatedData">
+        <div>{{ row.name }}</div>
+        <div>
+          {{ row.numberofbookings }}
+        </div>
+        <div>
+          <div *ngIf="row.status" class="active-status">متاح</div>
+          <div *ngIf="!row.status" class="inactive-status">غير متاح</div>
+        </div>
+        <div class="row-btn">اسناد</div>
+      </div>
+    </div>
+  </div>
+</div>
