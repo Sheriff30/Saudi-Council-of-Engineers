@@ -19,6 +19,8 @@ import { ServicesComponent } from './pages/services/services.component';
 import { ManagingworkschedulesComponent } from './pages/managingworkschedules/managingworkschedules.component';
 import { BookingappointmentmanagementComponent } from './pages/bookingappointmentmanagement/bookingappointmentmanagement.component';
 import { EmployeeappointmentmanagementComponent } from './pages/employeeappointmentmanagement/employeeappointmentmanagement.component';
+import { UpcomingbookingsComponent } from './pages/upcomingbookings/upcomingbookings.component';
+import { ExpiredbookingsComponent } from './pages/expiredbookings/expiredbookings.component';
 
 export const routes: Routes = [
   {
@@ -80,6 +82,14 @@ export const routes: Routes = [
       {
         path: 'employeeappointmentmanagement',
         component: EmployeeappointmentmanagementComponent,
+      },
+      {
+        path: 'upcomingbookings',
+        component: UpcomingbookingsComponent,
+      },
+      {
+        path: 'expiredbookings',
+        component: ExpiredbookingsComponent,
       },
     ],
   },

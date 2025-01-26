@@ -1,0 +1,7 @@
+.time-picker {
+  position: relative;
+  width: 150px;
+  input {
+    width: 150px;
+  }
+}
