@@ -79,47 +79,49 @@
 <!-- Create New Account -->
 <div class="new-account-container" #formContainer>
   <div class="new-account-form">
-    <div class="new-account-form--head">
-      <div class="form-close">
-        <img
-          src="/assets/close-form.svg"
-          alt="close form icon"
-          (click)="onExitForm()"
-        />
-        <p>نافذة اختيار الموظف</p>
+    <div class="form-wrapper">
+      <div class="new-account-form--head">
+        <div class="form-close">
+          <img
+            src="/assets/close-form.svg"
+            alt="close form icon"
+            (click)="onExitForm()"
+          />
+          <p>نافذة اختيار الموظف</p>
+        </div>
+        <div class="form-search">
+          <div class="selectors">
+            <app-selector
+              [options]="options"
+              [placeholder]="'الحالة'"
+              name="selectOption"
+            >
+            </app-selector>
+          </div>
+          <p-iconfield>
+            <input type="text" pInputText placeholder="البحث" />
+            <img src="/assets/search-icon.svg" alt="" />
+          </p-iconfield>
+        </div>
       </div>
-      <div class="form-search">
-        <div class="selectors">
-          <app-selector
-            [options]="options"
-            [placeholder]="'الحالة'"
-            name="selectOption"
-          >
-          </app-selector>
-        </div>
-        <p-iconfield>
-          <input type="text" pInputText placeholder="البحث" />
-          <img src="/assets/search-icon.svg" alt="" />
-        </p-iconfield>
+      <div class="table-head">
+        <p>اسم الموظف</p>
+        <p>عدد الحجوزات</p>
+        <p>الحالة</p>
+        <p>اجراءات</p>
       </div>
-    </div>
-    <div class="table-head">
-      <p>اسم الموظف</p>
-      <p>عدد الحجوزات</p>
-      <p>الحالة</p>
-      <p>اجراءات</p>
-    </div>
-    <div class="table-rows">
-      <div class="table-row" *ngFor="let row of paginatedData">
-        <div>{{ row.name }}</div>
-        <div>
-          {{ row.numberofbookings }}
+      <div class="table-rows">
+        <div class="table-row" *ngFor="let row of paginatedData">
+          <div>{{ row.name }}</div>
+          <div>
+            {{ row.numberofbookings }}
+          </div>
+          <div>
+            <div *ngIf="row.status" class="active-status">متاح</div>
+            <div *ngIf="!row.status" class="inactive-status">غير متاح</div>
+          </div>
+          <div class="row-btn">اسناد</div>
         </div>
-        <div>
-          <div *ngIf="row.status" class="active-status">متاح</div>
-          <div *ngIf="!row.status" class="inactive-status">غير متاح</div>
-        </div>
-        <div class="row-btn">اسناد</div>
       </div>
     </div>
   </div>

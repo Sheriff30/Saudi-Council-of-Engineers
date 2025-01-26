@@ -138,6 +138,7 @@
   justify-content: center;
 
   .new-account-form {
+    direction: ltr;
     background: #ffffff;
     border: 1px solid #e4e4e4;
     padding: 0 16px;
@@ -148,12 +149,11 @@
     font-size: 16px;
     color: #223042;
     font-weight: 700;
-    height: 600px;
-    overflow-y: auto;
 
     .table-rows {
       display: grid;
       gap: 16px;
+      direction: rtl;
 
       .table-row:not(:last-child) {
         border-bottom: 1px dashed #e1e3ea;
@@ -166,6 +166,7 @@
       border-bottom: 1px dashed #e1e3ea;
       padding-bottom: 16px;
       margin-bottom: 16px;
+      direction: rtl;
 
       gap: 1rem;
       color: rgb(46, 61, 82, 70%);
@@ -189,6 +190,7 @@
   }
 
   .new-account-form--head {
+    direction: rtl;
     display: flex;
     justify-content: space-between;
     padding: 0;
@@ -246,4 +248,27 @@
   background-color: #ffe4e8;
   text-align: center;
   padding: 2.5px;
+}
+
+.form-wrapper {
+  height: 600px;
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+.form-wrapper::-webkit-scrollbar {
+  width: 10px;
+}
+
+.form-wrapper::-webkit-scrollbar-track {
+  background: #e4e4e4;
+  overflow: hidden;
+  margin-block: 15px;
+  border-radius: 27px;
+}
+
+.form-wrapper::-webkit-scrollbar-thumb {
+  background: #eed1a3;
+  overflow: hidden;
+  border-radius: 27px;
 }
