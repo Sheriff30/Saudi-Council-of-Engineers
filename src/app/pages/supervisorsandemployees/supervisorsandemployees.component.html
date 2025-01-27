@@ -35,7 +35,9 @@
           >
           </app-selector>
         </div>
-        <div class="page-link" (click)="openForm()">إضافة جديد</div>
+        <div class="page-link" (click)="openModal('formContainer')">
+          إضافة جديد
+        </div>
       </div>
     </div>
     <!-- Table Head-->
@@ -90,7 +92,10 @@
 </div>
 
 <!-- Create New Account -->
-<div class="new-account-container" #formContainer>
+<div
+  class="new-account-container modal"
+  *ngIf="isModalOpen && currentModal === 'formContainer'"
+>
   <div class="new-account-form">
     <p-tabs value="0">
       <p-tablist class="new-account-form-tabs">
@@ -177,7 +182,7 @@
               </div>
             </div>
             <div class="new-account-form-row-btns">
-              <div class="form-btn form-exit" (click)="onExitForm()">
+              <div class="form-btn form-exit" (click)="closeModal()">
                 <span>الغاء</span>
                 <img src="/assets/form-exit.svg" alt="" />
               </div>
@@ -266,7 +271,7 @@
               </div>
             </div>
             <div class="new-account-form-row-btns">
-              <div class="form-btn form-exit" (click)="onExitForm()">
+              <div class="form-btn form-exit" (click)="closeModal()">
                 <span>الغاء</span>
                 <img src="/assets/form-exit.svg" alt="" />
               </div>

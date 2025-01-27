@@ -26,7 +26,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class BookingappointmentmanagementComponent {
   switchState: boolean = false;
-  @ViewChild('formContainer') formContainer!: ElementRef;
+  currentModal: 'formContainer' | null = null;
+  isModalOpen = false;
 
   bookingsByDay = {
     sunday: [
@@ -74,14 +75,15 @@ export class BookingappointmentmanagementComponent {
   }
 
   onSubmitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+    console.log('Submit');
   }
 
-  onExitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+  closeModal() {
+    this.isModalOpen = false;
+    this.currentModal = null;
   }
-
-  openForm() {
-    this.formContainer.nativeElement.style.display = 'flex';
+  openModal(modalId: any) {
+    this.isModalOpen = true;
+    this.currentModal = modalId;
   }
 }

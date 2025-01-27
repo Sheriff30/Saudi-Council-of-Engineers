@@ -34,7 +34,6 @@ interface Selector {
   styleUrl: './supervisorsandemployees.component.css',
 })
 export class SupervisorsandemployeesComponent implements OnInit {
-  @ViewChild('formContainer') formContainer!: ElementRef;
   // State
   branches: Selector[] | undefined;
   status: Selector[] | undefined;
@@ -191,6 +190,8 @@ export class SupervisorsandemployeesComponent implements OnInit {
   ];
   rows: number = 10;
   paginatedData = this.tableData.slice(0, this.rows);
+  isModalOpen = false;
+  currentModal: 'formContainer' | null = null;
 
   options = [
     { value: 'option1', label: 'Option 1' },
@@ -216,13 +217,15 @@ export class SupervisorsandemployeesComponent implements OnInit {
   }
 
   onSubmitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+    console.log('Submit');
   }
 
-  onExitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+  closeModal() {
+    this.isModalOpen = false;
+    this.currentModal = null;
   }
-  openForm() {
-    this.formContainer.nativeElement.style.display = 'flex';
+  openModal(modalId: any) {
+    this.isModalOpen = true;
+    this.currentModal = modalId;
   }
 }

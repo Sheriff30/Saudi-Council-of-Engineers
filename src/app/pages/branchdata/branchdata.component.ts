@@ -34,7 +34,9 @@ interface Selector {
   styleUrl: './branchdata.component.css',
 })
 export class BranchdataComponent implements OnInit {
-  @ViewChild('formContainer') formContainer!: ElementRef;
+  currentModal: 'formContainer' | null = null;
+  isModalOpen = false;
+
   // State
   branches: Selector[] | undefined;
   status: Selector[] | undefined;
@@ -178,13 +180,15 @@ export class BranchdataComponent implements OnInit {
   }
 
   onSubmitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+    console.log('Submit');
   }
 
-  onExitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+  closeModal() {
+    this.isModalOpen = false;
+    this.currentModal = null;
   }
-  openForm() {
-    this.formContainer.nativeElement.style.display = 'flex';
+  openModal(modalId: any) {
+    this.isModalOpen = true;
+    this.currentModal = modalId;
   }
 }

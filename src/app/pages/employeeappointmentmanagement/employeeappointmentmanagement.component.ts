@@ -29,8 +29,8 @@ interface Selector {
   styleUrl: './employeeappointmentmanagement.component.css',
 })
 export class EmployeeappointmentmanagementComponent implements OnInit {
-  @ViewChild('formContainer') formContainer!: ElementRef;
-  // State
+  currentModal: 'formContainer' | null = null;
+  isModalOpen = false;
   branches: Selector[] | undefined;
   status: Selector[] | undefined;
   role: Selector[] | undefined;
@@ -204,13 +204,15 @@ export class EmployeeappointmentmanagementComponent implements OnInit {
   }
 
   onSubmitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+    console.log('Submit');
   }
 
-  onExitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+  closeModal() {
+    this.isModalOpen = false;
+    this.currentModal = null;
   }
-  openForm() {
-    this.formContainer.nativeElement.style.display = 'flex';
+  openModal(modalId: any) {
+    this.isModalOpen = true;
+    this.currentModal = modalId;
   }
 }

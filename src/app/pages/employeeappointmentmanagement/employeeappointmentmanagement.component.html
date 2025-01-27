@@ -26,7 +26,9 @@
           >
           </app-selector>
         </div>
-        <div class="page-link" (click)="openForm()">إضافة جديد</div>
+        <div class="page-link" (click)="openModal('formContainer')">
+          إضافة جديد
+        </div>
       </div>
     </div>
     <!-- Table Head-->
@@ -77,7 +79,10 @@
 </div>
 
 <!-- Create New Account -->
-<div class="new-account-container" #formContainer>
+<div
+  class="new-account-container modal"
+  *ngIf="isModalOpen && currentModal === 'formContainer'"
+>
   <div class="new-account-form">
     <div class="form-wrapper">
       <div class="new-account-form--head">
@@ -85,7 +90,7 @@
           <img
             src="/assets/close-form.svg"
             alt="close form icon"
-            (click)="onExitForm()"
+            (click)="closeModal()"
           />
           <p>نافذة اختيار الموظف</p>
         </div>

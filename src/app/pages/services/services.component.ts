@@ -21,8 +21,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './services.component.css',
 })
 export class ServicesComponent {
-  @ViewChild('formContainer') formContainer!: ElementRef;
-
+  isModalOpen = false;
+  currentModal: 'formContainer' | null = null;
   serviceCards = [
     {
       id: 1,
@@ -58,14 +58,16 @@ export class ServicesComponent {
   }
 
   onSubmitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+    console.log('submit');
   }
 
-  onExitForm() {
-    this.formContainer.nativeElement.style.display = 'none';
+  closeModal() {
+    this.isModalOpen = false;
+    this.currentModal = null;
   }
 
-  openForm() {
-    this.formContainer.nativeElement.style.display = 'flex';
+  openModal(modalId: any) {
+    this.isModalOpen = true;
+    this.currentModal = modalId;
   }
 }
