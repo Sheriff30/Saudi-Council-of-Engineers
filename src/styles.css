@@ -676,6 +676,10 @@ input[type="date"]:disabled::-webkit-calendar-picker-indicator {
   justify-content: center;
 }
 
+app-confirm-delete {
+  width: 100%;
+}
+
 .new-account-container {
   .p-tablist-tab-list {
     font-size: 18px;
