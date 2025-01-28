@@ -28,7 +28,6 @@
 #sidebar a,
 #sidebar .dropdown-btn,
 #sidebar .logo {
-  border-radius: 0.5em;
   padding: 10px;
   text-decoration: none;
   color: #223042;
@@ -70,6 +69,10 @@
 
   > div {
     overflow: hidden;
+    flex-direction: column;
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
   }
 }
 #sidebar .sub-menu.show {
@@ -87,7 +90,6 @@
 #toggle-btn {
   padding: 1em;
   border: none;
-  border-radius: 0.5em;
   background: none;
   cursor: pointer;
 
@@ -107,6 +109,7 @@ nav ul {
   display: flex;
   flex-direction: column;
   height: 100%;
+  gap: 5px;
 }
 
 .user {
@@ -123,7 +126,6 @@ nav ul {
 .user a div span:last-child {
   background-color: #eed1a3;
   padding: 6px;
-  border-radius: 24px;
 }
 
 .logout-icon {
