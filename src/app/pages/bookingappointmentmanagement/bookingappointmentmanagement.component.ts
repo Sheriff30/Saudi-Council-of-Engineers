@@ -7,32 +7,39 @@ import { TimeinputComponent } from '../../ui/timeinput/timeinput.component';
 import { DateinputComponent } from '../../ui/dateinput/dateinput.component';
 import { MinutesinputComponent } from '../../ui/minutesinput/minutesinput.component';
 import { FormsModule } from '@angular/forms';
+import { SwitchInputComponent } from '../../ui/switch-input/switch-input.component';
 
 @Component({
   selector: 'app-bookingappointmentmanagement',
   standalone: true,
   imports: [
     SelectorComponent,
-    IconField,
     TabsModule,
     CommonModule,
     TimeinputComponent,
     DateinputComponent,
     MinutesinputComponent,
     FormsModule,
+    SwitchInputComponent,
   ],
   templateUrl: './bookingappointmentmanagement.component.html',
   styleUrls: ['./bookingappointmentmanagement.component.css'],
 })
 export class BookingappointmentmanagementComponent {
-  switchState: boolean = false;
+  switchStates = {
+    sunday: true,
+    monday: true,
+    tuesday: true,
+    wednesday: true,
+    thursday: true,
+  };
   currentModal: 'formContainer' | null = null;
   isModalOpen = false;
 
-  bookingsByDay = {
+  bookingsByDay: any = {
     sunday: [
       { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
+      { date: '8/1/2025', time: '10:00 ص', status: false },
       { date: '8/1/2025', time: '08:00 ص', status: false },
       { date: '8/1/2025', time: '10:00 ص', status: true },
       { date: '8/1/2025', time: '08:00 ص', status: false },
@@ -70,10 +77,6 @@ export class BookingappointmentmanagementComponent {
     ],
   };
 
-  handleSwitchChange(state: boolean): void {
-    this.switchState = state;
-  }
-
   onSubmitForm() {
     console.log('Submit');
   }
@@ -86,4 +89,22 @@ export class BookingappointmentmanagementComponent {
     this.isModalOpen = true;
     this.currentModal = modalId;
   }
+
+  handleSwitchChange(day: keyof typeof this.switchStates): void {
+    this.switchStates[day] = !this.switchStates[day];
+  }
+
+  selectorOptions = {
+    dailyLimit: [
+      { value: '40 معاد', label: '40 معاد' },
+      { value: '30 معاد', label: '30 معاد' },
+      { value: '20 معاد', label: '20 معاد' },
+    ],
+    status: [
+      { value: 'محجوز', label: 'محجوز' },
+      { value: 'غير محجوز', label: 'غير محجوز' },
+    ],
+  };
+
+  filteredBookings: { [key: string]: any[] } = { ...this.bookingsByDay };
 }

@@ -21,7 +21,7 @@ import {
   ],
 })
 export class SelectorComponent implements ControlValueAccessor {
-  @Input() options: { value: string | number; label: string }[] = [];
+  @Input() options: any;
   @Input() placeholder: string = '';
   @Input() label: string = '';
 
@@ -46,8 +46,7 @@ export class SelectorComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  onSelectionChange(event: Event): void {
-    const value = (event.target as HTMLSelectElement).value;
+  onSelectionChange(value: string | number | null): void {
     this.value = value === '' ? null : value;
     this.onChange(this.value);
     this.onTouched();

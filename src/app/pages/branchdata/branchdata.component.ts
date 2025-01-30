@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IconFieldModule } from 'primeng/iconfield';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -37,7 +37,10 @@ export class BranchdataComponent implements OnInit {
   currentModal: 'formContainer' | null = null;
   isModalOpen = false;
 
-  // State
+  searchTerm: string = '';
+  selectedStatus: string | null = null;
+  selectedPerformance: string | null = null;
+
   branches: Selector[] | undefined;
   status: Selector[] | undefined;
   role: Selector[] | undefined;
@@ -56,7 +59,7 @@ export class BranchdataComponent implements OnInit {
       servicesnumber: 10,
       employeesnumber: 90,
       performance: 'good',
-      status: true,
+      status: 'نشط',
     },
     {
       id: 2,
@@ -64,95 +67,12 @@ export class BranchdataComponent implements OnInit {
       servicesnumber: 10,
       employeesnumber: 90,
       performance: 'mid',
-      status: false,
-    },
-    {
-      id: 3,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'bad',
-
-      status: true,
-    },
-    {
-      id: 4,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'good',
-      status: true,
-    },
-    {
-      id: 5,
-      name: 'جدة',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'mid',
-      status: false,
-    },
-    {
-      id: 6,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'bad',
-
-      status: true,
-    },
-    {
-      id: 7,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'good',
-      status: true,
-    },
-    {
-      id: 8,
-      name: 'جدة',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'mid',
-      status: false,
-    },
-    {
-      id: 9,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'bad',
-
-      status: true,
-    },
-    {
-      id: 10,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'bad',
-
-      status: true,
-    },
-    {
-      id: 11,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'bad',
-
-      status: true,
-    },
-    {
-      id: 12,
-      name: 'نجران',
-      servicesnumber: 10,
-      employeesnumber: 90,
-      performance: 'bad',
-
-      status: true,
+      status: 'غير نشط',
     },
   ];
+
+  filteredBranches = this.tableData;
+
   rows: number = 10;
   paginatedData = this.tableData.slice(0, this.rows);
 
@@ -162,21 +82,31 @@ export class BranchdataComponent implements OnInit {
     { value: 'option3', label: 'Option 3' },
   ];
 
-  selectedValue?: string;
+  performanceOptions = [
+    { value: 'good', label: 'جيد' },
+    { value: 'mid', label: 'متوسط' },
+    { value: 'poor', label: 'ضعيف' },
+  ];
 
-  // Functions
+  statusOptions = [
+    { value: 'نشط', label: 'نشط' },
+    { value: 'غير نشط', label: 'غير نشط' },
+  ];
+
   handleSwitchChange(state: boolean): void {
     this.switchState = state;
   }
+
   onPageChange(event: any): void {
     this.first = event.first;
     this.rows = event.rows;
     const start = this.first;
     const end = start + this.rows;
-    this.paginatedData = this.tableData.slice(start, end);
+    this.paginatedData = this.filteredBranches.slice(start, end);
   }
+
   ngOnInit() {
-    this.totalRecords = this.tableData.length;
+    this.totalRecords = this.filteredBranches.length;
   }
 
   onSubmitForm() {
@@ -187,8 +117,31 @@ export class BranchdataComponent implements OnInit {
     this.isModalOpen = false;
     this.currentModal = null;
   }
+
   openModal(modalId: any) {
     this.isModalOpen = true;
     this.currentModal = modalId;
+  }
+
+  // filters
+  applyFilters() {
+    this.filteredBranches = this.tableData.filter((branch) => {
+      const matchesSearch = this.searchTerm
+        ? branch.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+        : true;
+
+      const matchesStatus = this.selectedStatus
+        ? branch.status === this.selectedStatus
+        : true;
+
+      const matchesPerformance = this.selectedPerformance
+        ? branch.performance === this.selectedPerformance
+        : true;
+
+      return matchesSearch && matchesStatus && matchesPerformance;
+    });
+
+    this.totalRecords = this.filteredBranches.length;
+    this.paginatedData = this.filteredBranches.slice(0, this.rows);
   }
 }

@@ -9,18 +9,26 @@
 <div class="section2">
   <div class="table-inputs">
     <div class="search-group">
-      <p>اجمالي عدد الافرع (5)</p>
+      <p>اجمالي عدد الافرع ({{ filteredServiceCards.length }})</p>
       <p-iconfield>
-        <input type="text" pInputText placeholder="البحث" />
+        <input
+          type="text"
+          pInputText
+          placeholder="البحث"
+          [(ngModel)]="searchTerm"
+          (input)="applySearch()"
+        />
         <img src="/assets/search-icon.svg" alt="" />
       </p-iconfield>
     </div>
     <div class="table-group">
       <div class="selectors">
         <app-selector
-          [options]="options"
+          [options]="statusOptions"
+          [(ngModel)]="selectedStatus"
           [placeholder]="'الحالة'"
           name="selectOption"
+          (change)="applyFilters()"
         >
         </app-selector>
       </div>
@@ -29,9 +37,14 @@
       </div>
     </div>
   </div>
-
+  <div *ngIf="filteredServiceCards.length === 0" class="no-data-message">
+    لا توجد بيانات
+  </div>
   <div class="service-cards">
-    <div class="service-card" *ngFor="let card of serviceCards; let i = index">
+    <div
+      class="service-card"
+      *ngFor="let card of filteredServiceCards; let i = index"
+    >
       <div class="service-card--head">
         <img src="/assets/service-card.svg" alt="" />
         <p>{{ card.title }}</p>

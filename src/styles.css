@@ -740,16 +740,17 @@ app-confirm-delete {
     font-size: 24px;
     gap: 8px;
     align-items: center;
-    padding-bottom: 15px;
     font-weight: 500;
-    border-bottom: 1px solid #c8c9cc !important;
     transition: 0.1s ease-in-out all;
   }
   p-tab.p-tab-active {
     color: #e3ad56;
-    border-bottom: 1px solid #e3ad56 !important;
     font-weight: 700;
   }
+}
+
+.no-data-message {
+  text-align: center;
 }
 
 @media screen and (max-width: 1439px) {

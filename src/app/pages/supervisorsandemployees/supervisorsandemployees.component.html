@@ -11,27 +11,41 @@
     <!-- Table inputs -->
     <div class="table-inputs">
       <p-iconfield>
-        <input type="text" pInputText placeholder="البحث" />
+        <input
+          type="text"
+          pInputText
+          placeholder="البحث"
+          [(ngModel)]="searchQuery"
+          (input)="applyFilters()"
+        />
         <img src="/assets/search-icon.svg" alt="" />
       </p-iconfield>
       <div class="table-group">
         <div class="selectors">
           <app-selector
-            [options]="options"
+            [options]="branches"
             [placeholder]="'تحدد الفرع'"
             name="selectOption"
+            [(ngModel)]="selectedBranch"
+            (ngModelChange)="applyFilters()"
           >
           </app-selector>
+
           <app-selector
-            [options]="options"
+            [options]="statusOptions"
             [placeholder]="'الحالة'"
             name="selectOption"
+            [(ngModel)]="selectedStatus"
+            (ngModelChange)="applyFilters()"
           >
           </app-selector>
+
           <app-selector
-            [options]="options"
+            [options]="roles"
             [placeholder]="'تحديد مشرف ام موظف'"
             name="selectOption"
+            [(ngModel)]="selectedRole"
+            (ngModelChange)="applyFilters()"
           >
           </app-selector>
         </div>
@@ -52,17 +66,23 @@
 
     <!-- Table Rows -->
     <div class="table-rows">
+      <div *ngIf="paginatedData.length === 0" class="no-data-message">
+        لا توجد بيانات
+      </div>
+
       <div class="table-row" *ngFor="let row of paginatedData">
         <div>{{ row.id > 9 ? row.id : "0" + row.id }}</div>
         <div>{{ row.name }}</div>
         <div>
-          <div *ngIf="row.role" class="supervisor">مشرف</div>
-          <div *ngIf="!row.role" class="employee">موظف</div>
+          <div *ngIf="row.role === 'مشرف'" class="supervisor">مشرف</div>
+          <div *ngIf="row.role === 'موظف'" class="employee">موظف</div>
         </div>
         <p>{{ row.branch }}</p>
         <div>
-          <div *ngIf="row.status" class="active-status">نشط</div>
-          <div *ngIf="!row.status" class="inactive-status">غير نشط</div>
+          <div *ngIf="row.status === 'نشط'" class="active-status">نشط</div>
+          <div *ngIf="row.status === 'غير نشط'" class="inactive-status">
+            غير نشط
+          </div>
         </div>
         <div class="action-btns">
           <div>

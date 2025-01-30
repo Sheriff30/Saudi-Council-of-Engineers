@@ -8,21 +8,21 @@
 
 <div class="section2">
   <div class="table-inputs">
-    <div class="search-group">
-      <p>اجمالي عدد المواعيد (5 معاد)</p>
-      <p-iconfield>
-        <input type="text" pInputText placeholder="البحث" />
-        <img src="/assets/search-icon.svg" alt="" />
-      </p-iconfield>
-    </div>
+    <div class="search-group"></div>
     <div class="table-group">
       <div class="selectors">
         <app-selector
           [placeholder]="'الحد اليومي 40 معاد'"
           name="selectOption"
+          [options]="selectorOptions.dailyLimit"
         ></app-selector>
-        <app-selector [placeholder]="'الحالة'" name="selectOption">
-        </app-selector>
+
+        <!-- Status Selector -->
+        <app-selector
+          [placeholder]="'الحالة'"
+          name="selectOption"
+          [options]="selectorOptions.status"
+        ></app-selector>
       </div>
       <div class="page-link" (click)="openModal('formContainer')">
         إضافة جديد
@@ -33,21 +33,43 @@
   <div class="section2-tabs booking-tabs">
     <p-tabs value="0">
       <p-tablist>
-        <p-tab value="0"
-          >الأحد <img src="/assets/off-switch.svg" alt="off-switch"
-        /></p-tab>
-        <p-tab value="1"
-          >الاثنين <img src="/assets/off-switch.svg" alt="off-switch"
-        /></p-tab>
-        <p-tab value="2"
-          >الثلاثاء <img src="/assets/off-switch.svg" alt="off-switch"
-        /></p-tab>
-        <p-tab value="3"
-          >الأربعاء <img src="/assets/off-switch.svg" alt="off-switch"
-        /></p-tab>
-        <p-tab value="4"
-          >الخميس <img src="/assets/off-switch.svg" alt="off-switch"
-        /></p-tab>
+        <div class="appointments-tab">
+          <p-tab value="0" [disabled]="!switchStates.sunday"> الأحد </p-tab>
+          <app-switch-input
+            [isChecked]="switchStates.sunday"
+            (toggleChange)="handleSwitchChange('sunday')"
+          ></app-switch-input>
+        </div>
+        <div class="appointments-tab">
+          <p-tab value="1" [disabled]="!switchStates.monday"> الاثنين </p-tab>
+          <app-switch-input
+            [isChecked]="switchStates.monday"
+            (toggleChange)="handleSwitchChange('monday')"
+          ></app-switch-input>
+        </div>
+        <div class="appointments-tab">
+          <p-tab value="2" [disabled]="!switchStates.tuesday"> الثلاثاء </p-tab>
+          <app-switch-input
+            [isChecked]="switchStates.tuesday"
+            (toggleChange)="handleSwitchChange('tuesday')"
+          ></app-switch-input>
+        </div>
+        <div class="appointments-tab">
+          <p-tab value="3" [disabled]="!switchStates.wednesday">
+            الأربعاء
+          </p-tab>
+          <app-switch-input
+            [isChecked]="switchStates.wednesday"
+            (toggleChange)="handleSwitchChange('wednesday')"
+          ></app-switch-input>
+        </div>
+        <div class="appointments-tab">
+          <p-tab value="4" [disabled]="!switchStates.thursday"> الخميس </p-tab>
+          <app-switch-input
+            [isChecked]="switchStates.thursday"
+            (toggleChange)="handleSwitchChange('thursday')"
+          ></app-switch-input>
+        </div>
       </p-tablist>
       <p-tabpanels>
         <p-tabpanel value="0">

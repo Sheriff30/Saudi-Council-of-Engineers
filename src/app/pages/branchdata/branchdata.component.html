@@ -11,27 +11,40 @@
     <!-- Table inputs -->
     <div class="table-inputs">
       <div class="search-group">
-        <p>اجمالي عدد الافرع (5)</p>
+        <p>اجمالي عدد الافرع ({{ filteredBranches.length }})</p>
         <p-iconfield>
-          <input type="text" pInputText placeholder="البحث" />
+          <input
+            type="text"
+            pInputText
+            placeholder="البحث"
+            [(ngModel)]="searchTerm"
+            (input)="applyFilters()"
+          />
           <img src="/assets/search-icon.svg" alt="" />
         </p-iconfield>
       </div>
+
       <div class="table-group">
         <div class="selectors">
           <app-selector
-            [options]="options"
+            [options]="statusOptions"
             [placeholder]="'الحالة'"
+            [(ngModel)]="selectedStatus"
+            (change)="applyFilters()"
             name="selectOption"
           >
           </app-selector>
+
           <app-selector
-            [options]="options"
+            [options]="performanceOptions"
             [placeholder]="'الاداء'"
+            [(ngModel)]="selectedPerformance"
+            (change)="applyFilters()"
             name="selectOption"
           >
           </app-selector>
         </div>
+
         <div class="page-link" (click)="openModal('formContainer')">
           إضافة جديد
         </div>
@@ -50,6 +63,9 @@
 
     <!-- Table Rows -->
     <div class="table-rows">
+      <div *ngIf="paginatedData.length === 0" class="no-data-message">
+        لا توجد بيانات
+      </div>
       <div class="table-row" *ngFor="let row of paginatedData">
         <div>{{ row.id > 9 ? row.id : "0" + row.id }}</div>
         <div>{{ row.name }}</div>
@@ -62,8 +78,10 @@
           <div *ngIf="row.performance === 'mid'" class="mid-status">متوسط</div>
         </div>
         <div>
-          <div *ngIf="row.status" class="active-status">نشط</div>
-          <div *ngIf="!row.status" class="inactive-status">غير نشط</div>
+          <div *ngIf="row.status === 'نشط'" class="active-status">نشط</div>
+          <div *ngIf="row.status === 'غير نشط'" class="inactive-status">
+            غير نشط
+          </div>
         </div>
         <div class="action-btns">
           <div>
