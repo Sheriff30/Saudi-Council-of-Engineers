@@ -11,17 +11,24 @@
     <!-- Table inputs -->
     <div class="table-inputs">
       <div class="search-group">
-        <p>اجمالي عدد الافرع (5)</p>
+        <p>اجمالي عدد الافرع ({{ filteredData.length }})</p>
         <p-iconfield>
-          <input type="text" pInputText placeholder="البحث" />
+          <input
+            type="text"
+            pInputText
+            placeholder="البحث"
+            (input)="onSearchChange($event)"
+          />
           <img src="/assets/search-icon.svg" alt="" />
         </p-iconfield>
       </div>
       <div class="table-group">
         <div class="selectors">
           <app-selector
-            [options]="options"
+            [options]="statusOptions"
             [placeholder]="'الحالة'"
+            [(ngModel)]="selectedStatus"
+            (change)="applyFilters()"
             name="selectOption"
           >
           </app-selector>
@@ -31,7 +38,7 @@
         </div>
       </div>
     </div>
-    <!-- Table Head-->
+    <!-- Table Head -->
     <div class="table-head">
       <p>رقم الزيارة</p>
       <p>اسم العميل</p>
@@ -49,17 +56,16 @@
       <div class="table-row" *ngFor="let row of paginatedData">
         <div>{{ row.id > 9 ? row.id : "0" + row.id }}</div>
         <div>{{ row.name }}</div>
-
         <p>{{ row.employeename || "-------------" }}</p>
         <div>{{ row.servicetype }}</div>
         <div>{{ row.branch }}</div>
         <div>{{ row.date }}</div>
+        <div>{{ row.time }}</div>
         <div>
-          {{ row.time }}
-        </div>
-        <div>
-          <div *ngIf="row.status" class="active-status">مسند</div>
-          <div *ngIf="!row.status" class="inactive-status">غير مسند</div>
+          <div *ngIf="row.status === 'مسند'" class="active-status">مسند</div>
+          <div *ngIf="row.status === 'غير مسند'" class="inactive-status">
+            غير مسند
+          </div>
         </div>
         <div class="row-btn">اسناد يدوي</div>
       </div>

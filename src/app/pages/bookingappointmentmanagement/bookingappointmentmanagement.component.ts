@@ -8,6 +8,15 @@ import { DateinputComponent } from '../../ui/dateinput/dateinput.component';
 import { MinutesinputComponent } from '../../ui/minutesinput/minutesinput.component';
 import { FormsModule } from '@angular/forms';
 import { SwitchInputComponent } from '../../ui/switch-input/switch-input.component';
+interface Booking {
+  date: string;
+  time: string;
+  status: string; // Changed to string
+}
+
+interface BookingsByDay {
+  [key: string]: Booking[];
+}
 
 @Component({
   selector: 'app-bookingappointmentmanagement',
@@ -16,16 +25,19 @@ import { SwitchInputComponent } from '../../ui/switch-input/switch-input.compone
     SelectorComponent,
     TabsModule,
     CommonModule,
-    TimeinputComponent,
-    DateinputComponent,
-    MinutesinputComponent,
     FormsModule,
     SwitchInputComponent,
+    DateinputComponent,
+    TimeinputComponent,
+    MinutesinputComponent,
   ],
   templateUrl: './bookingappointmentmanagement.component.html',
   styleUrls: ['./bookingappointmentmanagement.component.css'],
 })
 export class BookingappointmentmanagementComponent {
+  selectedDailyLimit: string | null = null;
+  selectedStatus: string | null = null; // Changed to string
+
   switchStates = {
     sunday: true,
     monday: true,
@@ -33,47 +45,91 @@ export class BookingappointmentmanagementComponent {
     wednesday: true,
     thursday: true,
   };
+
   currentModal: 'formContainer' | null = null;
   isModalOpen = false;
 
-  bookingsByDay: any = {
+  // Original data
+  bookingsByDay: BookingsByDay = {
     sunday: [
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: false },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
-      { date: '8/1/2025', time: '08:00 ص', status: false },
-      { date: '8/1/2025', time: '10:00 ص', status: true },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
     ],
     monday: [
-      { date: '8/2/2025', time: '09:00 ص', status: true },
-      { date: '8/2/2025', time: '11:00 ص', status: false },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
     ],
     tuesday: [
-      { date: '8/3/2025', time: '10:00 ص', status: true },
-      { date: '8/3/2025', time: '01:00 م', status: false },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
     ],
     wednesday: [
-      { date: '8/4/2025', time: '02:00 م', status: true },
-      { date: '8/4/2025', time: '03:30 م', status: false },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
     ],
     thursday: [
-      { date: '8/5/2025', time: '04:00 م', status: true },
-      { date: '8/5/2025', time: '05:30 م', status: false },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
+      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+    ],
+  };
+
+  // Filtered data
+  filteredBookings: BookingsByDay = { ...this.bookingsByDay };
+
+  selectorOptions = {
+    dailyLimit: [
+      { value: '40 معاد', label: '40 معاد' },
+      { value: '30 معاد', label: '30 معاد' },
+      { value: '20 معاد', label: '20 معاد' },
+    ],
+    status: [
+      { value: 'محجوز', label: 'محجوز' }, // Changed to string
+      { value: 'غير محجوز', label: 'غير محجوز' }, // Changed to string
     ],
   };
 
@@ -85,6 +141,7 @@ export class BookingappointmentmanagementComponent {
     this.isModalOpen = false;
     this.currentModal = null;
   }
+
   openModal(modalId: any) {
     this.isModalOpen = true;
     this.currentModal = modalId;
@@ -94,17 +151,28 @@ export class BookingappointmentmanagementComponent {
     this.switchStates[day] = !this.switchStates[day];
   }
 
-  selectorOptions = {
-    dailyLimit: [
-      { value: '40 معاد', label: '40 معاد' },
-      { value: '30 معاد', label: '30 معاد' },
-      { value: '20 معاد', label: '20 معاد' },
-    ],
-    status: [
-      { value: 'محجوز', label: 'محجوز' },
-      { value: 'غير محجوز', label: 'غير محجوز' },
-    ],
-  };
+  applyFilters(): void {
+    this.filteredBookings = JSON.parse(JSON.stringify(this.bookingsByDay));
 
-  filteredBookings: { [key: string]: any[] } = { ...this.bookingsByDay };
+    if (this.selectedStatus !== null) {
+      Object.keys(this.filteredBookings).forEach((day) => {
+        this.filteredBookings[day] = this.filteredBookings[day].filter(
+          (booking) => booking.status === this.selectedStatus,
+        );
+      });
+    }
+
+    if (this.selectedDailyLimit) {
+      const limit = parseInt(this.selectedDailyLimit.split(' ')[0], 10);
+      console.log('Parsed Limit:', limit);
+      if (!isNaN(limit)) {
+        Object.keys(this.filteredBookings).forEach((day) => {
+          this.filteredBookings[day] = this.filteredBookings[day].slice(
+            0,
+            limit,
+          );
+        });
+      }
+    }
+  }
 }
