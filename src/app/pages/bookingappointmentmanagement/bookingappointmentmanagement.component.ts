@@ -8,10 +8,14 @@ import { DateinputComponent } from '../../ui/dateinput/dateinput.component';
 import { MinutesinputComponent } from '../../ui/minutesinput/minutesinput.component';
 import { FormsModule } from '@angular/forms';
 import { SwitchInputComponent } from '../../ui/switch-input/switch-input.component';
+import { ConfirmactivationComponent } from '../../ui/confirmactivation/confirmactivation.component';
+import { ConfirmdeleteComponent } from '../../ui/confirmdelete/confirmdelete.component';
+import { DisableModalComponent } from '../../ui/confirmdisable/confirmdisable.component';
 interface Booking {
   date: string;
   time: string;
-  status: string; // Changed to string
+  status: string;
+  day: string;
 }
 
 interface BookingsByDay {
@@ -30,6 +34,9 @@ interface BookingsByDay {
     DateinputComponent,
     TimeinputComponent,
     MinutesinputComponent,
+    ConfirmactivationComponent,
+    ConfirmdeleteComponent,
+    DisableModalComponent,
   ],
   templateUrl: './bookingappointmentmanagement.component.html',
   styleUrls: ['./bookingappointmentmanagement.component.css'],
@@ -52,69 +59,59 @@ export class BookingappointmentmanagementComponent {
   // Original data
   bookingsByDay: BookingsByDay = {
     sunday: [
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'sunday' },
     ],
     monday: [
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'monday' },
     ],
     tuesday: [
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'tuesday' },
     ],
     wednesday: [
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'wednesday' },
     ],
     thursday: [
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
-      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز' },
-      { date: '8/3/2025', time: '01:00 م', status: 'غير محجوز' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
+      { date: '8/3/2025', time: '10:00 ص', status: 'محجوز', day: 'thursday' },
     ],
   };
 
@@ -174,5 +171,79 @@ export class BookingappointmentmanagementComponent {
         });
       }
     }
+  }
+
+  // Delete Modal
+  showDeleteModal = false;
+  itemToDelete: any = null;
+
+  openDeleteModal(item: any) {
+    this.itemToDelete = item;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.itemToDelete) {
+      const day = this.itemToDelete.day;
+      if (this.bookingsByDay[day]) {
+        this.bookingsByDay[day] = this.bookingsByDay[day].filter(
+          (row) => row !== this.itemToDelete,
+        );
+      }
+      this.applyFilters();
+      this.showDeleteModal = false;
+      this.itemToDelete = null;
+    }
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.itemToDelete = null;
+  }
+
+  // Confirm activation
+
+  showActivationModal = false;
+  itemToActivate: any = null;
+
+  openActivationModal(item: any) {
+    this.itemToActivate = item;
+    this.showActivationModal = true;
+  }
+
+  confirmActivation() {
+    if (this.itemToActivate) {
+      this.itemToActivate.status = 'محجوز';
+      this.showActivationModal = false;
+      this.itemToActivate = null;
+    }
+  }
+
+  closeActivationModal() {
+    this.showActivationModal = false;
+    this.itemToActivate = null;
+  }
+
+  //Confirm Disable
+
+  showDisableModal = false;
+  itemToDisable: any = null;
+
+  openDisableModal(item: any) {
+    this.itemToDisable = item;
+    this.showDisableModal = true;
+  }
+
+  confirmDisable() {
+    if (this.itemToDisable) {
+      this.itemToDisable.status = 'غير محجوز';
+      this.showDisableModal = false;
+      this.itemToDisable = null;
+    }
+  }
+
+  closeDisableModal() {
+    this.showDisableModal = false;
+    this.itemToDisable = null;
   }
 }

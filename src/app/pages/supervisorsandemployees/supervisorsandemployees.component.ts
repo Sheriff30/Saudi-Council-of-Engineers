@@ -8,6 +8,9 @@ import { SelectorComponent } from '../../ui/selector/selector.component';
 import { SwitchInputComponent } from '../../ui/switch-input/switch-input.component';
 import { InputComponent } from '../../ui/input/input.component';
 import { PasswordinputComponent } from '../../ui/passwordinput/passwordinput.component';
+import { ConfirmdeleteComponent } from '../../ui/confirmdelete/confirmdelete.component';
+import { ConfirmactivationComponent } from '../../ui/confirmactivation/confirmactivation.component';
+import { DisableModalComponent } from '../../ui/confirmdisable/confirmdisable.component';
 
 interface TableRow {
   id: number;
@@ -27,9 +30,12 @@ interface TableRow {
     TabsModule,
     IconFieldModule,
     SelectorComponent,
+    ConfirmactivationComponent,
     SwitchInputComponent,
     InputComponent,
+    ConfirmdeleteComponent,
     PasswordinputComponent,
+    DisableModalComponent,
   ],
   templateUrl: './supervisorsandemployees.component.html',
   styleUrl: './supervisorsandemployees.component.css',
@@ -146,5 +152,75 @@ export class SupervisorsandemployeesComponent implements OnInit {
 
   handleSwitchChange(state: boolean): void {
     this.switchState = state;
+  }
+
+  // Delete Modal
+  showDeleteModal = false;
+  itemToDelete: any = null;
+
+  openDeleteModal(item: any) {
+    this.itemToDelete = item;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.itemToDelete) {
+      this.paginatedData = this.paginatedData.filter(
+        (row) => row !== this.itemToDelete,
+      );
+      this.showDeleteModal = false;
+      this.itemToDelete = null;
+    }
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.itemToDelete = null;
+  }
+
+  // Confirm activation
+
+  showActivationModal = false;
+  itemToActivate: any = null;
+
+  openActivationModal(item: any) {
+    this.itemToActivate = item;
+    this.showActivationModal = true;
+  }
+
+  confirmActivation() {
+    if (this.itemToActivate) {
+      this.itemToActivate.status = 'نشط';
+      this.showActivationModal = false;
+      this.itemToActivate = null;
+    }
+  }
+
+  closeActivationModal() {
+    this.showActivationModal = false;
+    this.itemToActivate = null;
+  }
+
+  //Confirm Disable
+
+  showDisableModal = false;
+  itemToDisable: any = null;
+
+  openDisableModal(item: any) {
+    this.itemToDisable = item;
+    this.showDisableModal = true;
+  }
+
+  confirmDisable() {
+    if (this.itemToDisable) {
+      this.itemToDisable.status = 'غير نشط';
+      this.showDisableModal = false;
+      this.itemToDisable = null;
+    }
+  }
+
+  closeDisableModal() {
+    this.showDisableModal = false;
+    this.itemToDisable = null;
   }
 }

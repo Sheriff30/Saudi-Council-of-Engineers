@@ -69,7 +69,7 @@
             غير مسند
           </div>
         </div>
-        <div class="row-btn">اسناد يدوي</div>
+        <div class="row-btn" (click)="openActivationModal(row)">اسناد يدوي</div>
       </div>
     </div>
   </div>
@@ -152,3 +152,10 @@
     </div>
   </div>
 </div>
+
+<app-confirmactivation
+  *ngIf="showActivationModal"
+  (confirm)="confirmActivation()"
+  (close)="closeActivationModal()"
+>
+</app-confirmactivation>

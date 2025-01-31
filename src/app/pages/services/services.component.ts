@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { IconFieldModule } from 'primeng/iconfield';
 import { SelectorComponent } from '../../ui/selector/selector.component';
 import { SwitchInputComponent } from '../../ui/switch-input/switch-input.component';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from '../../ui/input/input.component';
 import { FormsModule } from '@angular/forms';
+import { ConfirmdeleteComponent } from '../../ui/confirmdelete/confirmdelete.component';
+import { ConfirmactivationComponent } from '../../ui/confirmactivation/confirmactivation.component';
 
 @Component({
   selector: 'app-services',
@@ -16,6 +18,8 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     InputComponent,
     FormsModule,
+    ConfirmdeleteComponent,
+    ConfirmactivationComponent,
   ],
   templateUrl: './services.component.html',
   styleUrls: ['./services.component.css'],
@@ -107,5 +111,52 @@ export class ServicesComponent {
   openModal(modalId: any) {
     this.isModalOpen = true;
     this.currentModal = modalId;
+  }
+
+  // Delete Modal
+  showDeleteModal = false;
+  itemToDelete: any = null;
+
+  openDeleteModal(item: any) {
+    this.itemToDelete = item;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.itemToDelete) {
+      this.serviceCards = this.serviceCards.filter(
+        (card) => card !== this.itemToDelete,
+      );
+      this.applyFilters();
+      this.showDeleteModal = false;
+      this.itemToDelete = null;
+    }
+  }
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.itemToDelete = null;
+  }
+
+  // Confirm activation
+
+  showActivationModal = false;
+  itemToActivate: any = null;
+
+  openActivationModal(item: any) {
+    this.itemToActivate = item;
+    this.showActivationModal = true;
+  }
+
+  confirmActivation() {
+    if (this.itemToActivate) {
+      this.itemToActivate.switchState = true;
+      this.showActivationModal = false;
+      this.itemToActivate = null;
+    }
+  }
+
+  closeActivationModal() {
+    this.showActivationModal = false;
+    this.itemToActivate = null;
   }
 }

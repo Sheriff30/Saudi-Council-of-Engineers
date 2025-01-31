@@ -75,7 +75,7 @@
       </div>
 
       <div class="card-row-3">
-        <div class="remove-btn" (click)="deleteBooking(booking.id)">
+        <div class="remove-btn" (click)="openDeleteModal(booking)">
           <span>حذف</span>
           <img src="/assets/delete-icon.svg" alt="" />
         </div>
@@ -92,3 +92,10 @@
     </div>
   </div>
 </div>
+
+<app-confirmdelete
+  *ngIf="showDeleteModal"
+  (confirm)="confirmDelete()"
+  (cancel)="cancelDelete()"
+>
+</app-confirmdelete>

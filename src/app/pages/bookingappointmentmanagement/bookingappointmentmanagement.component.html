@@ -74,6 +74,12 @@
       </p-tablist>
       <p-tabpanels>
         <p-tabpanel value="0">
+          <div
+            *ngIf="filteredBookings['sunday'].length === 0"
+            class="no-data-message"
+          >
+            لا توجد بيانات
+          </div>
           <div class="booking-cards">
             <div
               class="booking-card"
@@ -83,12 +89,12 @@
               <p class="booking-time">{{ booking.time }}</p>
               <div class="booking-status">
                 <img
-                  *ngIf="booking.status"
+                  *ngIf="booking.status === 'محجوز'"
                   src="/assets/on-switch.svg"
                   alt="on-switch"
                 />
                 <img
-                  *ngIf="!booking.status"
+                  *ngIf="booking.status === 'غير محجوز'"
                   src="/assets/off-switch.svg"
                   alt="off-switch"
                 />
@@ -100,20 +106,26 @@
                 </p>
               </div>
               <div class="booking-btns">
-                <div>
-                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                <div (click)="openDisableModal(booking)">
+                  <img src="/assets/eye-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                <div (click)="openDeleteModal(booking)">
+                  <img src="/assets/delete-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                <div (click)="openActivationModal(booking)">
+                  <img src="/assets/edit-icon.svg" alt="icon" />
                 </div>
               </div>
             </div>
           </div>
         </p-tabpanel>
         <p-tabpanel value="1">
+          <div
+            *ngIf="filteredBookings['monday'].length === 0"
+            class="no-data-message"
+          >
+            لا توجد بيانات
+          </div>
           <div class="booking-cards">
             <div
               class="booking-card"
@@ -123,12 +135,12 @@
               <p class="booking-time">{{ booking.time }}</p>
               <div class="booking-status">
                 <img
-                  *ngIf="booking.status"
+                  *ngIf="booking.status === 'محجوز'"
                   src="/assets/on-switch.svg"
                   alt="on-switch"
                 />
                 <img
-                  *ngIf="!booking.status"
+                  *ngIf="booking.status === 'غير محجوز'"
                   src="/assets/off-switch.svg"
                   alt="off-switch"
                 />
@@ -140,20 +152,26 @@
                 </p>
               </div>
               <div class="booking-btns">
-                <div>
-                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                <div (click)="openDisableModal(booking)">
+                  <img src="/assets/eye-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                <div (click)="openDeleteModal(booking)">
+                  <img src="/assets/delete-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                <div (click)="openActivationModal(booking)">
+                  <img src="/assets/edit-icon.svg" alt="icon" />
                 </div>
               </div>
             </div>
           </div>
         </p-tabpanel>
         <p-tabpanel value="2">
+          <div
+            *ngIf="filteredBookings['tuesday'].length === 0"
+            class="no-data-message"
+          >
+            لا توجد بيانات
+          </div>
           <div class="booking-cards">
             <div
               class="booking-card"
@@ -163,12 +181,12 @@
               <p class="booking-time">{{ booking.time }}</p>
               <div class="booking-status">
                 <img
-                  *ngIf="booking.status"
+                  *ngIf="booking.status === 'محجوز'"
                   src="/assets/on-switch.svg"
                   alt="on-switch"
                 />
                 <img
-                  *ngIf="!booking.status"
+                  *ngIf="booking.status === 'غير محجوز'"
                   src="/assets/off-switch.svg"
                   alt="off-switch"
                 />
@@ -180,20 +198,26 @@
                 </p>
               </div>
               <div class="booking-btns">
-                <div>
-                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                <div (click)="openDisableModal(booking)">
+                  <img src="/assets/eye-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                <div (click)="openDeleteModal(booking)">
+                  <img src="/assets/delete-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                <div (click)="openActivationModal(booking)">
+                  <img src="/assets/edit-icon.svg" alt="icon" />
                 </div>
               </div>
             </div>
           </div>
         </p-tabpanel>
         <p-tabpanel value="3">
+          <div
+            *ngIf="filteredBookings['wednesday'].length === 0"
+            class="no-data-message"
+          >
+            لا توجد بيانات
+          </div>
           <div class="booking-cards">
             <div
               class="booking-card"
@@ -203,12 +227,12 @@
               <p class="booking-time">{{ booking.time }}</p>
               <div class="booking-status">
                 <img
-                  *ngIf="booking.status"
+                  *ngIf="booking.status === 'محجوز'"
                   src="/assets/on-switch.svg"
                   alt="on-switch"
                 />
                 <img
-                  *ngIf="!booking.status"
+                  *ngIf="booking.status === 'غير محجوز'"
                   src="/assets/off-switch.svg"
                   alt="off-switch"
                 />
@@ -220,20 +244,26 @@
                 </p>
               </div>
               <div class="booking-btns">
-                <div>
-                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                <div (click)="openDisableModal(booking)">
+                  <img src="/assets/eye-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                <div (click)="openDeleteModal(booking)">
+                  <img src="/assets/delete-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                <div (click)="openActivationModal(booking)">
+                  <img src="/assets/edit-icon.svg" alt="icon" />
                 </div>
               </div>
             </div>
           </div>
         </p-tabpanel>
         <p-tabpanel value="4">
+          <div
+            *ngIf="filteredBookings['thursday'].length === 0"
+            class="no-data-message"
+          >
+            لا توجد بيانات
+          </div>
           <div class="booking-cards">
             <div
               class="booking-card"
@@ -243,12 +273,12 @@
               <p class="booking-time">{{ booking.time }}</p>
               <div class="booking-status">
                 <img
-                  *ngIf="booking.status"
+                  *ngIf="booking.status === 'محجوز'"
                   src="/assets/on-switch.svg"
                   alt="on-switch"
                 />
                 <img
-                  *ngIf="!booking.status"
+                  *ngIf="booking.status === 'غير محجوز'"
                   src="/assets/off-switch.svg"
                   alt="off-switch"
                 />
@@ -260,14 +290,14 @@
                 </p>
               </div>
               <div class="booking-btns">
-                <div>
-                  <img src="/assets/eye-icon.svg" alt="eye-icon" />
+                <div (click)="openDisableModal(booking)">
+                  <img src="/assets/eye-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/edit-icon.svg" alt="edit-icon" />
+                <div (click)="openDeleteModal(booking)">
+                  <img src="/assets/delete-icon.svg" alt="icon" />
                 </div>
-                <div>
-                  <img src="/assets/delete-icon.svg" alt="delete-icon" />
+                <div (click)="openActivationModal(booking)">
+                  <img src="/assets/edit-icon.svg" alt="icon" />
                 </div>
               </div>
             </div>
@@ -325,3 +355,23 @@
     </div>
   </form>
 </div>
+
+<app-confirmdelete
+  *ngIf="showDeleteModal"
+  (confirm)="confirmDelete()"
+  (cancel)="cancelDelete()"
+>
+</app-confirmdelete>
+
+<app-confirmactivation
+  *ngIf="showActivationModal"
+  (confirm)="confirmActivation()"
+  (close)="closeActivationModal()"
+>
+</app-confirmactivation>
+
+<app-disable-modal
+  *ngIf="showDisableModal"
+  (confirm)="confirmDisable()"
+  (close)="closeDisableModal()"
+></app-disable-modal>

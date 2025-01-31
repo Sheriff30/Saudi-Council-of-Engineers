@@ -5,6 +5,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { IconFieldModule } from 'primeng/iconfield';
 import { ToggleSwitchModule } from 'primeng/toggleswitch';
 import { SelectorComponent } from '../../ui/selector/selector.component';
+import { ConfirmactivationComponent } from '../../ui/confirmactivation/confirmactivation.component';
 
 interface Selector {
   name: string;
@@ -28,6 +29,7 @@ interface TableRow {
   standalone: true,
   imports: [
     IconFieldModule,
+    ConfirmactivationComponent,
     FormsModule,
     CommonModule,
     PaginatorModule,
@@ -337,5 +339,28 @@ export class EmployeeappointmentmanagementComponent implements OnInit {
   openModal(modalId: any) {
     this.isModalOpen = true;
     this.currentModal = modalId;
+  }
+
+  // Confirm activation
+
+  showActivationModal = false;
+  itemToActivate: any = null;
+
+  openActivationModal(item: any) {
+    this.itemToActivate = item;
+    this.showActivationModal = true;
+  }
+
+  confirmActivation() {
+    if (this.itemToActivate) {
+      this.itemToActivate.status = 'مسند';
+      this.showActivationModal = false;
+      this.itemToActivate = null;
+    }
+  }
+
+  closeActivationModal() {
+    this.showActivationModal = false;
+    this.itemToActivate = null;
   }
 }

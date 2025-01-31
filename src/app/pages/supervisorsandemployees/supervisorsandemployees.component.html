@@ -85,13 +85,13 @@
           </div>
         </div>
         <div class="action-btns">
-          <div>
+          <div (click)="openDisableModal(row)">
             <img src="/assets/eye-icon.svg" alt="icon" />
           </div>
-          <div>
+          <div (click)="openDeleteModal(row)">
             <img src="/assets/delete-icon.svg" alt="icon" />
           </div>
-          <div>
+          <div (click)="openActivationModal(row)">
             <img src="/assets/edit-icon.svg" alt="icon" />
           </div>
         </div>
@@ -305,3 +305,23 @@
     </p-tabs>
   </div>
 </div>
+
+<app-confirmdelete
+  *ngIf="showDeleteModal"
+  (confirm)="confirmDelete()"
+  (cancel)="cancelDelete()"
+>
+</app-confirmdelete>
+
+<app-confirmactivation
+  *ngIf="showActivationModal"
+  (confirm)="confirmActivation()"
+  (close)="closeActivationModal()"
+>
+</app-confirmactivation>
+
+<app-disable-modal
+  *ngIf="showDisableModal"
+  (confirm)="confirmDisable()"
+  (close)="closeDisableModal()"
+></app-disable-modal>

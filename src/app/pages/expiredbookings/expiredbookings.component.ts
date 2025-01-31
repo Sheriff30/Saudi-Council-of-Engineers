@@ -5,6 +5,7 @@ import { DatePickerComponent } from '../../ui/date-picker-component/date-picker-
 import { TimePickerComponent } from '../../ui/timepicker/timepicker.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ConfirmdeleteComponent } from '../../ui/confirmdelete/confirmdelete.component';
 interface Booking {
   id: number;
   visitNumber: number;
@@ -24,6 +25,7 @@ interface Booking {
     TimePickerComponent,
     CommonModule,
     FormsModule,
+    ConfirmdeleteComponent,
   ],
   standalone: true,
   templateUrl: './expiredbookings.component.html',
@@ -176,5 +178,28 @@ export class ExpiredbookingsComponent {
     }
 
     return `${hour}:${minute.toString().padStart(2, '0')} ${period}`;
+  }
+
+  // Delete Modal
+  showDeleteModal = false;
+  itemToDelete: any = null;
+
+  openDeleteModal(item: any) {
+    this.itemToDelete = item;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.itemToDelete) {
+      this.bookings = this.bookings.filter((row) => row !== this.itemToDelete);
+      this.showDeleteModal = false;
+      this.itemToDelete = null;
+      this.applyFilters();
+    }
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.itemToDelete = null;
   }
 }

@@ -1,11 +1,22 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-confirmdisable',
-  imports: [],
+  selector: 'app-disable-modal',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './confirmdisable.component.html',
-  styleUrl: './confirmdisable.component.css'
+  styleUrl: './confirmdisable.component.css',
 })
-export class ConfirmdisableComponent {
+export class DisableModalComponent {
+  @Output() confirm = new EventEmitter<void>();
+  @Output() close = new EventEmitter<void>();
 
+  onConfirm() {
+    this.confirm.emit();
+  }
+
+  onCancel() {
+    this.close.emit();
+  }
 }
