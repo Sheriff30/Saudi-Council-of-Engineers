@@ -26,6 +26,9 @@
     </div>
   </div>
 
+  <div *ngIf="filteredBookings.length === 0" class="no-data-message">
+    لا توجد بيانات
+  </div>
   <div class="booking-cards">
     <div class="booking-card" *ngFor="let booking of filteredBookings">
       <div class="card-row-1">
@@ -40,11 +43,11 @@
         <div>
           <div class="card-date">
             <img src="/assets/date-icon.png" alt="" />
-            <p>{{ booking.date }}</p>
+            <p>{{ formatDate(booking.date) }}</p>
           </div>
           <div class="card-time">
             <img src="/assets/time-icon.png" alt="" />
-            <p>{{ booking.time }}</p>
+            <p>{{ formatTime(booking.time) }}</p>
           </div>
         </div>
       </div>
@@ -72,7 +75,7 @@
       </div>
 
       <div class="card-row-3">
-        <div class="remove-btn" (click)="deleteBooking(booking.visitNumber)">
+        <div class="remove-btn" (click)="deleteBooking(booking.id)">
           <span>حذف</span>
           <img src="/assets/delete-icon.svg" alt="" />
         </div>

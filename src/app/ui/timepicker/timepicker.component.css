@@ -2,6 +2,7 @@
   position: relative;
   width: 150px;
   input {
+    height: 5rem;
     width: 150px;
   }
 }

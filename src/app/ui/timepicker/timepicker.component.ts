@@ -33,8 +33,10 @@ export class TimePickerComponent {
       }
 
       this.formattedTime = `${hour}:${minute.toString().padStart(2, '0')} ${period}`;
-      this.timeChanged.emit(this.formattedTime);
+      this.timeChanged.emit(timeValue);
+      console.log(timeValue);
     } else {
+      this.timeChanged.emit('');
       this.formattedTime = '';
     }
   }

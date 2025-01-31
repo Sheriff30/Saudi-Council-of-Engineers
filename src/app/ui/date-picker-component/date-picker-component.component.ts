@@ -51,7 +51,8 @@ export class DatePickerComponent {
       const year = date.getFullYear();
 
       this.formattedDate = `${day} , ${dayOfMonth} ${month} ${year}`;
-      this.dateChanged.emit(this.formattedDate);
+      this.dateChanged.emit(dateValue);
+      console.log(dateValue);
     } else {
       this.formattedDate = '';
     }

@@ -8,38 +8,47 @@
 <div class="section2">
   <div class="bookings-header">
     <div class="bookings-search">
-      <p>اجمالي عدد الحجوزات (5 حجوزات)</p>
+      <p>اجمالي عدد الحجوزات ({{ totalBookings }} حجوزات)</p>
       <p-iconfield>
-        <input type="text" pInputText placeholder="البحث" />
+        <input
+          type="text"
+          pInputText
+          placeholder="البحث"
+          [(ngModel)]="searchText"
+          (input)="onSearch($event)"
+        />
         <img src="/assets/search-icon.svg" alt="" />
       </p-iconfield>
     </div>
     <div class="bookings-inputs">
-      <app-selector [placeholder]="'قادمة'" name="selectOption" />
-      <app-timepicker></app-timepicker>
-      <app-date-picker></app-date-picker>
+      <app-selector [placeholder]="'منتهية'" name="selectOption" />
+      <app-timepicker (timeChanged)="onTimeChange($event)"></app-timepicker>
+      <app-date-picker (dateChanged)="onDateChange($event)"></app-date-picker>
     </div>
   </div>
 
+  <div *ngIf="filteredBookings.length === 0" class="no-data-message">
+    لا توجد بيانات
+  </div>
   <div class="booking-cards">
-    <div class="booking-card">
+    <div class="booking-card" *ngFor="let booking of filteredBookings">
       <div class="card-row-1">
         <div class="card-visit">
           <img src="/assets/visit-icon.png" alt="" />
           <p>
             <span>زيارة رقم </span>
-            <span> (10)</span>
+            <span> ({{ booking.visitNumber }})</span>
           </p>
         </div>
 
         <div>
           <div class="card-date">
             <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
+            <p>{{ formatDate(booking.date) }}</p>
           </div>
           <div class="card-time">
             <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
+            <p>{{ formatTime(booking.time) }}</p>
           </div>
         </div>
       </div>
@@ -47,507 +56,27 @@
       <div class="card-row-2">
         <div>
           <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
+          <span>{{ booking.service }}</span>
         </div>
         <div>
           <span>الفرع: </span>
-          <span>جدة</span>
+          <span>{{ booking.branch }}</span>
         </div>
       </div>
 
       <div class="card-row-2">
         <div>
           <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
+          <span>{{ booking.employee }}</span>
         </div>
         <div>
           <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
+          <span>{{ booking.client }}</span>
         </div>
       </div>
 
       <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
-          <span>حذف</span>
-          <img src="/assets/delete-icon.svg" alt="" />
-        </div>
-        <a
-          routerLink="/upcoming-appointments"
-          routerLinkActive="active"
-          ariaCurrentWhenActive="page"
-          class="page-link"
-        >
-          <span>الذهاب الى معلومات الجلسة</span>
-          <img src="/assets/arrow-left.svg" />
-        </a>
-      </div>
-    </div>
-    <div class="booking-card">
-      <div class="card-row-1">
-        <div class="card-visit">
-          <img src="/assets/visit-icon.png" alt="" />
-          <p>
-            <span>زيارة رقم </span>
-            <span> (10)</span>
-          </p>
-        </div>
-
-        <div>
-          <div class="card-date">
-            <img src="/assets/date-icon.png" alt="" />
-            <p>10/1/2025</p>
-          </div>
-          <div class="card-time">
-            <img src="/assets/time-icon.png" alt="" />
-            <p>10:30 صباحا</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الخدمة: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>الفرع: </span>
-          <span>جدة</span>
-        </div>
-      </div>
-
-      <div class="card-row-2">
-        <div>
-          <span>الموظف: </span>
-          <span>الاعتماد المهني للمهندسين</span>
-        </div>
-        <div>
-          <span>العميل: </span>
-          <span>خالد عبدالله المصعبي</span>
-        </div>
-      </div>
-
-      <div class="card-row-3">
-        <div class="remove-btn">
+        <div class="remove-btn" (click)="deleteBooking(booking.id)">
           <span>حذف</span>
           <img src="/assets/delete-icon.svg" alt="" />
         </div>

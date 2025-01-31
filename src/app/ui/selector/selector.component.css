@@ -10,8 +10,10 @@ div {
 
 select {
   border: 1px solid #e4e4e4;
-  padding: 12px;
+  padding: 0 16px;
   border-radius: 8px;
+
+  height: 5rem;
   font-family: inherit;
   -webkit-appearance: none;
 }
