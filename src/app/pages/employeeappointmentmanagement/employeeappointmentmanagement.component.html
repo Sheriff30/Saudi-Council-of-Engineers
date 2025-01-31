@@ -50,11 +50,13 @@
       <p>الحالة</p>
       <p>اجراءات</p>
     </div>
-
+    <div *ngIf="paginatedData.length === 0" class="no-data-message">
+      لا توجد بيانات
+    </div>
     <!-- Table Rows -->
     <div class="table-rows">
-      <div class="table-row" *ngFor="let row of paginatedData">
-        <div>{{ row.id > 9 ? row.id : "0" + row.id }}</div>
+      <div class="table-row" *ngFor="let row of paginatedData; let i = index">
+        <div>{{ i + 1 > 9 ? i + 1 : "0" + (i + 1) }}</div>
         <div>{{ row.name }}</div>
         <p>{{ row.employeename || "-------------" }}</p>
         <div>{{ row.servicetype }}</div>
@@ -103,14 +105,22 @@
         <div class="form-search">
           <div class="selectors">
             <app-selector
-              [options]="options"
+              [options]="popupStatusOptions"
               [placeholder]="'الحالة'"
+              [(ngModel)]="selectedPopupStatus"
               name="selectOption"
             >
             </app-selector>
           </div>
+
           <p-iconfield>
-            <input type="text" pInputText placeholder="البحث" />
+            <input
+              type="text"
+              pInputText
+              placeholder="البحث"
+              (input)="onSearchChangePopup($event)"
+              [(ngModel)]="searchPopupText"
+            />
             <img src="/assets/search-icon.svg" alt="" />
           </p-iconfield>
         </div>
@@ -121,15 +131,20 @@
         <p>الحالة</p>
         <p>اجراءات</p>
       </div>
+      <div *ngIf="filteredPopupData().length === 0" class="no-data-message">
+        لا توجد بيانات
+      </div>
       <div class="table-rows">
-        <div class="table-row" *ngFor="let row of paginatedData">
+        <div class="table-row" *ngFor="let row of filteredPopupData()">
           <div>{{ row.name }}</div>
           <div>
             {{ row.numberofbookings }}
           </div>
           <div>
-            <div *ngIf="row.status" class="active-status">متاح</div>
-            <div *ngIf="!row.status" class="inactive-status">غير متاح</div>
+            <div *ngIf="row.status === 'متاح'" class="active-status">متاح</div>
+            <div *ngIf="row.status === 'غير متاح'" class="inactive-status">
+              غير متاح
+            </div>
           </div>
           <div class="row-btn">اسناد</div>
         </div>

@@ -44,7 +44,6 @@ export class EmployeeappointmentmanagementComponent implements OnInit {
   status: Selector[] = [];
   role: Selector[] = [];
   selectedbranch: Selector | undefined;
-  selectedstatus: Selector | undefined;
   selectedrole: Selector | undefined;
   totalRecords = 0;
   checked: boolean = false;
@@ -57,6 +56,8 @@ export class EmployeeappointmentmanagementComponent implements OnInit {
   filteredData: TableRow[] = [];
   searchText: string = '';
   selectedStatus: string | null = null;
+  selectedPopupStatus: string | null = null;
+  searchPopupText: string = '';
 
   options = [
     { value: 'مسند', label: 'مسند' },
@@ -66,6 +67,10 @@ export class EmployeeappointmentmanagementComponent implements OnInit {
   statusOptions = [
     { value: 'مسند', label: 'مسند' },
     { value: 'غير مسند', label: 'غير مسند' },
+  ];
+  popupStatusOptions = [
+    { value: 'متاح', label: 'متاح' },
+    { value: 'غير متاح', label: 'غير متاح' },
   ];
 
   ngOnInit() {
@@ -209,6 +214,53 @@ export class EmployeeappointmentmanagementComponent implements OnInit {
     },
   ];
 
+  popupData = [
+    {
+      id: 1,
+      name: 'وليد ال ضبعان',
+      employeename: 'أسامة الدبيان',
+      servicetype: 'الاعتماد المهني',
+      branch: 'تبوك',
+      date: '9/9/2025',
+      time: '5:58 PM',
+      status: 'متاح',
+      numberofbookings: 10,
+    },
+    {
+      id: 2,
+      name: 'سعيد الشمراني',
+      employeename: 'عبدالله الفهيد',
+      servicetype: 'إدارة الجودة',
+      branch: 'الرياض',
+      date: '10/9/2025',
+      time: '10:15 AM',
+      status: 'غير متاح',
+      numberofbookings: 20,
+    },
+    {
+      id: 3,
+      name: 'فهد المطيري',
+      employeename: 'محمد القحطاني',
+      servicetype: 'الاعتماد المهني',
+      branch: 'جدة',
+      date: '11/9/2025',
+      time: '2:30 PM',
+      status: 'متاح',
+      numberofbookings: 30,
+    },
+    {
+      id: 4,
+      name: 'عبدالرحمن العنزي',
+      employeename: 'سالم العتيبي',
+      servicetype: 'التدريب والتطوير',
+      branch: 'مكة',
+      date: '12/9/2025',
+      time: '9:45 AM',
+      status: 'غير متاح',
+      numberofbookings: 90,
+    },
+  ];
+
   // Updated filter logic
   applyFilters() {
     this.filteredData = this.tableData.filter((branch) => {
@@ -226,11 +278,28 @@ export class EmployeeappointmentmanagementComponent implements OnInit {
     this.totalRecords = this.filteredData.length;
     this.paginatedData = this.filteredData.slice(0, this.rows);
   }
+
+  filteredPopupData() {
+    return this.popupData.filter((row) => {
+      const matchesStatus = this.selectedPopupStatus
+        ? row.status === this.selectedPopupStatus
+        : true;
+      const matchesSearch = this.searchText
+        ? row.name.includes(this.searchText)
+        : true;
+      return matchesStatus && matchesSearch;
+    });
+  }
   // Updated search handler
   onSearchChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     this.searchText = inputElement.value;
     this.applyFilters();
+  }
+  onSearchChangePopup(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.searchText = inputElement.value;
+    this.filteredPopupData();
   }
 
   // Updated status change handler
