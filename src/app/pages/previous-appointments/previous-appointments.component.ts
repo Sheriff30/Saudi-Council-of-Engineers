@@ -100,5 +100,13 @@ export class PreviousAppointmentsComponent {
     if (ratingContainer) {
       ratingContainer.style.display = 'flex';
     }
+
+    const element = document.querySelector('.rating-form') as HTMLElement;
+    if (element) {
+      const offset = 100;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+    }
   }
 }

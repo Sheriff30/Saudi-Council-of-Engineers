@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpClient } from '@angular/common/http';
@@ -20,6 +20,8 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./choose-an-appointment.component.css'],
 })
 export class ChooseAnAppointmentComponent {
+  @ViewChild('submit-msg-container') submitMsg!: ElementRef;
+
   activeButton: number = 0;
   days: string[] = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
   translatedDays: string[] = [];
@@ -92,5 +94,12 @@ export class ChooseAnAppointmentComponent {
     newImg.alt = 'step-icon';
     span?.appendChild(newImg);
     step3?.appendChild(span);
+    const element = document.querySelector('.submit-msg') as HTMLElement;
+    if (element) {
+      const offset = 100;
+      const elementPosition =
+        element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - offset, behavior: 'smooth' });
+    }
   }
 }

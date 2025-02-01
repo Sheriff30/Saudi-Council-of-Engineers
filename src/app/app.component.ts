@@ -1,9 +1,12 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
-import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { HeaderComponent } from './ui/header/header.component';
-import { FooterComponent } from './ui/footer/footer.component';
+import { CommonModule, ViewportScroller } from '@angular/common';
+import { Component } from '@angular/core';
+import {
+  NavigationEnd,
+  Router,
+  RouterModule,
+  RouterOutlet,
+} from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -14,4 +17,16 @@ import { FooterComponent } from './ui/footer/footer.component';
 })
 export class AppComponent {
   title = 'council-of-engineering';
+  constructor(
+    private router: Router,
+    private viewportScroller: ViewportScroller,
+  ) {}
+
+  ngOnInit() {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.viewportScroller.scrollToPosition([0, 0]);
+      }
+    });
+  }
 }

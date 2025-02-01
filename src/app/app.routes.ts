@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { VirtualVisitComponent } from './pages/virtual-visit/virtual-visit.component';
 import { LoginComponent } from './pages/login/login.component';
 import { ServiceTypeComponent } from './pages/service-type/service-type.component';
@@ -25,6 +25,7 @@ import { MeetingComponent } from './pages/meeting/meeting.component';
 import { ClientZoomComponent } from './pages/client-zoom/client-zoom.component';
 import { EmployeeZoomComponent } from './pages/employee-zoom/employee-zoom.component';
 import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
   {
