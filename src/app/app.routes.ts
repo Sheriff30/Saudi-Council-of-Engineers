@@ -21,6 +21,10 @@ import { BookingappointmentmanagementComponent } from './pages/bookingappointmen
 import { EmployeeappointmentmanagementComponent } from './pages/employeeappointmentmanagement/employeeappointmentmanagement.component';
 import { UpcomingbookingsComponent } from './pages/upcomingbookings/upcomingbookings.component';
 import { ExpiredbookingsComponent } from './pages/expiredbookings/expiredbookings.component';
+import { MeetingComponent } from './pages/meeting/meeting.component';
+import { ClientZoomComponent } from './pages/client-zoom/client-zoom.component';
+import { EmployeeZoomComponent } from './pages/employee-zoom/employee-zoom.component';
+import { PagenotfoundComponent } from './pages/pagenotfound/pagenotfound.component';
 
 export const routes: Routes = [
   {
@@ -43,10 +47,10 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'dashboard',
+    path: '',
     component: DashboardLayoutComponent,
     children: [
-      { path: 'home', component: DashboardHomeComponent },
+      { path: 'dashboard', component: DashboardHomeComponent },
       {
         path: 'supervisorsandemployees',
         component: SupervisorsandemployeesComponent,
@@ -92,5 +96,17 @@ export const routes: Routes = [
         component: ExpiredbookingsComponent,
       },
     ],
+  },
+  {
+    path: '',
+    component: MeetingComponent,
+    children: [
+      { path: 'clientzoom', component: ClientZoomComponent },
+      { path: 'employeezoom', component: EmployeeZoomComponent },
+    ],
+  },
+  {
+    path: '**',
+    component: PagenotfoundComponent,
   },
 ];

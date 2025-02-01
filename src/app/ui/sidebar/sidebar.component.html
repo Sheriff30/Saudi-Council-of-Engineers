@@ -1,15 +1,15 @@
 <nav id="sidebar">
   <ul>
     <li>
-      <a routerLink="/dashboard/home" class="logo">
-        <img src="/assets/logo-footer.png" alt="" />
+      <a routerLink="/dashboard" class="logo">
+        <img src="/assets/logo1.svg" alt="" />
       </a>
       <button (click)="toggleSidebar()" id="toggle-btn">
         <img src="/assets/toggle-sidebar.svg" alt="" />
       </button>
     </li>
     <li>
-      <a routerLink="/dashboard/home" routerLinkActive="active">
+      <a routerLink="/dashboard" routerLinkActive="active">
         <img src="/assets/sidebarnav-1.svg" alt="sidebar nav icon" />
         <span>الرئيسية</span>
       </a>
@@ -32,19 +32,13 @@
       </button>
       <ul class="sub-menu">
         <div>
-          <a
-            routerLink="/dashboard/supervisorsandemployees"
-            routerLinkActive="active"
-          >
+          <a routerLink="supervisorsandemployees" routerLinkActive="active">
             <span>المشرفين والموظفين</span>
           </a>
-          <a
-            routerLink="/dashboard/administratordata"
-            routerLinkActive="active"
-          >
+          <a routerLink="administratordata" routerLinkActive="active">
             <span>بينات المشرف</span>
           </a>
-          <a routerLink="/dashboard/employeedata" routerLinkActive="active">
+          <a routerLink="employeedata" routerLinkActive="active">
             <span>بينات الموظف</span>
           </a>
         </div>
@@ -69,12 +63,12 @@
       <ul class="sub-menu">
         <div>
           <li>
-            <a routerLink="/dashboard/branchdata" routerLinkActive="active"
+            <a routerLink="branchdata" routerLinkActive="active"
               >بينات الأفرع</a
             >
           </li>
           <li>
-            <a routerLink="/dashboard/addnewbranch" routerLinkActive="active"
+            <a routerLink="addnewbranch" routerLinkActive="active"
               >اضافة فرع جديد</a
             >
           </li>
@@ -82,7 +76,7 @@
       </ul>
     </li>
     <li>
-      <a routerLink="/dashboard/services" routerLinkActive="active">
+      <a routerLink="services" routerLinkActive="active">
         <img src="/assets/sidebarnav-4.svg" alt="sidebar nav icon" />
         الخدمات
       </a>
@@ -107,20 +101,17 @@
       <ul class="sub-menu">
         <div>
           <div>
-            <a
-              routerLink="/dashboard/managingworkschedules"
-              routerLinkActive="active"
-            >
+            <a routerLink="managingworkschedules" routerLinkActive="active">
               ادارة مواعيد العمل
             </a>
             <a
-              routerLink="/dashboard/bookingappointmentmanagement"
+              routerLink="bookingappointmentmanagement"
               routerLinkActive="active"
             >
               ادارة مواعيد الحجوزات
             </a>
             <a
-              routerLink="/dashboard/employeeappointmentmanagement"
+              routerLink="employeeappointmentmanagement"
               routerLinkActive="active"
             >
               ادارة مواعيد الموظفين
@@ -149,16 +140,10 @@
       <ul class="sub-menu">
         <div>
           <div>
-            <a
-              routerLink="/dashboard/upcomingbookings"
-              routerLinkActive="active"
-            >
+            <a routerLink="upcomingbookings" routerLinkActive="active">
               قادمة
             </a>
-            <a
-              routerLink="/dashboard/expiredbookings"
-              routerLinkActive="active"
-            >
+            <a routerLink="expiredbookings" routerLinkActive="active">
               منتهية
             </a>
           </div>

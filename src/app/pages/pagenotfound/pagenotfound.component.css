@@ -1,0 +1,39 @@
+.page-404 {
+  background: rgb(255, 255, 255);
+  height: 100vh;
+  width: 100vw;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #223042;
+
+  a {
+    color: #223042;
+    font-size: 2rem;
+  }
+
+  h1 {
+    font-size: 6rem;
+  }
+
+  p {
+    font-size: 4rem;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  a {
+    font-size: 1.6rem !important;
+  }
+
+  h1 {
+    font-size: 4rem !important;
+  }
+
+  p {
+    font-size: 2rem !important;
+  }
+}
