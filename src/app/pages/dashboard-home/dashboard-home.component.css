@@ -21,6 +21,27 @@
   gap: 1.6rem;
 }
 
+.branch-name {
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.cards-container {
+  height: 100%;
+  max-height: 300px;
+  overflow-y: auto;
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #e3ad56;
+  }
+}
 .section1 {
   display: flex;
   align-items: center;
@@ -97,15 +118,19 @@
       align-items: center;
       gap: 12px;
       width: 677px;
+      p {
+        white-space: nowrap;
+      }
 
       div {
         display: grid;
         align-items: center;
         grid-template-columns: repeat(3, auto);
         gap: 12px;
+        width: 100%;
 
         p-select {
-          width: 160px;
+          width: 100%;
         }
 
         .date-picker {

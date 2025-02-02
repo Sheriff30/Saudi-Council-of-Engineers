@@ -45,6 +45,7 @@ export const routes: Routes = [
         path: 'upcoming-appointments',
         component: UpcomingAppointmentsComponent,
       },
+      { path: 'clientzoom', component: ClientZoomComponent },
     ],
   },
   {
@@ -96,13 +97,6 @@ export const routes: Routes = [
         path: 'expiredbookings',
         component: ExpiredbookingsComponent,
       },
-    ],
-  },
-  {
-    path: '',
-    component: MeetingComponent,
-    children: [
-      { path: 'clientzoom', component: ClientZoomComponent },
       { path: 'employeezoom', component: EmployeeZoomComponent },
     ],
   },

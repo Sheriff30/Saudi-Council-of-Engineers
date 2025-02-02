@@ -17,184 +17,209 @@
       <div>
         <p-select
           [options]="branches"
-          [(ngModel)]="selectedbranch"
+          [(ngModel)]="selectedBranch"
           optionLabel="name"
           placeholder="تحدد الفرع"
           class="w-full md:w-56"
+          (onChange)="filterCards()"
         />
 
-        <app-date-picker></app-date-picker>
+        <app-date-picker (dateChanged)="onDateChange($event)"></app-date-picker>
       </div>
     </div>
     <div class="line-horizontal"></div>
     <div class="section2-content2">
       <p-tabpanels>
         <p-tabpanel value="0">
-          <div class="card-numbers">
-            <div class="card-number blue">
-              <div>
-                <img src="/assets/card-number-icon.png" alt="card-icon" />
-                <p>عدد المواعيد القادمة:</p>
-              </div>
-              <div>
-                <p>30 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
+          <div *ngIf="filteredDayCardData.length > 0">
+            <div class="branch-name">
+              {{ filteredDayCardData[0].branch }}
+            </div>
+            <div class="cards-container">
+              <div *ngFor="let group of filteredDayCardData" class="card-group">
+                <p>{{ group.date }}</p>
+                <div class="card-numbers">
+                  <div
+                    *ngFor="let card of group.cards"
+                    class="card-number"
+                    [ngClass]="{
+                      blue: card.type === 'upcoming',
+                      yellow: card.type === 'scheduled',
+                      green: card.type === 'completed',
+                      red: card.type === 'cancelled',
+                    }"
+                  >
+                    <div>
+                      <img
+                        [src]="
+                          '/assets/card-number-icon' +
+                          (card.type === 'upcoming'
+                            ? ''
+                            : card.type === 'scheduled'
+                              ? '2'
+                              : card.type === 'completed'
+                                ? '3'
+                                : '4') +
+                          '.png'
+                        "
+                        alt="card-icon"
+                      />
+                      <p>{{ card.title }}</p>
+                    </div>
+                    <div>
+                      <p>{{ card.value }}</p>
+                      <div
+                        class="label"
+                        [ngClass]="{
+                          green: card.trend === 'up',
+                          red: card.trend === 'down',
+                        }"
+                      >
+                        <img
+                          [src]="'/assets/card-arrow-' + card.trend + '.svg'"
+                          alt="trend-arrow"
+                        />
+                        <span>{{ card.trendValue }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card-number yellow">
-              <div>
-                <img src="/assets/card-number-icon2.png" alt="card-icon" />
-                <p>عدد المواعيد المجدولة:</p>
-              </div>
-              <div>
-                <p>50 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number green">
-              <div>
-                <img src="/assets/card-number-icon3.png" alt="card-icon" />
-                <p>عدد المواعيد المنتهية:</p>
-              </div>
-              <div>
-                <p>16 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number red">
-              <div>
-                <img src="/assets/card-number-icon4.png" alt="card-icon" />
-                <p>المواعيد الملغاة :</p>
-              </div>
-              <div>
-                <p>10 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
-                </div>
-              </div>
-            </div>
+          </div>
+
+          <div *ngIf="filteredDayCardData.length === 0">
+            <p>لا توجد بيانات مطابقة للفرع والتاريخ المحددين.</p>
           </div>
         </p-tabpanel>
         <p-tabpanel value="1">
-          <div class="card-numbers">
-            <div class="card-number yellow">
-              <div>
-                <img src="/assets/card-number-icon2.png" alt="card-icon" />
-                <p>عدد المواعيد المجدولة:</p>
-              </div>
-              <div>
-                <p>50 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
+          <div *ngIf="filteredWeekCardData.length > 0">
+            <div class="branch-name">
+              {{ filteredWeekCardData[0].branch }}
             </div>
-            <div class="card-number blue">
-              <div>
-                <img src="/assets/card-number-icon.png" alt="card-icon" />
-                <p>عدد المواعيد القادمة:</p>
-              </div>
-              <div>
-                <p>30 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number red">
-              <div>
-                <img src="/assets/card-number-icon4.png" alt="card-icon" />
-                <p>المواعيد الملغاة :</p>
-              </div>
-              <div>
-                <p>10 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number green">
-              <div>
-                <img src="/assets/card-number-icon3.png" alt="card-icon" />
-                <p>عدد المواعيد المنتهية:</p>
-              </div>
-              <div>
-                <p>16 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
+            <div class="cards-container">
+              <div
+                *ngFor="let group of filteredWeekCardData"
+                class="card-group"
+              >
+                <p>{{ group.week }}</p>
+                <div class="card-numbers">
+                  <div
+                    *ngFor="let card of group.cards"
+                    class="card-number"
+                    [ngClass]="{
+                      blue: card.type === 'upcoming',
+                      yellow: card.type === 'scheduled',
+                      green: card.type === 'completed',
+                      red: card.type === 'cancelled',
+                    }"
+                  >
+                    <div>
+                      <img
+                        [src]="
+                          '/assets/card-number-icon' +
+                          (card.type === 'upcoming'
+                            ? ''
+                            : card.type === 'scheduled'
+                              ? '2'
+                              : card.type === 'completed'
+                                ? '3'
+                                : '4') +
+                          '.png'
+                        "
+                        alt="card-icon"
+                      />
+                      <p>{{ card.title }}</p>
+                    </div>
+                    <div>
+                      <p>{{ card.value }}</p>
+                      <div
+                        class="label"
+                        [ngClass]="{
+                          green: card.trend === 'up',
+                          red: card.trend === 'down',
+                        }"
+                      >
+                        <img
+                          [src]="'/assets/card-arrow-' + card.trend + '.svg'"
+                          alt="trend-arrow"
+                        />
+                        <span>{{ card.trendValue }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div *ngIf="filteredWeekCardData.length === 0">
+            <p>لا توجد بيانات مطابقة للفرع والتاريخ المحددين.</p>
+          </div>
         </p-tabpanel>
         <p-tabpanel value="2">
-          <div class="card-numbers">
-            <div class="card-number green">
-              <div>
-                <img src="/assets/card-number-icon3.png" alt="card-icon" />
-                <p>عدد المواعيد المنتهية:</p>
-              </div>
-              <div>
-                <p>16 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
+          <div *ngIf="filteredYearCardData.length > 0">
+            <div class="branch-name">
+              {{ filteredYearCardData[0].branch }}
+            </div>
+            <div class="cards-container">
+              <div
+                *ngFor="let group of filteredYearCardData"
+                class="card-group"
+              >
+                <p>{{ group.year }}</p>
+                <div class="card-numbers">
+                  <div
+                    *ngFor="let card of group.cards"
+                    class="card-number"
+                    [ngClass]="{
+                      blue: card.type === 'upcoming',
+                      yellow: card.type === 'scheduled',
+                      green: card.type === 'completed',
+                      red: card.type === 'cancelled',
+                    }"
+                  >
+                    <div>
+                      <img
+                        [src]="
+                          '/assets/card-number-icon' +
+                          (card.type === 'upcoming'
+                            ? ''
+                            : card.type === 'scheduled'
+                              ? '2'
+                              : card.type === 'completed'
+                                ? '3'
+                                : '4') +
+                          '.png'
+                        "
+                        alt="card-icon"
+                      />
+                      <p>{{ card.title }}</p>
+                    </div>
+                    <div>
+                      <p>{{ card.value }}</p>
+                      <div
+                        class="label"
+                        [ngClass]="{
+                          green: card.trend === 'up',
+                          red: card.trend === 'down',
+                        }"
+                      >
+                        <img
+                          [src]="'/assets/card-arrow-' + card.trend + '.svg'"
+                          alt="trend-arrow"
+                        />
+                        <span>{{ card.trendValue }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card-number red">
-              <div>
-                <img src="/assets/card-number-icon4.png" alt="card-icon" />
-                <p>المواعيد الملغاة :</p>
-              </div>
-              <div>
-                <p>10 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number blue">
-              <div>
-                <img src="/assets/card-number-icon.png" alt="card-icon" />
-                <p>عدد المواعيد القادمة:</p>
-              </div>
-              <div>
-                <p>30 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number yellow">
-              <div>
-                <img src="/assets/card-number-icon2.png" alt="card-icon" />
-                <p>عدد المواعيد المجدولة:</p>
-              </div>
-              <div>
-                <p>50 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
+          </div>
+
+          <div *ngIf="filteredYearCardData.length === 0">
+            <p>لا توجد بيانات مطابقة للفرع والتاريخ المحددين.</p>
           </div>
         </p-tabpanel>
       </p-tabpanels>
@@ -208,11 +233,12 @@
       <p>الأفرع والخدمات</p>
       <div>
         <p-select
-          [options]="branches2"
-          [(ngModel)]="selectedbranch2"
+          [options]="chartbranches"
+          [(ngModel)]="selectedchartbranch"
           optionLabel="name"
           placeholder="تحدد الفرع"
           class="w-full md:w-56"
+          (onChange)="onDropdownChange()"
         />
         <p-select
           [options]="services"
@@ -220,8 +246,16 @@
           optionLabel="name"
           placeholder="تحدد الخدمة"
           class="w-full md:w-56"
+          (onChange)="onDropdownChange()"
         />
-        <app-date-picker></app-date-picker>
+        <p-select
+          [options]="years"
+          [(ngModel)]="selectedYear"
+          optionLabel="name"
+          placeholder=" تحديد الشهر"
+          class="w-full md:w-56"
+          (onChange)="onDropdownChange()"
+        />
       </div>
     </div>
     <p-chart
@@ -495,182 +529,268 @@
         </p-tablist>
       </div>
       <div>
-        <app-date-picker></app-date-picker>
+        <app-date-picker
+          (dateChanged)="onReservationsDateChange($event)"
+        ></app-date-picker>
       </div>
     </div>
     <div class="line-horizontal"></div>
     <div class="section2-content2">
       <p-tabpanels>
         <p-tabpanel value="0">
-          <div class="card-numbers">
-            <div class="card-number blue">
-              <div>
-                <img src="/assets/card-number-icon5.svg" alt="card-icon" />
-                <p>الحجوزات الإجمالية:</p>
-              </div>
-              <div>
-                <p>30 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
+          <div *ngIf="filteredReservationsData.length > 0">
+            <div class="branch-name">
+              {{ filteredReservationsData[0].date }}
+            </div>
+            <div class="cards-container">
+              <div
+                *ngFor="let group of filteredReservationsData"
+                class="card-group"
+              >
+                <div class="card-numbers">
+                  <div
+                    *ngFor="let card of group.cards"
+                    class="card-number"
+                    [ngClass]="{
+                      blue: card.type === 'upcoming',
+                      yellow: card.type === 'scheduled',
+                      green: card.type === 'completed',
+                      red: card.type === 'cancelled',
+                    }"
+                  >
+                    <div>
+                      <img
+                        [src]="
+                          '/assets/card-number-icon' +
+                          (card.type === 'upcoming'
+                            ? ''
+                            : card.type === 'scheduled'
+                              ? '2'
+                              : card.type === 'completed'
+                                ? '3'
+                                : '4') +
+                          '.png'
+                        "
+                        alt="card-icon"
+                      />
+                      <p>{{ card.title }}</p>
+                    </div>
+                    <div>
+                      <p>{{ card.value }}</p>
+                      <div
+                        class="label"
+                        [ngClass]="{
+                          green: card.trend === 'up',
+                          red: card.trend === 'down',
+                        }"
+                      >
+                        <img
+                          [src]="'/assets/card-arrow-' + card.trend + '.svg'"
+                          alt="trend-arrow"
+                        />
+                        <span>{{ card.trendValue }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card-number yellow">
-              <div>
-                <img src="/assets/card-number-icon2.png" alt="card-icon" />
-                <p>الحجوزات المكتملة:</p>
-              </div>
-              <div>
-                <p>50 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number green">
-              <div>
-                <img src="/assets/card-number-icon3.png" alt="card-icon" />
-                <p>الحجوزات المعلقة:</p>
-              </div>
-              <div>
-                <p>16 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
-                </div>
-              </div>
-            </div>
+          </div>
+
+          <div *ngIf="filteredReservationsData.length === 0">
+            <p>لا توجد بيانات مطابقة للفرع والتاريخ المحددين.</p>
           </div>
         </p-tabpanel>
         <p-tabpanel value="1">
-          <div class="card-numbers">
-            <div class="card-number blue">
-              <div>
-                <img src="/assets/card-number-icon.png" alt="card-icon" />
-                <p>عدد المواعيد القادمة:</p>
-              </div>
-              <div>
-                <p>30 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
+          <div *ngIf="filteredReservationsData2.length > 0">
+            <div class="branch-name">
+              {{ filteredReservationsData2[0].date }}
+            </div>
+            <div class="cards-container">
+              <div
+                *ngFor="let group of filteredReservationsData2"
+                class="card-group"
+              >
+                <div class="card-numbers">
+                  <div
+                    *ngFor="let card of group.cards"
+                    class="card-number"
+                    [ngClass]="{
+                      blue: card.type === 'upcoming',
+                      yellow: card.type === 'scheduled',
+                      green: card.type === 'completed',
+                      red: card.type === 'cancelled',
+                    }"
+                  >
+                    <div>
+                      <img
+                        [src]="
+                          '/assets/card-number-icon' +
+                          (card.type === 'upcoming'
+                            ? ''
+                            : card.type === 'scheduled'
+                              ? '2'
+                              : card.type === 'completed'
+                                ? '3'
+                                : '4') +
+                          '.png'
+                        "
+                        alt="card-icon"
+                      />
+                      <p>{{ card.title }}</p>
+                    </div>
+                    <div>
+                      <p>{{ card.value }}</p>
+                      <div
+                        class="label"
+                        [ngClass]="{
+                          green: card.trend === 'up',
+                          red: card.trend === 'down',
+                        }"
+                      >
+                        <img
+                          [src]="'/assets/card-arrow-' + card.trend + '.svg'"
+                          alt="trend-arrow"
+                        />
+                        <span>{{ card.trendValue }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card-number yellow">
-              <div>
-                <img src="/assets/card-number-icon2.png" alt="card-icon" />
-                <p>عدد المواعيد المجدولة:</p>
-              </div>
-              <div>
-                <p>50 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number green">
-              <div>
-                <img src="/assets/card-number-icon3.png" alt="card-icon" />
-                <p>عدد المواعيد المنتهية:</p>
-              </div>
-              <div>
-                <p>16 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
-                </div>
-              </div>
-            </div>
+          </div>
+
+          <div *ngIf="filteredReservationsData2.length === 0">
+            <p>لا توجد بيانات مطابقة للفرع والتاريخ المحددين.</p>
           </div>
         </p-tabpanel>
         <p-tabpanel value="2">
-          <div class="card-numbers">
-            <div class="card-number blue">
-              <div>
-                <img src="/assets/card-number-icon.png" alt="card-icon" />
-                <p>عدد المواعيد القادمة:</p>
-              </div>
-              <div>
-                <p>30 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
+          <div *ngIf="filteredReservationsData3.length > 0">
+            <div class="branch-name">
+              {{ filteredReservationsData3[0].date }}
             </div>
-            <div class="card-number yellow">
-              <div>
-                <img src="/assets/card-number-icon2.png" alt="card-icon" />
-                <p>عدد المواعيد المجدولة:</p>
-              </div>
-              <div>
-                <p>50 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number green">
-              <div>
-                <img src="/assets/card-number-icon3.png" alt="card-icon" />
-                <p>عدد المواعيد المنتهية:</p>
-              </div>
-              <div>
-                <p>16 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
+            <div class="cards-container">
+              <div
+                *ngFor="let group of filteredReservationsData3"
+                class="card-group"
+              >
+                <div class="card-numbers">
+                  <div
+                    *ngFor="let card of group.cards"
+                    class="card-number"
+                    [ngClass]="{
+                      blue: card.type === 'upcoming',
+                      yellow: card.type === 'scheduled',
+                      green: card.type === 'completed',
+                      red: card.type === 'cancelled',
+                    }"
+                  >
+                    <div>
+                      <img
+                        [src]="
+                          '/assets/card-number-icon' +
+                          (card.type === 'upcoming'
+                            ? ''
+                            : card.type === 'scheduled'
+                              ? '2'
+                              : card.type === 'completed'
+                                ? '3'
+                                : '4') +
+                          '.png'
+                        "
+                        alt="card-icon"
+                      />
+                      <p>{{ card.title }}</p>
+                    </div>
+                    <div>
+                      <p>{{ card.value }}</p>
+                      <div
+                        class="label"
+                        [ngClass]="{
+                          green: card.trend === 'up',
+                          red: card.trend === 'down',
+                        }"
+                      >
+                        <img
+                          [src]="'/assets/card-arrow-' + card.trend + '.svg'"
+                          alt="trend-arrow"
+                        />
+                        <span>{{ card.trendValue }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+
+          <div *ngIf="filteredReservationsData3.length === 0">
+            <p>لا توجد بيانات مطابقة للفرع والتاريخ المحددين.</p>
+          </div>
         </p-tabpanel>
         <p-tabpanel value="3">
-          <div class="card-numbers">
-            <div class="card-number blue">
-              <div>
-                <img src="/assets/card-number-icon.png" alt="card-icon" />
-                <p>عدد المواعيد القادمة:</p>
-              </div>
-              <div>
-                <p>30 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
+          <div *ngIf="filteredReservationsData4.length > 0">
+            <div class="branch-name">
+              {{ filteredReservationsData4[0].date }}
+            </div>
+            <div class="cards-container">
+              <div
+                *ngFor="let group of filteredReservationsData4"
+                class="card-group"
+              >
+                <div class="card-numbers">
+                  <div
+                    *ngFor="let card of group.cards"
+                    class="card-number"
+                    [ngClass]="{
+                      blue: card.type === 'upcoming',
+                      yellow: card.type === 'scheduled',
+                      green: card.type === 'completed',
+                      red: card.type === 'cancelled',
+                    }"
+                  >
+                    <div>
+                      <img
+                        [src]="
+                          '/assets/card-number-icon' +
+                          (card.type === 'upcoming'
+                            ? ''
+                            : card.type === 'scheduled'
+                              ? '2'
+                              : card.type === 'completed'
+                                ? '3'
+                                : '4') +
+                          '.png'
+                        "
+                        alt="card-icon"
+                      />
+                      <p>{{ card.title }}</p>
+                    </div>
+                    <div>
+                      <p>{{ card.value }}</p>
+                      <div
+                        class="label"
+                        [ngClass]="{
+                          green: card.trend === 'up',
+                          red: card.trend === 'down',
+                        }"
+                      >
+                        <img
+                          [src]="'/assets/card-arrow-' + card.trend + '.svg'"
+                          alt="trend-arrow"
+                        />
+                        <span>{{ card.trendValue }}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="card-number yellow">
-              <div>
-                <img src="/assets/card-number-icon2.png" alt="card-icon" />
-                <p>عدد المواعيد المجدولة:</p>
-              </div>
-              <div>
-                <p>50 موعد</p>
-                <div class="label green">
-                  <img src="/assets/card-arrow-up.svg" alt="arrow-up" />
-                  <span> Default </span>
-                </div>
-              </div>
-            </div>
-            <div class="card-number green">
-              <div>
-                <img src="/assets/card-number-icon3.png" alt="card-icon" />
-                <p>عدد المواعيد المنتهية:</p>
-              </div>
-              <div>
-                <p>16 موعد</p>
-                <div class="label red">
-                  <img src="/assets/card-arrow-down.svg" alt="arrow-up" />
-                  <span> 28.4% </span>
-                </div>
-              </div>
-            </div>
+          </div>
+
+          <div *ngIf="filteredReservationsData4.length === 0">
+            <p>لا توجد بيانات مطابقة للفرع والتاريخ المحددين.</p>
           </div>
         </p-tabpanel>
       </p-tabpanels>
